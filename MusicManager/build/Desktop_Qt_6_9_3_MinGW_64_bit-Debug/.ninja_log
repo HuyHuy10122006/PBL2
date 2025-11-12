@@ -1,0 +1,24 @@
+# ninja log v6
+6	309	7844810726818637	MusicManager_autogen/timestamp	accf4bd3acd1a384
+6	309	7844810726818637	MusicManager_autogen/mocs_compilation.cpp	accf4bd3acd1a384
+6	309	7844810726818637	D:/PBL2/MusicManager/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/MusicManager_autogen/timestamp	accf4bd3acd1a384
+1258	2695	7844719256803207	CMakeFiles/MusicManager.dir/MusicManager_autogen/mocs_compilation.cpp.obj	163b024fab1e0452
+2712	3711	7844719271353645	MusicManager.exe	a935bb76b5567ba6
+6	309	7844810726818637	D:/PBL2/MusicManager/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/MusicManager_autogen/mocs_compilation.cpp	accf4bd3acd1a384
+1265	2708	7844719256873049	CMakeFiles/MusicManager.dir/main.cpp.obj	d0a70789591057df
+310	1704	7844810729855136	CMakeFiles/MusicManager.dir/mainwindow.cpp.obj	6b4d6d403675a5c9
+5	853	7844867628416343	build.ninja	c4bd86210a512e88
+316	1508	7844810729925115	CMakeFiles/MusicManager.dir/logic/song.cpp.obj	a63ad9f4a276152f
+324	1557	7844810730005122	CMakeFiles/MusicManager.dir/logic/playlist.cpp.obj	3de2481759645e9c
+2	1003	7844867628416343	build.ninja	c4bd86210a512e88
+6	848	7844867637522169	MusicManager_autogen/timestamp	accf4bd3acd1a384
+6	848	7844867637522169	MusicManager_autogen/mocs_compilation.cpp	accf4bd3acd1a384
+6	848	7844867637522169	D:/PBL2/MusicManager/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/MusicManager_autogen/timestamp	accf4bd3acd1a384
+6	848	7844867637522169	D:/PBL2/MusicManager/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/MusicManager_autogen/mocs_compilation.cpp	accf4bd3acd1a384
+1021	3185	7844867639733411	CMakeFiles/MusicManager.dir/logic/playlist.cpp.obj	2e62c0e9edc75670
+1011	3199	7844867639633415	CMakeFiles/MusicManager.dir/logic/song.cpp.obj	af7f59fadd1e9f9a
+1034	3206	7844867639863397	CMakeFiles/MusicManager.dir/logic/musicplayer.cpp.obj	a0bf901a13f6a669
+849	3372	7844867638012010	CMakeFiles/MusicManager.dir/MusicManager_autogen/mocs_compilation.cpp.obj	df6c0f264a3a5a83
+855	3462	7844867638082009	CMakeFiles/MusicManager.dir/main.cpp.obj	2cde7bda612c3aec
+1002	3551	7844867639553395	CMakeFiles/MusicManager.dir/mainwindow.cpp.obj	e640058af1aa79bb
+3551	4591	7844867665031604	MusicManager.exe	cd7e7f67c307d363
