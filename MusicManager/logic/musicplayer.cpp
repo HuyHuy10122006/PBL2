@@ -17,7 +17,7 @@ MusicPlayer::~MusicPlayer() {
 void MusicPlayer::play(int index) {
     if (!playlist) return;
     auto songs = playlist->getSongs();
-    if (index < 0 || index >= songs.size()) return;
+    if (index < 0 || index >= songs.getSize()) return;
     currentIndex = index;
     player->setSource(QUrl::fromLocalFile(songs(index)->getFilePath()));
     qDebug() << "Playing:" << songs(index)->getTitle();
@@ -34,14 +34,14 @@ void MusicPlayer::next() {
     qDebug() << "Playlist is empty!";
     return;
 }
-    currentIndex = (currentIndex + 1) % songs.size();
+    currentIndex = (currentIndex + 1) % songs.getSize();
     play(currentIndex);
 }
 
 void MusicPlayer::previous() {
     auto songs = playlist->getSongs();
     if (songs.isEmpty()) return;
-    currentIndex = (currentIndex - 1 + songs.size()) % songs.size();
+    currentIndex = (currentIndex - 1 + songs.getSize()) % songs.getSize();
     play(currentIndex);
 }
 
@@ -54,4 +54,3 @@ void MusicPlayer::setPlaylist(Playlist* newPlaylist) {
     playlist = newPlaylist;
     currentIndex = 0;
 }
-

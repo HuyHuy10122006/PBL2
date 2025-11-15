@@ -1,35 +1,28 @@
 #ifndef SONG_H
 #define SONG_H
 #include <QString>
-#include <QDebug>
+#include <stdexcept>
 class Song{
 private:
     QString title;
     QString artist;
-    int duration;   
+    int duration;   //giây
     QString filePath;
 public:
     Song();
-    Song(const QString &title,const QString &artist,int duration,const QString &filePath);
-
-    void printTime(int s);
+    Song(const QString &title, const QString &artist, int duration, const QString &filePath);
+    QString printTime(int s) const;
     bool operator ==(const Song &other) const;
-
     QString getTitle() const;
     QString getArtist() const;
     int getDuration() const;
     QString getFilePath() const;
-
     void setTitle(const QString &t);
     void setArtist(const QString &a);
     void setDuration(int d);
     void setFilePath(const QString &path);
 
-    QString toString() const;
-    friend QDebug operator<<(QDebug dbg, const Song &song){
-        dbg.noquote() << song.toString();
-        return dbg;
-    }
-};
 
+    QString toString() const;
+};
 #endif

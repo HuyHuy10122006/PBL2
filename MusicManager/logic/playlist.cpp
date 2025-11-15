@@ -7,9 +7,9 @@ Playlist::Playlist(const QString &name) : name(name) {}
 void Playlist::addSong(Song* song) {
     if (!song)
         throw invalid_argument("Cannot add a null song!");
-    for (int i = 0 ; i < song.getsize() ; i++)
+    for (int i = 0 ; i < songs.getSize(); i++)
     {
-        if(*song(i) == *song) {
+        if(*(songs(i)) == *song) {
             qDebug() << "Bai hat " << song->getTitle() << "da co trong playlist";
             return;
         }
@@ -17,17 +17,21 @@ void Playlist::addSong(Song* song) {
     songs.append(song);
     qDebug() << "them bai hat" << song->getTitle() << "thanh cong";
 }
-
+QString Playlist::getName() const
+{
+    return this->name;
+}
 
 void Playlist::removeSong(const QString &title, const QString &artist) {
     if (songs.getSize() == 0)
         throw runtime_error("Playlist is empty!");
 
     for (int i = 0; i < songs.getSize(); ++i) {
+        Song* rms = songs(i);
         if (songs(i)->getTitle().compare(title, Qt::CaseInsensitive) == 0 &&
             songs(i)->getArtist().compare(artist, Qt::CaseInsensitive) ==0) {
-            delete songs(i);        // giải phóng bộ nhớ
-            songs.removeAt(i);
+            songs.removeAt(i);      // giải phóng bộ nhớ
+            delete rms;
             qDebug() << "Removed:" << title;
             return;
         }
@@ -61,10 +65,10 @@ bool Playlist::isEmpty() const {
     return songs.getSize() == 0;
 }
 
-DoubleLinkedList<Song*> Playlist::getSongs() const {
+const DoubleLinkedList<Song*>&Playlist::getSongs() const {
     return songs;
 }
-DoubleLinkedList<Song*> Playlist::searchSongs(const QString &in) const
+DoubleLinkedList<Song*>Playlist::searchSongs(const QString &in) const
 {
     DoubleLinkedList<Song*> results;
 
@@ -78,7 +82,7 @@ DoubleLinkedList<Song*> Playlist::searchSongs(const QString &in) const
             results.append(s);
             break;
         }
-        if(s->getTitle().startWith(in, Qt::CaseInsensitive))
+        if(s->getTitle().startsWith(in, Qt::CaseInsensitive))
         {
             results.append(s);
         }

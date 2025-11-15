@@ -21,7 +21,8 @@ class MusicManager{
     DoubleLinkedList<Playlist*>& getPlaylists();
 
     void addSongToPlaylist(const QString& playlistName, Song* song);
-    void removeSongFromPlaylist(const QString& playlistName, const QString& songTitle);
+    void removeSongFromPlaylist(const QString& playlistName, const QString& songTitle, const QString& artistName);
+    DoubleLinkedList<Song*> searchHomeSong(const QString& word) const;
 
     void playSong(const QString& playlistName, int index);
     void stop();

@@ -1,4 +1,5 @@
 #include "song.h"
+using namespace std;
 Song::Song() : title(""), artist(""), duration(0), filePath(""){} 
 
 Song::Song(const QString &title, const QString &artist, int duration, const QString &filePath)
@@ -10,26 +11,26 @@ Song::Song(const QString &title, const QString &artist, int duration, const QStr
     this->duration = duration;
     this->filePath = filePath;
 }
-Qstring printTime(int s){
+
+QString Song::printTime(int s) const{
     int m = s / 60;
     int sec = s % 60;
     return QString("%1:%2")
-        .arg(minutes, 2, 10, QChar('0'))
+        .arg(m, 2, 10, QChar('0'))
         .arg(sec, 2, 10, QChar('0'));
 }
-bool operator ==(const Song &other) const;
+bool Song::operator ==(const Song &other) const
 {
     return title == other.title &&
            artist == other.artist &&
            filePath == other.filePath;
 }
+
 QString Song::getTitle() const { return title; }
-
 QString Song::getArtist() const { return artist; }
-
 int Song::getDuration() const { return duration; }
-
 QString Song::getFilePath() const { return filePath; }
+
 
 void Song::setTitle(const QString& t) {
     if (t.isEmpty()) throw std::invalid_argument("Title cannot be empty");
@@ -47,6 +48,7 @@ void Song::setDuration(int d) {
 }
 
 void Song::setFilePath(const QString &path) { filePath = path; }
+
 
 QString Song::toString() const {
     return QString("%1 - %2 (%3)\nFile: %4")
