@@ -12,6 +12,9 @@ public:
     Song();
     Song(const QString &title,const QString &artist,int duration,const QString &filePath);
 
+    void printTime(int s);
+    bool operator ==(const Song &other) const;
+
     QString getTitle() const;
     QString getArtist() const;
     int getDuration() const;
