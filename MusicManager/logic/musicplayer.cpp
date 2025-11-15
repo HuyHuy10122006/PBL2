@@ -6,34 +6,52 @@ MusicPlayer::MusicPlayer(Playlist *playlist)
 {
     player = new QMediaPlayer;
     audioOutput = new QAudioOutput;
-    audioOutput->setVolume(1.0); 
     player->setAudioOutput(audioOutput);
 }
-MusicPlayer::~MusicPlayer(){
+
+MusicPlayer::~MusicPlayer() {
     delete player;
     delete audioOutput;
 }
-void MusicPlayer::play(int index){
-    if(!playlist) return;
-    const auto& songs = playlist->getSongs();
-    if(index < 0 || index >= songs.getSize()) return;
+
+void MusicPlayer::play(int index) {
+    if (!playlist) return;
+    auto songs = playlist->getSongs();
+    if (index < 0 || index >= songs.size()) return;
     currentIndex = index;
-    player->setSource(QUrl::fromLocalFile(songs.at(index).getFilePath()));
-    qDebug() << "Playing:" << songs.at(index).getTitle();
+    player->setSource(QUrl::fromLocalFile(songs(index)->getFilePath()));
+    qDebug() << "Playing:" << songs(index)->getTitle();
     player->play();
 }
-void MusicPlayer::stop(){
+
+void MusicPlayer::stop() {
     player->stop();
 }
-void MusicPlayer::next(){
-    const auto& songs = playlist->getSongs();
-    if(songs.getSize() == 0) return;
-    currentIndex = (currentIndex + 1) % songs.getSize();
+
+void MusicPlayer::next() {
+    auto songs = playlist->getSongs();
+    if (songs.isEmpty()) {
+    qDebug() << "Playlist is empty!";
+    return;
+}
+    currentIndex = (currentIndex + 1) % songs.size();
     play(currentIndex);
 }
-void MusicPlayer::previous(){
-    const auto& songs = playlist->getSongs();
-    if(songs.getSize() == 0) return;
-    currentIndex = (currentIndex - 1 + songs.getSize()) % songs.getSize();
+
+void MusicPlayer::previous() {
+    auto songs = playlist->getSongs();
+    if (songs.isEmpty()) return;
+    currentIndex = (currentIndex - 1 + songs.size()) % songs.size();
     play(currentIndex);
 }
+
+void MusicPlayer::pause() {
+    player->pause();
+}
+
+void MusicPlayer::setPlaylist(Playlist* newPlaylist) {
+    if(!newPlaylist) throw std::invalid_argument("Playlist cannot be null");
+    playlist = newPlaylist;
+    currentIndex = 0;
+}
+
