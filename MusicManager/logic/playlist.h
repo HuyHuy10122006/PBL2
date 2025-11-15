@@ -4,16 +4,19 @@
 #include <QDebug>
 #include "song.h"
 #include "doublelinkedlist.h"
-class Playlist{
+class Playlist {
 private:
     QString name;
-    DoubleLinkedList<Song> songs;
+    DoubleLinkedList<Song*> songs; 
 public:
     Playlist(const QString &name = "Default");
-    void addSong(const Song &song);
-    void removeSong(const QString &title);
+
+    void addSong(Song* song);
+    void removeSong(const QString &title, const QString &artist);
     void listSongs() const;
     int totalDuration() const;
-    const DoubleLinkedList<Song>& getSongs() const; 
+    DoubleLinkedList<Song*>& getSongs() const;
+
+    ~Playlist();
 };
 #endif
