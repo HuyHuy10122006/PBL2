@@ -23,21 +23,25 @@ QString Playlist::getName() const
 }
 
 void Playlist::removeSong(const QString &title, const QString &artist) {
-    if (songs.getSize() == 0)
-        throw runtime_error("Playlist is empty!");
+    if (songs.getSize() == 0) {
+        qDebug() << "Playlist is empty!";
+        return;
+    }
 
     for (int i = 0; i < songs.getSize(); ++i) {
-        Song* rms = songs(i);
-        if (songs(i)->getTitle().compare(title, Qt::CaseInsensitive) == 0 &&
-            songs(i)->getArtist().compare(artist, Qt::CaseInsensitive) ==0) {
-            songs.removeAt(i);      // giải phóng bộ nhớ
-            delete rms;
-            qDebug() << "Removed:" << title;
+        Song* s = songs(i);
+        if (s->getTitle().compare(title, Qt::CaseInsensitive) == 0 &&
+            s->getArtist().compare(artist, Qt::CaseInsensitive) == 0) {
+            
+            delete s;               // xóa đối tượng Song trước
+            songs.removeAt(i); 
+            qDebug() << "Removed song:" << title << "by" << artist;
             return;
         }
     }
-    qDebug() << "Khong co bai hat tuong ung:" << title;
+    qDebug() << "Song not found:" << title << "by" << artist;
 }
+
 
 
 void Playlist::listSongs() const {

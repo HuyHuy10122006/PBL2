@@ -9,9 +9,12 @@
 #include "doublelinkedlist.h"
 
 class MusicManager{
+private:
     DoubleLinkedList<Playlist*> playlists;
-    MusicPlayer* player;   
-    public:
+    DoubleLinkedList<Song*> songsOnHome;     
+    MusicPlayer* player;
+
+public:
     MusicManager();
     ~MusicManager();
 

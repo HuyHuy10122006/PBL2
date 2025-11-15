@@ -18,12 +18,9 @@ set(PROJECT_SOURCES
     mainwindow.h
     mainwindow.ui
     logic/song.cpp
-    logic/song.h
     logic/playlist.cpp
-    logic/playlist.h
     logic/musicplayer.cpp
-    logic/musicplayer.h
-    logic/doublelinkedlist.h
+    logic/musicManager.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

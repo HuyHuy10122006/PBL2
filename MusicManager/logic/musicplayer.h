@@ -17,7 +17,6 @@ public:
     void next();
     void previous();
     void pause();
-
     void setPlaylist(Playlist* newPlaylist);
 };
 #endif 

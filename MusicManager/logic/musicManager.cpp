@@ -51,10 +51,15 @@ void MusicManager::addSongToPlaylist(const QString& playlistName, Song* song) {
     pl->addSong(song);
 }
 
-void MusicManager::removeSongFromPlaylist(const QString& playlistName, const QString& songTitle, const QString& artistName){
+void MusicManager::removeSongFromPlaylist(const QString& playlistName, const QString& songTitle, const QString& artistName) {
     Playlist* pl = getPlaylist(playlistName);
-    pl->removeSong(songTitle);
+    if (!pl) {
+        qDebug() << "Playlist not found:" << playlistName;
+        return;
+    }
+    pl->removeSong(songTitle, artistName);
 }
+
 
 DoubleLinkedList<Song*> MusicManager::searchHomeSong(const QString& word) const
 {
@@ -121,7 +126,6 @@ void MusicManager::previous() {
     if (player)
         player->previous();
 }
-
 void MusicManager::listAllPlaylists() const {
     qDebug() << "=== All Playlists ===";
     for (int i = 0; i < playlists.getSize(); ++i) {
