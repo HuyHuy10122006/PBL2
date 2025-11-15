@@ -57,9 +57,33 @@ int Playlist::totalDuration() const {
     return sum;
 }
 
+bool Playlist::isEmpty() const {
+    return songs.getSize() == 0;
+}
 
 DoubleLinkedList<Song*> Playlist::getSongs() const {
     return songs;
+}
+DoubleLinkedList<Song*> Playlist::searchSongs(const QString &in) const
+{
+    DoubleLinkedList<Song*> results;
+
+    if(in.isEmpty()) return results;
+    for(int i = 0 ; i < songs.getSize(); i++)
+    {
+        Song* s = songs(i);
+        if(s->getTitle().compare(in, Qt::CaseInsensitive) == 0)
+        {
+            results.clear();
+            results.append(s);
+            break;
+        }
+        if(s->getTitle().startWith(in, Qt::CaseInsensitive))
+        {
+            results.append(s);
+        }
+    }
+    return results;
 }
 
 Playlist::~Playlist() {
