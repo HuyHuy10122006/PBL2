@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>login</class>
+ <widget class="QWidget" name="login">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>895</width>
+    <height>686</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QWidget" name="widget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>906</width>
+     <height>694</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <item>
+     <widget class="QWidget" name="nen" native="true">
+      <property name="layoutDirection">
+       <enum>Qt::LayoutDirection::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">/* Ví dụ 1: Màu xanh biển nhạt (Light Blue) */
+background-color: #ADD8E6; 
+
+/* Ví dụ 2: Màu xanh ngọc lam (Turquoise) */
+/* background-color: #40E0D0; */ 
+
+/* Ví dụ 3: Màu vàng nhạt (Light Yellow) */
+/* background-color: #FFFFE0; */ 
+
+/* Ví dụ 4: Màu cam nhạt (Light Orange) */
+/* background-color: #FFDAB9; */</string>
+      </property>
+      <widget class="QLabel" name="music_2">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>-5</y>
+         <width>441</width>
+         <height>61</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>22</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: #A9D1C7; /* Mã màu xanh lục nhạt */
+color: #1F1F1F; /* Đặt màu chữ là đen đậm hoặc xám đậm để dễ đọc */</string>
+       </property>
+       <property name="text">
+        <string>🎵  MUSIC  🎵</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btnLogin">
+       <property name="geometry">
+        <rect>
+         <x>110</x>
+         <y>300</y>
+         <width>221</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: #A9D1C7; /* Mã màu xanh lục nhạt */
+color: #1F1F1F; /* Đặt màu chữ là đen đậm hoặc xám đậm để dễ đọc */</string>
+       </property>
+       <property name="text">
+        <string>Đăng nhập</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btnRegister">
+       <property name="geometry">
+        <rect>
+         <x>110</x>
+         <y>350</y>
+         <width>221</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: #A9D1C7; /* Mã màu xanh lục nhạt */
+color: #1F1F1F; /* Đặt màu chữ là đen đậm hoặc xám đậm để dễ đọc */</string>
+       </property>
+       <property name="text">
+        <string>Đăng ký</string>
+       </property>
+      </widget>
+     </widget>
+    </item>
+    <item>
+     <widget class="QWidget" name="avatar" native="true">
+      <property name="styleSheet">
+       <string notr="true">QWidget {
+    background-image: url(&quot;:/images/background.jpg&quot;);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-origin: content;
+    border-radius: 0px;
+}
+
+</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

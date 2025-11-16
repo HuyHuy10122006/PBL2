@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>background.jpg</file>
+        <file>eye.jpg</file>
+        <file>eye-slash.jpg</file>
+        <file>avatar.jpg</file>
+    </qresource>
+</RCC>
