@@ -3,40 +3,40 @@
 #include <stdexcept>
 using namespace std;
 template <typename T>
-struct Node {
-    T data;
-    Node* prev;
-    Node* next;
-    Node(const T& d) : data(d), prev(nullptr), next(nullptr) {}
+struct Node{
+    T data;        
+    Node* prev;      
+    Node* next;      
+    Node(const T& d) : data(d), prev(nullptr), next(nullptr){}
 };
 template <typename T>
-class DoubleLinkedList {
+class DoubleLinkedList{
 private:
-    Node<T>* head;
-    Node<T>* tail;
-    int size;
+    Node<T>* head;   //đầu
+    Node<T>* tail;   //cuối
+    int size;    
+
 public:
-    DoubleLinkedList() : head(nullptr), tail(nullptr), size(0) {}
+    DoubleLinkedList() : head(nullptr), tail(nullptr), size(0){}
     ~DoubleLinkedList();
-
-    bool isEmpty() const;
-    void clear();
-
-    void append(const T& value);
-    void removeAt(int index);
-
-    T& operator()(int index) const;
-    int getSize() const;
+    bool isEmpty() const;   
+    void clear();             // xóa toàn bộ danh sách
+    void append(const T& value); // thêm vào cuối
+    void removeAt(int index);    // xóa theo vị trí
+    T& operator()(int index) const; // truy cập giống như list[index]
+    int getSize() const;      // trả về kích thước
 };
+
 template <typename T>
-DoubleLinkedList<T>::~DoubleLinkedList() {
+DoubleLinkedList<T>::~DoubleLinkedList(){
     Node<T>* cur = head;
-    while (cur) {
+    while(cur){
         Node<T>* next = cur->next;
         delete cur;
         cur = next;
     }
 }
+
 template <typename T>
 bool DoubleLinkedList<T>::isEmpty() const{
     return size == 0;
@@ -54,12 +54,13 @@ void DoubleLinkedList<T>::clear()
     head = tail = nullptr;
     size = 0;
 }
+
 template <typename T>
-void DoubleLinkedList<T>::append(const T& value) {
+void DoubleLinkedList<T>::append(const T& value){
     Node<T>* node = new Node<T>(value);
-    if (!head) {
+    if(!head){
         head = tail = node;
-    } else {
+    }else{
         tail->next = node;
         node->prev = tail;
         tail = node;
@@ -67,30 +68,36 @@ void DoubleLinkedList<T>::append(const T& value) {
     size++;
 }
 template <typename T>
-void DoubleLinkedList<T>::removeAt(int index) {
-    if (index < 0 || index >= size) return;
+void DoubleLinkedList<T>::removeAt(int index){
+    if(index < 0 || index >= size) return;
     Node<T>* cur = head;
-    for (int i = 0; i < index; ++i) cur = cur->next;
-
-    if (cur->prev) cur->prev->next = cur->next;
-    else head = cur->next;
-    if (cur->next) cur->next->prev = cur->prev;
-    else tail = cur->prev;
+    for(int i = 0; i < index; ++i) 
+        cur = cur->next;
+    if(cur->prev) 
+        cur->prev->next = cur->next;
+    else 
+        head = cur->next;
+    if(cur->next) 
+        cur->next->prev = cur->prev;
+    else 
+        tail = cur->prev;
 
     delete cur;
     size--;
 }
 template <typename T>
-T& DoubleLinkedList<T>::operator()(int index) const {
+T& DoubleLinkedList<T>::operator()(int index) const{
     if(index < 0 || index >= size)
-    throw out_of_range("index out of range");
+        throw out_of_range("index out of range");
+
     Node<T>* cur = head;
-     for (int i = 0; i < index; ++i)
+    for(int i = 0; i < index; ++i)
         cur = cur->next;
+
     return cur->data;
 }
 template <typename T>
-int DoubleLinkedList<T>::getSize() const {
+int DoubleLinkedList<T>::getSize() const{
     return size;
 }
 #endif

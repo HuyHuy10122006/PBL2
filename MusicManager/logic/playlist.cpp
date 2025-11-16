@@ -1,13 +1,10 @@
 #include "playlist.h"
 using namespace std;
-
-Playlist::Playlist(const QString &name) : name(name) {}
-
-
-void Playlist::addSong(Song* song) {
-    if (!song)
+Playlist::Playlist(const QString &name) : name(name){}
+void Playlist::addSong(Song* song){
+    if(!song)
         throw invalid_argument("Cannot add a null song!");
-    for (int i = 0 ; i < songs.getSize(); i++)
+    for(int i = 0 ; i < songs.getSize(); i++)
     {
         if(*(songs(i)) == *song) {
             qDebug() << "Bai hat " << song->getTitle() << "da co trong playlist";
@@ -22,18 +19,17 @@ QString Playlist::getName() const
     return this->name;
 }
 
-void Playlist::removeSong(const QString &title, const QString &artist) {
-    if (songs.getSize() == 0) {
+void Playlist::removeSong(const QString &title, const QString &artist){
+    if(songs.getSize() == 0) {
         qDebug() << "Playlist is empty!";
         return;
     }
 
-    for (int i = 0; i < songs.getSize(); ++i) {
+    for(int i = 0; i < songs.getSize(); ++i){
         Song* s = songs(i);
         if (s->getTitle().compare(title, Qt::CaseInsensitive) == 0 &&
             s->getArtist().compare(artist, Qt::CaseInsensitive) == 0) {
-            
-            delete s;               // xóa đối tượng Song trước
+            delete s;              
             songs.removeAt(i); 
             qDebug() << "Removed song:" << title << "by" << artist;
             return;
@@ -44,10 +40,10 @@ void Playlist::removeSong(const QString &title, const QString &artist) {
 
 
 
-void Playlist::listSongs() const {
+void Playlist::listSongs() const{
     qDebug() << "\n=== Playlist:" << name << "===";
 
-    if (songs.getSize() == 0) {
+    if(songs.getSize() == 0){
         qDebug() << "Playlist is empty.\n";
         return;
     }
@@ -58,18 +54,17 @@ void Playlist::listSongs() const {
     qDebug() << "Total duration:" << totalDuration() << "seconds\n";
 }
 
-int Playlist::totalDuration() const {
+int Playlist::totalDuration() const{
     int sum = 0;
-    for (int i = 0; i < songs.getSize(); ++i)
+    for(int i = 0; i < songs.getSize(); ++i)
         sum += songs(i)->getDuration();
     return sum;
 }
 
-bool Playlist::isEmpty() const {
+bool Playlist::isEmpty() const{
     return songs.getSize() == 0;
 }
-
-const DoubleLinkedList<Song*>&Playlist::getSongs() const {
+const DoubleLinkedList<Song*>&Playlist::getSongs() const{
     return songs;
 }
 DoubleLinkedList<Song*>Playlist::searchSongs(const QString &in) const
@@ -94,7 +89,7 @@ DoubleLinkedList<Song*>Playlist::searchSongs(const QString &in) const
     return results;
 }
 
-Playlist::~Playlist() {
-    for (int i = 0; i < songs.getSize(); ++i)
+Playlist::~Playlist(){
+    for(int i = 0; i < songs.getSize(); ++i)
         delete songs(i);
 }

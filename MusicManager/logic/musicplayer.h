@@ -3,7 +3,7 @@
 #include <QMediaPlayer>
 #include <QAudioOutput>
 #include "playlist.h"
-class MusicPlayer {
+class MusicPlayer{
 private:
     QMediaPlayer *player;
     QAudioOutput *audioOutput;

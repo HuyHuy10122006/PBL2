@@ -9,28 +9,28 @@ MusicPlayer::MusicPlayer(Playlist *playlist)
     player->setAudioOutput(audioOutput);
 }
 
-MusicPlayer::~MusicPlayer() {
+MusicPlayer::~MusicPlayer(){
     delete player;
     delete audioOutput;
 }
 
-void MusicPlayer::play(int index) {
-    if (!playlist) return;
+void MusicPlayer::play(int index){
+    if(!playlist) return;
     auto songs = playlist->getSongs();
-    if (index < 0 || index >= songs.getSize()) return;
+    if(index < 0 || index >= songs.getSize()) return;
     currentIndex = index;
     player->setSource(QUrl::fromLocalFile(songs(index)->getFilePath()));
     qDebug() << "Playing:" << songs(index)->getTitle();
     player->play();
 }
 
-void MusicPlayer::stop() {
+void MusicPlayer::stop(){
     player->stop();
 }
 
-void MusicPlayer::next() {
+void MusicPlayer::next(){
     auto songs = playlist->getSongs();
-    if (songs.isEmpty()) {
+    if(songs.isEmpty()){
     qDebug() << "Playlist is empty!";
     return;
 }
@@ -38,18 +38,18 @@ void MusicPlayer::next() {
     play(currentIndex);
 }
 
-void MusicPlayer::previous() {
+void MusicPlayer::previous(){
     auto songs = playlist->getSongs();
-    if (songs.isEmpty()) return;
+    if(songs.isEmpty()) return;
     currentIndex = (currentIndex - 1 + songs.getSize()) % songs.getSize();
     play(currentIndex);
 }
 
-void MusicPlayer::pause() {
+void MusicPlayer::pause(){
     player->pause();
 }
 
-void MusicPlayer::setPlaylist(Playlist* newPlaylist) {
+void MusicPlayer::setPlaylist(Playlist* newPlaylist){
     if(!newPlaylist) throw std::invalid_argument("Playlist cannot be null");
     playlist = newPlaylist;
     currentIndex = 0;

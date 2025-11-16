@@ -10,7 +10,7 @@ private:
     QString filePath;
 public:
     Song();
-    Song(const QString &title, const QString &artist, int duration, const QString &filePath);
+    Song(const QString &title,const QString &artist,int duration,const QString &filePath);
     QString printTime(int s) const;
     bool operator ==(const Song &other) const;
     QString getTitle() const;
@@ -21,8 +21,6 @@ public:
     void setArtist(const QString &a);
     void setDuration(int d);
     void setFilePath(const QString &path);
-
-
     QString toString() const;
 };
 #endif
