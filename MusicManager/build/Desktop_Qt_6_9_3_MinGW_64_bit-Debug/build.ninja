@@ -113,6 +113,14 @@ build CMakeFiles/MusicManager.dir/login.cpp.obj: CXX_COMPILER__MusicManager_unsc
   OBJECT_DIR = CMakeFiles\MusicManager.dir
   OBJECT_FILE_DIR = CMakeFiles\MusicManager.dir
 
+build CMakeFiles/MusicManager.dir/home.cpp.obj: CXX_COMPILER__MusicManager_unscanned_Debug C$:/MyProject/PBL2/MusicManager/home.cpp || cmake_object_order_depends_target_MusicManager
+  DEFINES = -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_MULTIMEDIA_LIB -DQT_NEEDS_QMAIN -DQT_NETWORK_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+  DEP_FILE = CMakeFiles\MusicManager.dir\home.cpp.obj.d
+  FLAGS = -DQT_QML_DEBUG -g -std=gnu++17 -fdiagnostics-color=always
+  INCLUDES = -IC:/MyProject/PBL2/MusicManager/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/MusicManager_autogen/include -isystem C:/Qt/6.9.3/mingw_64/include/QtCore -isystem C:/Qt/6.9.3/mingw_64/include -isystem C:/Qt/6.9.3/mingw_64/mkspecs/win32-g++ -isystem C:/Qt/6.9.3/mingw_64/include/QtWidgets -isystem C:/Qt/6.9.3/mingw_64/include/QtGui -isystem C:/Qt/6.9.3/mingw_64/include/QtMultimedia -isystem C:/Qt/6.9.3/mingw_64/include/QtNetwork
+  OBJECT_DIR = CMakeFiles\MusicManager.dir
+  OBJECT_FILE_DIR = CMakeFiles\MusicManager.dir
+
 build CMakeFiles/MusicManager.dir/MusicManager_autogen/EWIEGA46WW/qrc_resources.cpp.obj: CXX_COMPILER__MusicManager_unscanned_Debug C$:/MyProject/PBL2/MusicManager/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/MusicManager_autogen/EWIEGA46WW/qrc_resources.cpp || cmake_object_order_depends_target_MusicManager
   DEFINES = -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_MULTIMEDIA_LIB -DQT_NEEDS_QMAIN -DQT_NETWORK_LIB -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
   DEP_FILE = CMakeFiles\MusicManager.dir\MusicManager_autogen\EWIEGA46WW\qrc_resources.cpp.obj.d
@@ -129,7 +137,7 @@ build CMakeFiles/MusicManager.dir/MusicManager_autogen/EWIEGA46WW/qrc_resources.
 #############################################
 # Link the executable MusicManager.exe
 
-build MusicManager.exe: CXX_EXECUTABLE_LINKER__MusicManager_Debug CMakeFiles/MusicManager.dir/MusicManager_autogen/mocs_compilation.cpp.obj CMakeFiles/MusicManager.dir/main.cpp.obj CMakeFiles/MusicManager.dir/mainwindow.cpp.obj CMakeFiles/MusicManager.dir/logic/song.cpp.obj CMakeFiles/MusicManager.dir/logic/playlist.cpp.obj CMakeFiles/MusicManager.dir/logic/musicplayer.cpp.obj CMakeFiles/MusicManager.dir/logic/musicManager.cpp.obj CMakeFiles/MusicManager.dir/login.cpp.obj CMakeFiles/MusicManager.dir/MusicManager_autogen/EWIEGA46WW/qrc_resources.cpp.obj | C$:/Qt/6.9.3/mingw_64/lib/libQt6Widgets.a C$:/Qt/6.9.3/mingw_64/lib/libQt6Multimedia.a C$:/Qt/6.9.3/mingw_64/lib/libQt6Gui.a C$:/Qt/6.9.3/mingw_64/lib/libQt6Network.a C$:/Qt/6.9.3/mingw_64/lib/libQt6Core.a C$:/Qt/6.9.3/mingw_64/lib/libQt6EntryPoint.a || MusicManager_autogen MusicManager_autogen_timestamp_deps
+build MusicManager.exe: CXX_EXECUTABLE_LINKER__MusicManager_Debug CMakeFiles/MusicManager.dir/MusicManager_autogen/mocs_compilation.cpp.obj CMakeFiles/MusicManager.dir/main.cpp.obj CMakeFiles/MusicManager.dir/mainwindow.cpp.obj CMakeFiles/MusicManager.dir/logic/song.cpp.obj CMakeFiles/MusicManager.dir/logic/playlist.cpp.obj CMakeFiles/MusicManager.dir/logic/musicplayer.cpp.obj CMakeFiles/MusicManager.dir/logic/musicManager.cpp.obj CMakeFiles/MusicManager.dir/login.cpp.obj CMakeFiles/MusicManager.dir/home.cpp.obj CMakeFiles/MusicManager.dir/MusicManager_autogen/EWIEGA46WW/qrc_resources.cpp.obj | C$:/Qt/6.9.3/mingw_64/lib/libQt6Widgets.a C$:/Qt/6.9.3/mingw_64/lib/libQt6Multimedia.a C$:/Qt/6.9.3/mingw_64/lib/libQt6Gui.a C$:/Qt/6.9.3/mingw_64/lib/libQt6Network.a C$:/Qt/6.9.3/mingw_64/lib/libQt6Core.a C$:/Qt/6.9.3/mingw_64/lib/libQt6EntryPoint.a || MusicManager_autogen MusicManager_autogen_timestamp_deps
   FLAGS = -DQT_QML_DEBUG -g
   LINK_FLAGS = -mwindows
   LINK_LIBRARIES = C:/Qt/6.9.3/mingw_64/lib/libQt6Widgets.a  C:/Qt/6.9.3/mingw_64/lib/libQt6Multimedia.a  C:/Qt/6.9.3/mingw_64/lib/libQt6Gui.a  -ld3d11  -ldxgi  -ldxguid  -ld3d12  C:/Qt/6.9.3/mingw_64/lib/libQt6Network.a  C:/Qt/6.9.3/mingw_64/lib/libQt6Core.a  -lmpr  -luserenv  -lmingw32  C:/Qt/6.9.3/mingw_64/lib/libQt6EntryPoint.a  -lshell32  -lws2_32  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
@@ -216,7 +224,7 @@ build MusicManager_autogen_timestamp_deps: phony
 #############################################
 # Utility command for MusicManager_autogen
 
-build MusicManager_autogen: phony CMakeFiles/MusicManager_autogen MusicManager_autogen/include/ui_mainwindow.h MusicManager_autogen/include/ui_login.h MusicManager_autogen/timestamp MusicManager_autogen/mocs_compilation.cpp MusicManager_autogen_timestamp_deps
+build MusicManager_autogen: phony CMakeFiles/MusicManager_autogen MusicManager_autogen/include/ui_mainwindow.h MusicManager_autogen/include/ui_login.h MusicManager_autogen/include/ui_home.h MusicManager_autogen/timestamp MusicManager_autogen/mocs_compilation.cpp MusicManager_autogen_timestamp_deps
 
 
 #############################################
@@ -242,7 +250,7 @@ build MusicManager_autogen/EWIEGA46WW/qrc_resources.cpp | ${cmake_ninja_workdir}
 #############################################
 # Phony custom command for CMakeFiles\MusicManager_autogen
 
-build CMakeFiles/MusicManager_autogen MusicManager_autogen/include/ui_mainwindow.h MusicManager_autogen/include/ui_login.h | ${cmake_ninja_workdir}CMakeFiles/MusicManager_autogen ${cmake_ninja_workdir}MusicManager_autogen/include/ui_mainwindow.h ${cmake_ninja_workdir}MusicManager_autogen/include/ui_login.h: phony MusicManager_autogen/timestamp || MusicManager_autogen_timestamp_deps
+build CMakeFiles/MusicManager_autogen MusicManager_autogen/include/ui_mainwindow.h MusicManager_autogen/include/ui_login.h MusicManager_autogen/include/ui_home.h | ${cmake_ninja_workdir}CMakeFiles/MusicManager_autogen ${cmake_ninja_workdir}MusicManager_autogen/include/ui_mainwindow.h ${cmake_ninja_workdir}MusicManager_autogen/include/ui_login.h ${cmake_ninja_workdir}MusicManager_autogen/include/ui_home.h: phony MusicManager_autogen/timestamp || MusicManager_autogen_timestamp_deps
 
 # =============================================================================
 # Target aliases.

@@ -6,6 +6,8 @@ MusicManager_autogen/timestamp: \
 	C:/MyProject/PBL2/MusicManager/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/CMakeFiles/3.30.5/CMakeRCCompiler.cmake \
 	C:/MyProject/PBL2/MusicManager/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/CMakeFiles/3.30.5/CMakeSystem.cmake \
 	C:/MyProject/PBL2/MusicManager/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/MusicManager_autogen/moc_predefs.h \
+	C:/MyProject/PBL2/MusicManager/home.cpp \
+	C:/MyProject/PBL2/MusicManager/home.h \
 	C:/MyProject/PBL2/MusicManager/logic/musicManager.cpp \
 	C:/MyProject/PBL2/MusicManager/logic/musicManager.h \
 	C:/MyProject/PBL2/MusicManager/logic/musicplayer.cpp \
@@ -655,6 +657,7 @@ MusicManager_autogen/timestamp: \
 	C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/time.h \
 	C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/vadefs.h \
 	C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wchar.h \
+	C:/MyProject/PBL2/MusicManager/home.ui \
 	C:/MyProject/PBL2/MusicManager/login.ui \
 	C:/MyProject/PBL2/MusicManager/mainwindow.ui \
 	C:/Qt/Tools/CMake_64/bin/cmake.exe

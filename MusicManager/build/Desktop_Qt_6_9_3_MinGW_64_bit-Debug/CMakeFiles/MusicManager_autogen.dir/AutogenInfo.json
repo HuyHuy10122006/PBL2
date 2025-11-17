@@ -415,6 +415,12 @@
 	"HEADERS" : 
 	[
 		[
+			"C:/MyProject/PBL2/MusicManager/home.h",
+			"MU",
+			"EWIEGA46WW/moc_home.cpp",
+			null
+		],
+		[
 			"C:/MyProject/PBL2/MusicManager/logic/musicManager.h",
 			"MU",
 			"V5QSWVS6RF/moc_musicManager.cpp",
@@ -526,6 +532,7 @@
 	"SETTINGS_FILE" : "C:/MyProject/PBL2/MusicManager/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/CMakeFiles/MusicManager_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
+		[ "C:/MyProject/PBL2/MusicManager/home.cpp", "MU", null ],
 		[ "C:/MyProject/PBL2/MusicManager/logic/musicManager.cpp", "MU", null ],
 		[ "C:/MyProject/PBL2/MusicManager/logic/musicplayer.cpp", "MU", null ],
 		[ "C:/MyProject/PBL2/MusicManager/logic/playlist.cpp", "MU", null ],

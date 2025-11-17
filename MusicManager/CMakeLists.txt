@@ -29,6 +29,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         ${PROJECT_SOURCES}
         login.h login.cpp login.ui
         resources.qrc
+        home.h home.cpp home.ui
     )
 else()
     if(ANDROID)
