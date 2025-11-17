@@ -1,5 +1,7 @@
 #include "login.h"
 #include "ui_login.h"
+#include "AuthService.h"
+#include "home.h"
 
 #include <QGraphicsBlurEffect>
 #include <QGraphicsOpacityEffect>
@@ -37,12 +39,6 @@ login::login(QWidget *parent)
     form->hide();
 
     // Input fields
-    QLineEdit *displayNameEdit = new QLineEdit(form);
-    displayNameEdit->setGeometry(30, 40, 290, 30);
-    displayNameEdit->setStyleSheet("font-size:14px; color:black;");
-    displayNameEdit->setPlaceholderText("Nhập tên hiển thị...");
-    displayNameEdit->hide();
-
     QLineEdit *usernameEdit = new QLineEdit(form);
     usernameEdit->setGeometry(30, 100, 290, 30);
     usernameEdit->setStyleSheet("font-size:14px; color:black;");
@@ -106,11 +102,6 @@ login::login(QWidget *parent)
     }
 
     // Labels
-    QLabel *displayNameLabel = new QLabel("Tên hiển thị", form);
-    displayNameLabel->setGeometry(30, 20, 120, 20);
-    displayNameLabel->setStyleSheet("color: gray; font-size:12px; font-weight: bold;");
-    displayNameLabel->hide();
-
     QLabel *usernameLabel = new QLabel("Username", form);
     usernameLabel->setGeometry(30, 80, 100, 20);
     usernameLabel->setStyleSheet("color: gray; font-size:12px; font-weight: bold;");
@@ -131,6 +122,45 @@ login::login(QWidget *parent)
         "QPushButton { background-color: #2ecc71; color: white; font-size:16px; border-radius:8px; }"
         "QPushButton:hover { background-color: #27ae60; }"
         );
+    connect(submitBtn, &QPushButton::clicked, this, [=](){
+        //lấy dữ liệu user
+        QString qUsername = usernameEdit->text();
+        QString qPassword = passwordEdit->text();
+        QString qRePassword = rePasswordEdit->text();
+        //chuyển sang string
+        std::string username = qUsername.toStdString();
+        std::string password = qPassword.toStdString();
+        std::string rePassword = qRePassword.toStdString();
+        if(submitBtn->text() == "Đăng ký"){
+            if(password != rePassword){
+                QMessageBox::warning(this, "Đăng ký", "Mật khẩu nhập lại không khớp!");
+                return;
+            }
+            if(AuthService::registerUser(username, password)){
+                QMessageBox::information(this, "Đăng ký", "Đăng ký thành công!");
+                form->hide();
+                overlay->hide();
+                this->hide();
+
+                Home *homeWindow = new Home();
+                homeWindow->show();
+            } else{
+                QMessageBox::warning(this, "Đăng ký", "Tài khoản đã tồn tại!");
+            }
+        }else{
+            if(AuthService::loginUser(username, password)){
+                QMessageBox::information(this, "Đăng nhập", "Đăng nhập thành công");
+                form->hide();
+                overlay->hide();
+                this->hide();
+
+                Home *homeWindow = new Home();
+                homeWindow->show();
+            } else{
+                QMessageBox::warning(this, "Đăng nhập", "Sai usename hoặc password!");
+            }
+        }
+    });
 
     QPushButton *backBtn = new QPushButton("Quay lại", form);
     backBtn->setGeometry(30, 320, 290, 40);
@@ -151,15 +181,11 @@ login::login(QWidget *parent)
 
         if(type == "Đăng nhập"){
             submitBtn->setText("Đăng nhập");
-            displayNameEdit->hide();
-            displayNameLabel->hide();
             rePasswordEdit->hide();
             rePasswordLabel->hide();
             showRePassBtn->hide();
         } else {
             submitBtn->setText("Đăng ký");
-            displayNameEdit->show();
-            displayNameLabel->show();
             rePasswordEdit->show();
             rePasswordLabel->show();
             showRePassBtn->show();
