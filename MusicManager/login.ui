@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>895</width>
-    <height>686</height>
+    <width>992</width>
+    <height>748</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,13 +18,19 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>906</width>
-     <height>694</height>
+     <width>1001</width>
+     <height>761</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout_2">
     <item>
      <widget class="QWidget" name="nen" native="true">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
       <property name="layoutDirection">
        <enum>Qt::LayoutDirection::LeftToRight</enum>
       </property>
@@ -46,7 +52,7 @@ background-color: #ADD8E6;
         <rect>
          <x>0</x>
          <y>-5</y>
-         <width>441</width>
+         <width>491</width>
          <height>61</height>
         </rect>
        </property>
@@ -104,6 +110,12 @@ color: #1F1F1F; /* Đặt màu chữ là đen đậm hoặc xám đậm để d�
     </item>
     <item>
      <widget class="QWidget" name="avatar" native="true">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
       <property name="styleSheet">
        <string notr="true">QWidget {
     background-image: url(&quot;:/images/background.jpg&quot;);

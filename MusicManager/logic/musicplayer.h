@@ -3,20 +3,28 @@
 #include <QMediaPlayer>
 #include <QAudioOutput>
 #include "playlist.h"
+#include "doublelinkedlist.h"
 class MusicPlayer{
 private:
     QMediaPlayer *player;
     QAudioOutput *audioOutput;
-    Playlist *playlist;
+    DoubleLinkedList<Playlist*> playlists;
+    Playlist *APlist;
     int currentIndex;
 public:
-    MusicPlayer(Playlist *playlist);
+    MusicPlayer();
     ~MusicPlayer();
+
+    void addPlist(Playlist* Plist);
+    void removePlist(const QString& name);
+    void setAPlist(const QString& name); 
+    Playlist* getAPlist() const;
+    
     void play(int index);
+    void playSingleSong(const QString& songTitle, const QString& artistName);
     void stop();
     void next();
     void previous();
     void pause();
-    void setPlaylist(Playlist* newPlaylist);
 };
 #endif 

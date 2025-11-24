@@ -37,7 +37,6 @@ login::login(QWidget *parent)
     form->setFixedSize(350, 380);
     form->setStyleSheet("background-color: rgba(255,255,255,230); border-radius:10px;");
     form->hide();
-
     // Input fields
     QLineEdit *usernameEdit = new QLineEdit(form);
     usernameEdit->setGeometry(30, 100, 290, 30);

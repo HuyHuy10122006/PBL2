@@ -18,11 +18,11 @@ QString Song::printTime(int s) const{
         .arg(m, 2, 10, QChar('0'))
         .arg(sec, 2, 10, QChar('0'));
 }
-bool Song::operator ==(const Song &other) const
+bool Song::operator ==(const Song &s) const
 {
-    return title == other.title &&
-           artist == other.artist &&
-           filePath == other.filePath;
+    return title == s.title &&
+           artist == s.artist &&
+           filePath == s.filePath;
 }
 QString Song::getTitle() const { return title; }
 QString Song::getArtist() const { return artist; }

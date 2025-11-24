@@ -8,9 +8,15 @@ class Playlist{
 private:
     QString name;
     DoubleLinkedList<Song*> songs; 
+    bool isTemporary = false;
 public:
     Playlist(const QString &name = "Default");
+    bool operator ==(const Playlist &p) const;
+    
     QString getName() const;
+    void setTemporary(bool temp); 
+    bool isTemporaryPlaylist() const;     
+      
     void addSong(Song* song);
     void removeSong(const QString &title, const QString &artist);
     void listSongs() const;

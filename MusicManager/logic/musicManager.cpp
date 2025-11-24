@@ -1,41 +1,112 @@
 #include "musicManager.h"
 #include <stdexcept>
 #include <QDebug>
-MusicManager::MusicManager() : player(nullptr){}
+//Hằng số tên Playlist Tạm thời
+const QString SINGLE_PLAY_QUEUE_NAME = "SINGLE_PLAY_QUEUE"
+MusicManager::MusicManager() : Aplayer(nullptr){}
 
 MusicManager::~MusicManager(){
     for(int i = 0; i < playlists.getSize(); ++i){
         delete playlists(i);
     }
-    if(player){
-        player->stop();
-        delete player;}
+    for(int i = 0; i < allSongs.getSize(); i++)
+    {
+        delete allSongs(i);
+    }
+   for(int i = 0; i < players.getSize(); ++i){
+        players(i)->stop(); 
+        delete players(i);
+    }
 }
+void MusicManager::addSCatalog(Song* song)
+{
+    if(!song) throw std::invalid_argument("Khong the them bai hat rong vao catalog!");
+    for(int i = 0; i < allSongs.getSize(); i++)
+    {
+        if(*(allSongs(i)) == *song)
+        {
+            qDebug() << "Bai hat da ton tai trong catalog!";
+            delete song;
+            return;
+        }
+    }
+    allSongs.append(song);
+    qDebug()<<"bai hat da duoc them vao catalog.";
+}
+void MusicManager::addSHome(Song* song)
+{
+    if (!song) return; 
 
+    for (int i = 0; i < songsOnHome.getSize(); ++i) {
+        if (songsOnHome(i) == song) {
+            qDebug() << song->getTitle() << "Da co trong home.";
+            return;
+        }
+    }
+
+    songsOnHome.append(song);
+    qDebug() << "bai hat da duoc them vao home";
+}
+Song* getSong(const QString& title, const QString& artist) const
+{
+   for(int i = 0; i < allSongs.getSize(); ++i){
+        Song* s = allSongs(i);
+        if (s->getTitle().compare(title, Qt::CaseInsensitive) == 0 &&
+            s->getArtist().compare(artist, Qt::CaseInsensitive) == 0) {
+            return s;
+        }
+    }
+    return nullptr;
+}
+MusicPlayer* MusicPlayer::createPlayer()
+{
+    MusicPlayer* newPlayer = new MusicPlayer();
+    players.append(newPlayer);
+    if(!Aplayer)
+    {
+        Aplayer = newPlayer;
+    }
+    qDebug() <<"Tao va quan ly player moi."
+    return newPlayer;
+}
+void setAplayer(MusicPlayer* player)
+{
+    Aplayer = player;
+}
+MusicPlayer* MusicManager::getAPlayer() const {
+    return Aplayer;
+}
 void MusicManager::addPlaylist(Playlist* playlist){
     if(!playlist)
         throw std::invalid_argument("Cannot add null playlist");
+        for(int i = 0; i < playlists.getSize(); ++i){
+        if(*(playlists(i)) == *playlist){
+            qDebug() << "Playlist da ton tai";
+            delete playlist; 
+            return;
+        }
+    }
     playlists.append(playlist);
 }
 
 void MusicManager::removePlaylist(const QString& name){
     for(int i = 0; i < playlists.getSize(); ++i){
-        if(playlists(i)->getName().compare(name, Qt::CaseInsensitive) == 0){
+        if(playlists(i)->getName() == name){
             delete playlists(i);
             playlists.removeAt(i);
-            qDebug() << "Removed playlist:" << name;
+            qDebug() << "Da xoa Playlist: " << name;
             return;
         }
     }
-    throw std::runtime_error("Playlist not found: " + name.toStdString());
+    throw std::runtime_error("Khong tim thay Playlist: " + name.toStdString());
 }
 
 Playlist* MusicManager::getPlaylist(const QString& name) const{
     for(int i = 0; i < playlists.getSize(); ++i){
-        if(playlists(i)->getName().compare(name, Qt::CaseInsensitive) == 0)
+        if(playlists.getName() == name)
             return playlists(i);
     }
-    qDebug() << "không tìm thấy Playlist!";
+    qDebug() << "khong tim thay Playlist!";
     return nullptr;
 }
 
@@ -45,7 +116,7 @@ DoubleLinkedList<Playlist*>& MusicManager::getPlaylists(){
 
 void MusicManager::addSongToPlaylist(const QString& playlistName, Song* song){
     if(!song)
-        throw std::invalid_argument("Cannot add null song");
+        throw std::invalid_argument("khong the them bai hat rong!");
     Playlist* pl = getPlaylist(playlistName);
     pl->addSong(song);
 }
@@ -53,7 +124,7 @@ void MusicManager::addSongToPlaylist(const QString& playlistName, Song* song){
 void MusicManager::removeSongFromPlaylist(const QString& playlistName, const QString& songTitle, const QString& artistName){
     Playlist* pl = getPlaylist(playlistName);
     if(!pl){
-        qDebug() << "Playlist not found:" << playlistName;
+        qDebug() << "Khong tim thay Playlist:" << playlistName;
         return;
     }
     pl->removeSong(songTitle, artistName);
@@ -62,23 +133,27 @@ void MusicManager::removeSongFromPlaylist(const QString& playlistName, const QSt
 
 DoubleLinkedList<Song*> MusicManager::searchHomeSong(const QString& word) const
 {
-    DoubleLinkedList<Song*> result;
-    for(int i = 0; i < songsOnHome.getSize(); ++i){
-        Song* s = songsOnHome(i);
-        if (s->getTitle().startsWith(word, Qt::CaseInsensitive))
+  DoubleLinkedList<Song*> result;
+    for(int i = 0; i < allSongs.getSize(); ++i){
+        Song* s = allSongs(i);
+        if (s->getTitle().contains(word, Qt::CaseInsensitive) || 
+            s->getArtist().contains(word, Qt::CaseInsensitive))
             result.append(s);
-    }
-    for(int i = 0; i < playlists.getSize(); ++i){
-        Playlist* pl = playlists(i);
-        for(int j = 0; j < pl->getSongs().getSize(); ++j){
-            Song* s = pl->getSongs()(j);
-            if (s->getTitle().startsWith(word, Qt::CaseInsensitive))
-                result.append(s);
-        }
     }
     return result;
 }
-
+DoubleLinkedList<Playlist*> MusicManager::searchPlaylist(const QString& word) const
+{
+    DoubleLinkedList<Playlist*> results;
+    if (word.isEmpty()) return results;
+    for (int i = 0; i < playlists.getSize(); ++i) {
+        Playlist* pl = playlists(i);
+        if (pl->getName().contains(word, Qt::CaseInsensitive)) {
+            results.append(pl);
+        }
+    }
+    return results;
+}
 void MusicManager::playSong(const QString& playlistName, int index){
     Playlist* pl = nullptr;
     try{
@@ -88,45 +163,68 @@ void MusicManager::playSong(const QString& playlistName, int index){
         return;
     }
 
+   if (!pl) return;
+    if (!Aplayer) { 
+        Aplayer = createPlayer(); 
+    }
+    
     if(pl->getSongs().getSize() == 0){
-        qDebug() << "Playlist is empty!";
+        qDebug() << "Playlist rong khong the phat!";
         return;
     }
+    Aplayer->addPlist(pl); 
+    Aplayer->setAPlist(pl->getName());
+    Aplayer->play(index);
+}
 
-    if(index < 0 || index >= pl->getSongs().getSize()){
-        qDebug() << "Invalid song index!";
+void MusicManager::playSingleSong(const QString& songTitle, const QString& artistName){
+
+    Song* targetSong = getSong(songTitle, artistName);
+    if (!targetSong) {
+        qDebug() << "Song not found in Catalog:" << songTitle << "by" << artistName;
         return;
     }
+    Playlist* tempQueue = getPlaylist(SINGLE_PLAY_QUEUE_NAME);
 
-    if(!player)
-        player = new MusicPlayer(pl);
-    else
-        player->setPlaylist(pl);
-
-    player->play(index);
+    if (!tempQueue) {
+        tempQueue = new Playlist(SINGLE_PLAY_QUEUE_NAME);
+        tempQueue->setTemporary(true); 
+        
+        playlists.append(tempQueue); 
+    }
+    tempQueue->getSongs().clear(); 
+    tempQueue->addSong(targetSong); 
+    if (!Aplayer) { 
+        Aplayer = createPlayer(); 
+    }
+    Aplayer->addPlist(tempQueue); 
+    Aplayer->setAPlist(tempQueue->getName());
+    Aplayer->play(0); 
+    
+    qDebug() << "Playing single song:" << targetSong->getTitle() << "via temporary queue.";
 }
 
 void MusicManager::stop(){
-    if(player)
-        player->stop();
+    if(Aplayer)
+        Aplayer->stop();
 }
 
 void MusicManager::pause(){
-    if(player)
-        player->pause();
+    if(Aplayer)
+        Aplayer->pause();
 }
 
 void MusicManager::next(){
-    if(player)
-        player->next();
+    if(Aplayer)
+        Aplayer->next();
 }
 
 void MusicManager::previous(){
-    if(player)
-        player->previous();
+    if(Aplayer)
+        Aplayer->previous();
 }
 void MusicManager::listAllPlaylists() const{
-    qDebug() << "=== All Playlists ===";
+  qDebug() << "All Playlists";
     for(int i = 0; i < playlists.getSize(); ++i){
         Playlist* pl = playlists(i);
         qDebug() << "Playlist:" << pl->getName()

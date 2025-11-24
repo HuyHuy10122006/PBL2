@@ -33,14 +33,19 @@ public:
     {
         if (login->objectName().isEmpty())
             login->setObjectName("login");
-        login->resize(895, 686);
+        login->resize(992, 748);
         widget = new QWidget(login);
         widget->setObjectName("widget");
-        widget->setGeometry(QRect(0, 0, 906, 694));
+        widget->setGeometry(QRect(0, 0, 1001, 761));
         horizontalLayout_2 = new QHBoxLayout(widget);
         horizontalLayout_2->setObjectName("horizontalLayout_2");
         nen = new QWidget(widget);
         nen->setObjectName("nen");
+        QSizePolicy sizePolicy(QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Preferred);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(nen->sizePolicy().hasHeightForWidth());
+        nen->setSizePolicy(sizePolicy);
         nen->setLayoutDirection(Qt::LayoutDirection::LeftToRight);
         nen->setStyleSheet(QString::fromUtf8("/* V\303\255 d\341\273\245 1: M\303\240u xanh bi\341\273\203n nh\341\272\241t (Light Blue) */\n"
 "background-color: #ADD8E6; \n"
@@ -55,7 +60,7 @@ public:
 "/* background-color: #FFDAB9; */"));
         music_2 = new QLabel(nen);
         music_2->setObjectName("music_2");
-        music_2->setGeometry(QRect(0, -5, 441, 61));
+        music_2->setGeometry(QRect(0, -5, 491, 61));
         QFont font;
         font.setPointSize(22);
         music_2->setFont(font);
@@ -77,6 +82,8 @@ public:
 
         avatar = new QWidget(widget);
         avatar->setObjectName("avatar");
+        sizePolicy.setHeightForWidth(avatar->sizePolicy().hasHeightForWidth());
+        avatar->setSizePolicy(sizePolicy);
         avatar->setStyleSheet(QString::fromUtf8("QWidget {\n"
 "    background-image: url(\":/images/background.jpg\");\n"
 "    background-position: center;\n"

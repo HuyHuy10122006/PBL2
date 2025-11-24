@@ -36,23 +36,17 @@ public:
     QWidget *widget_2;
     QHBoxLayout *horizontalLayout_2;
     QFrame *Sidebar;
-    QPushButton *pushButton_4;
+    QPushButton *logout;
     QLabel *label;
     QWidget *layoutWidget1;
     QVBoxLayout *verticalLayout;
-    QPushButton *pushButton_2;
-    QPushButton *pushButton_3;
+    QPushButton *home;
+    QPushButton *playlist;
     QWidget *MainArea;
     QStackedWidget *stackedWidgetMain;
     QWidget *homePage;
-    QScrollArea *scrollHome;
+    QScrollArea *scrollArea;
     QWidget *scrollAreaWidgetContents;
-    QWidget *widget_3;
-    QVBoxLayout *verticalLayout_2;
-    QWidget *section1;
-    QWidget *section2;
-    QWidget *section3;
-    QWidget *section4;
     QWidget *playlistPage;
 
     void setupUi(QWidget *Home)
@@ -168,11 +162,11 @@ public:
 ""));
         Sidebar->setFrameShape(QFrame::Shape::StyledPanel);
         Sidebar->setFrameShadow(QFrame::Shadow::Raised);
-        pushButton_4 = new QPushButton(Sidebar);
-        pushButton_4->setObjectName("pushButton_4");
-        pushButton_4->setGeometry(QRect(0, 510, 170, 40));
-        pushButton_4->setMinimumSize(QSize(170, 40));
-        pushButton_4->setMaximumSize(QSize(170, 40));
+        logout = new QPushButton(Sidebar);
+        logout->setObjectName("logout");
+        logout->setGeometry(QRect(0, 510, 170, 40));
+        logout->setMinimumSize(QSize(170, 40));
+        logout->setMaximumSize(QSize(170, 40));
         label = new QLabel(Sidebar);
         label->setObjectName("label");
         label->setGeometry(QRect(10, 10, 150, 121));
@@ -194,23 +188,23 @@ public:
         label->setAlignment(Qt::AlignmentFlag::AlignCenter);
         layoutWidget1 = new QWidget(Sidebar);
         layoutWidget1->setObjectName("layoutWidget1");
-        layoutWidget1->setGeometry(QRect(0, 220, 172, 102));
+        layoutWidget1->setGeometry(QRect(10, 200, 172, 121));
         verticalLayout = new QVBoxLayout(layoutWidget1);
         verticalLayout->setSpacing(20);
         verticalLayout->setObjectName("verticalLayout");
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        pushButton_2 = new QPushButton(layoutWidget1);
-        pushButton_2->setObjectName("pushButton_2");
-        pushButton_2->setMinimumSize(QSize(170, 40));
-        pushButton_2->setMaximumSize(QSize(170, 40));
+        home = new QPushButton(layoutWidget1);
+        home->setObjectName("home");
+        home->setMinimumSize(QSize(170, 40));
+        home->setMaximumSize(QSize(170, 40));
 
-        verticalLayout->addWidget(pushButton_2);
+        verticalLayout->addWidget(home);
 
-        pushButton_3 = new QPushButton(layoutWidget1);
-        pushButton_3->setObjectName("pushButton_3");
-        pushButton_3->setMinimumSize(QSize(170, 40));
+        playlist = new QPushButton(layoutWidget1);
+        playlist->setObjectName("playlist");
+        playlist->setMinimumSize(QSize(170, 40));
 
-        verticalLayout->addWidget(pushButton_3);
+        verticalLayout->addWidget(playlist);
 
 
         horizontalLayout_2->addWidget(Sidebar);
@@ -223,58 +217,19 @@ public:
         sizePolicy.setHeightForWidth(stackedWidgetMain->sizePolicy().hasHeightForWidth());
         stackedWidgetMain->setSizePolicy(sizePolicy);
         stackedWidgetMain->setMinimumSize(QSize(1095, 555));
-        stackedWidgetMain->setMaximumSize(QSize(50, 555));
+        stackedWidgetMain->setMaximumSize(QSize(16777215, 16777215));
         homePage = new QWidget();
         homePage->setObjectName("homePage");
-        scrollHome = new QScrollArea(homePage);
-        scrollHome->setObjectName("scrollHome");
-        scrollHome->setGeometry(QRect(-10, -10, 1101, 571));
-        scrollHome->setMinimumSize(QSize(0, 0));
-        scrollHome->setVerticalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAsNeeded);
-        scrollHome->setHorizontalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAlwaysOff);
-        scrollHome->setWidgetResizable(true);
+        scrollArea = new QScrollArea(homePage);
+        scrollArea->setObjectName("scrollArea");
+        scrollArea->setGeometry(QRect(-10, 0, 1101, 541));
+        scrollArea->setMaximumSize(QSize(16777215, 541));
+        scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName("scrollAreaWidgetContents");
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 1099, 569));
-        QSizePolicy sizePolicy1(QSizePolicy::Policy::Expanding, QSizePolicy::Policy::MinimumExpanding);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(scrollAreaWidgetContents->sizePolicy().hasHeightForWidth());
-        scrollAreaWidgetContents->setSizePolicy(sizePolicy1);
-        widget_3 = new QWidget(scrollAreaWidgetContents);
-        widget_3->setObjectName("widget_3");
-        widget_3->setGeometry(QRect(0, 10, 1091, 551));
-        verticalLayout_2 = new QVBoxLayout(widget_3);
-        verticalLayout_2->setObjectName("verticalLayout_2");
-        section1 = new QWidget(widget_3);
-        section1->setObjectName("section1");
-        section1->setMinimumSize(QSize(0, 200));
-        section1->setMaximumSize(QSize(16777215, 200));
-
-        verticalLayout_2->addWidget(section1);
-
-        section2 = new QWidget(widget_3);
-        section2->setObjectName("section2");
-        section2->setMinimumSize(QSize(0, 200));
-        section2->setMaximumSize(QSize(16777215, 200));
-
-        verticalLayout_2->addWidget(section2);
-
-        section3 = new QWidget(widget_3);
-        section3->setObjectName("section3");
-        section3->setMinimumSize(QSize(0, 200));
-        section3->setMaximumSize(QSize(16777215, 200));
-
-        verticalLayout_2->addWidget(section3);
-
-        section4 = new QWidget(widget_3);
-        section4->setObjectName("section4");
-        section4->setMinimumSize(QSize(0, 200));
-        section4->setMaximumSize(QSize(16777215, 200));
-
-        verticalLayout_2->addWidget(section4);
-
-        scrollHome->setWidget(scrollAreaWidgetContents);
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 1085, 1600));
+        scrollAreaWidgetContents->setMinimumSize(QSize(0, 1600));
+        scrollArea->setWidget(scrollAreaWidgetContents);
         stackedWidgetMain->addWidget(homePage);
         playlistPage = new QWidget();
         playlistPage->setObjectName("playlistPage");
@@ -297,10 +252,10 @@ public:
         Home->setWindowTitle(QCoreApplication::translate("Home", "Form", nullptr));
         lineEdit_2->setPlaceholderText(QCoreApplication::translate("Home", "Search ", nullptr));
         pushButton->setText(QString());
-        pushButton_4->setText(QCoreApplication::translate("Home", "\360\237\224\222 \304\220\304\203ng xu\341\272\245t", nullptr));
+        logout->setText(QCoreApplication::translate("Home", "\360\237\224\222 \304\220\304\203ng xu\341\272\245t", nullptr));
         label->setText(QCoreApplication::translate("Home", "\360\237\216\265 MUSIC \360\237\216\265", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("Home", "\360\237\217\240 Home", nullptr));
-        pushButton_3->setText(QCoreApplication::translate("Home", "\360\237\216\265 Playlist", nullptr));
+        home->setText(QCoreApplication::translate("Home", "\360\237\217\240 Home", nullptr));
+        playlist->setText(QCoreApplication::translate("Home", "\360\237\216\265 Playlist", nullptr));
     } // retranslateUi
 
 };

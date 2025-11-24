@@ -255,7 +255,7 @@ QPushButton:checked {
       <property name="frameShadow">
        <enum>QFrame::Shadow::Raised</enum>
       </property>
-      <widget class="QPushButton" name="pushButton_4">
+      <widget class="QPushButton" name="logout">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -328,10 +328,10 @@ QPushButton:checked {
       <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
-         <x>0</x>
-         <y>220</y>
+         <x>10</x>
+         <y>200</y>
          <width>172</width>
-         <height>102</height>
+         <height>121</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -339,7 +339,7 @@ QPushButton:checked {
          <number>20</number>
         </property>
         <item>
-         <widget class="QPushButton" name="pushButton_2">
+         <widget class="QPushButton" name="home">
           <property name="minimumSize">
            <size>
             <width>170</width>
@@ -358,7 +358,7 @@ QPushButton:checked {
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_3">
+         <widget class="QPushButton" name="playlist">
           <property name="minimumSize">
            <size>
             <width>170</width>
@@ -399,34 +399,28 @@ QPushButton:checked {
        </property>
        <property name="maximumSize">
         <size>
-         <width>50</width>
-         <height>555</height>
+         <width>16777215</width>
+         <height>16777215</height>
         </size>
        </property>
        <property name="currentIndex">
         <number>0</number>
        </property>
        <widget class="QWidget" name="homePage">
-        <widget class="QScrollArea" name="scrollHome">
+        <widget class="QScrollArea" name="scrollArea">
          <property name="geometry">
           <rect>
            <x>-10</x>
-           <y>-10</y>
+           <y>0</y>
            <width>1101</width>
-           <height>571</height>
+           <height>541</height>
           </rect>
          </property>
-         <property name="minimumSize">
+         <property name="maximumSize">
           <size>
-           <width>0</width>
-           <height>0</height>
+           <width>16777215</width>
+           <height>541</height>
           </size>
-         </property>
-         <property name="verticalScrollBarPolicy">
-          <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
-         </property>
-         <property name="horizontalScrollBarPolicy">
-          <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
          </property>
          <property name="widgetResizable">
           <bool>true</bool>
@@ -436,92 +430,16 @@ QPushButton:checked {
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>1099</width>
-            <height>569</height>
+            <width>1085</width>
+            <height>1600</height>
            </rect>
           </property>
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>1600</height>
+           </size>
           </property>
-          <widget class="QWidget" name="widget_3" native="true">
-           <property name="geometry">
-            <rect>
-             <x>0</x>
-             <y>10</y>
-             <width>1091</width>
-             <height>551</height>
-            </rect>
-           </property>
-           <layout class="QVBoxLayout" name="verticalLayout_2">
-            <item>
-             <widget class="QWidget" name="section1" native="true">
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>200</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>16777215</width>
-                <height>200</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QWidget" name="section2" native="true">
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>200</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>16777215</width>
-                <height>200</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QWidget" name="section3" native="true">
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>200</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>16777215</width>
-                <height>200</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QWidget" name="section4" native="true">
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>200</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>16777215</width>
-                <height>200</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
          </widget>
         </widget>
        </widget>

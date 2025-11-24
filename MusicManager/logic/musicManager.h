@@ -6,23 +6,40 @@
 #include "playlist.h"
 #include "musicplayer.h"
 #include "doublelinkedlist.h"
+#include "song.h"
 class MusicManager{
 private:
     DoubleLinkedList<Playlist*> playlists;   // danh sách tất cả playlist
     DoubleLinkedList<Song*> songsOnHome;      // danh sách tất cả bài hát hiển thị ngoài Home
-    MusicPlayer* player;                      // bộ phát nhạc (play/next/prev)
+    DoubleLinkedList<Song*> allSongs; // catalog
+
+    DoubleLinkedList<MusicPlayer*> players;
+    MusicPlayer* Aplayer;                      // bộ phát nhạc (play/next/prev)
 public:
     MusicManager();                          
-    ~MusicManager();                          
+    ~MusicManager();   
+    
+    void addSCatalog(Song* song);
+    void addSHome(Song* song);
+    Song* getSong(const QString& title, const QString& artist) const;
+
+    MusicPlayer* createPlayer();
+    void setAplayer(MusicPlayer* player);
+    MusicPlayer* getAplayer() const;
+
     void addPlaylist(Playlist* playlist);      // thêm playlist mới
     void removePlaylist(const QString& name);  // xóa playlist theo tên
     Playlist* getPlaylist(const QString& name) const;   // lấy playlist theo tên
     DoubleLinkedList<Playlist*>& getPlaylists();        // trả danh sách playlist
+    
     void addSongToPlaylist(const QString& playlistName, Song* song); 
     void removeSongFromPlaylist(const QString& playlistName,
                                 const QString& songTitle,
                                 const QString& artistName);
+                            
     DoubleLinkedList<Song*> searchHomeSong(const QString& word) const;  // tìm kiếm bài hát trên Home
+    DoubleLinkedList<Playlist*> searchPlaylist(const QString& word) const;
+
     void playSong(const QString& playlistName, int index); // phát 1 bài theo index trong playlist
     void stop();        // dừng phát nhạc
     void next();        // phát bài tiếp theo

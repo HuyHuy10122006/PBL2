@@ -1,6 +1,21 @@
 #include "playlist.h"
 using namespace std;
 Playlist::Playlist(const QString &name) : name(name){}
+
+bool Playlist::operator ==(const Playlist &p) const
+{
+    return name = p.getName();
+}
+
+QString Playlist::getName() const
+{
+    return this->name;
+}
+
+
+bool Playlist::isTemporaryPlaylist() const{
+    return isTemporary;
+}
 void Playlist::addSong(Song* song){
     if(!song)
         throw invalid_argument("Cannot add a null song!");
@@ -13,10 +28,6 @@ void Playlist::addSong(Song* song){
     }
     songs.append(song);
     qDebug() << "them bai hat" << song->getTitle() << "thanh cong";
-}
-QString Playlist::getName() const
-{
-    return this->name;
 }
 
 void Playlist::removeSong(const QString &title, const QString &artist){
