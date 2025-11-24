@@ -2,7 +2,7 @@
 #include <stdexcept>
 #include <QDebug>
 //Hằng số tên Playlist Tạm thời
-const QString SINGLE_PLAY_QUEUE_NAME = "SINGLE_PLAY_QUEUE"
+const QString SINGLE_PLAY_QUEUE_NAME = "SINGLE_PLAY_QUEUE";
 MusicManager::MusicManager() : Aplayer(nullptr){}
 
 MusicManager::~MusicManager(){
@@ -47,7 +47,7 @@ void MusicManager::addSHome(Song* song)
     songsOnHome.append(song);
     qDebug() << "bai hat da duoc them vao home";
 }
-Song* getSong(const QString& title, const QString& artist) const
+Song* MusicManager::getSong(const QString& title, const QString& artist) const
 {
    for(int i = 0; i < allSongs.getSize(); ++i){
         Song* s = allSongs(i);
@@ -58,7 +58,7 @@ Song* getSong(const QString& title, const QString& artist) const
     }
     return nullptr;
 }
-MusicPlayer* MusicPlayer::createPlayer()
+MusicPlayer* MusicManager::createPlayer()
 {
     MusicPlayer* newPlayer = new MusicPlayer();
     players.append(newPlayer);
@@ -66,14 +66,14 @@ MusicPlayer* MusicPlayer::createPlayer()
     {
         Aplayer = newPlayer;
     }
-    qDebug() <<"Tao va quan ly player moi."
+    qDebug() <<"Tao va quan ly player moi.";
     return newPlayer;
 }
-void setAplayer(MusicPlayer* player)
+void MusicManager::setAplayer(MusicPlayer* player)
 {
     Aplayer = player;
 }
-MusicPlayer* MusicManager::getAPlayer() const {
+MusicPlayer* MusicManager::getAplayer() const {
     return Aplayer;
 }
 void MusicManager::addPlaylist(Playlist* playlist){
@@ -103,7 +103,7 @@ void MusicManager::removePlaylist(const QString& name){
 
 Playlist* MusicManager::getPlaylist(const QString& name) const{
     for(int i = 0; i < playlists.getSize(); ++i){
-        if(playlists.getName() == name)
+        if(playlists(i)->getName() == name)
             return playlists(i);
     }
     qDebug() << "khong tim thay Playlist!";

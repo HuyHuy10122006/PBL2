@@ -4,7 +4,7 @@ Playlist::Playlist(const QString &name) : name(name){}
 
 bool Playlist::operator ==(const Playlist &p) const
 {
-    return name = p.getName();
+    return name == p.getName();
 }
 
 QString Playlist::getName() const

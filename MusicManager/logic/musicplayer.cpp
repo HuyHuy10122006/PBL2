@@ -13,7 +13,7 @@ MusicPlayer::~MusicPlayer(){
     delete player;
     delete audioOutput;
 }
-void MusicPlayer::addPlaylist(Playlist* Plist)
+void MusicPlayer::addPlist(Playlist* Plist)
 {
     if(!Plist) throw std::invalid_argument("Playlist khong the rong!");
     for(int i = 0; i < playlists.getSize(); i++)
@@ -35,7 +35,7 @@ void MusicPlayer::removePlist(const QString& name)
 {
     for(int i = 0; i < playlists.getSize(); i++)
     {
-        if(playlists(i)->getName == name)
+        if(playlists(i)->getName() == name)
         {
             if(playlists(i) == APlist)
             {
@@ -44,7 +44,7 @@ void MusicPlayer::removePlist(const QString& name)
                 currentIndex = 0;
 
             }
-            playlist.removeAt(i);
+            playlists.removeAt(i);
             qDebug() << "Xoa Playlist " << name << " khoi danh sach";
             return;
         }
@@ -59,9 +59,9 @@ void MusicPlayer::setAPlist(const QString& name)
         {
             APlist = playlists(i);
             currentIndex = 0;
-            qDebug <<"Dat Playlist hoat dong la:" << name;
+            qDebug()<<"Dat Playlist hoat dong la:" << name;
         }
-        qDebug <<"Khong tim thay Playlist co ten " << name;
+        qDebug()<<"Khong tim thay Playlist co ten " << name;
     }
 }
 Playlist* MusicPlayer::getAPlist() const{

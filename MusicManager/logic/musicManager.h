@@ -41,6 +41,7 @@ public:
     DoubleLinkedList<Playlist*> searchPlaylist(const QString& word) const;
 
     void playSong(const QString& playlistName, int index); // phát 1 bài theo index trong playlist
+    void playSingleSong(const QString& songTitle, const QString& artistName);
     void stop();        // dừng phát nhạc
     void next();        // phát bài tiếp theo
     void previous();    // phát bài trước đó
