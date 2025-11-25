@@ -33,10 +33,10 @@ public:
     {
         if (login->objectName().isEmpty())
             login->setObjectName("login");
-        login->resize(992, 748);
+        login->resize(1317, 771);
         widget = new QWidget(login);
         widget->setObjectName("widget");
-        widget->setGeometry(QRect(0, 0, 1001, 761));
+        widget->setGeometry(QRect(0, -10, 1321, 751));
         horizontalLayout_2 = new QHBoxLayout(widget);
         horizontalLayout_2->setObjectName("horizontalLayout_2");
         nen = new QWidget(widget);
@@ -60,7 +60,7 @@ public:
 "/* background-color: #FFDAB9; */"));
         music_2 = new QLabel(nen);
         music_2->setObjectName("music_2");
-        music_2->setGeometry(QRect(0, -5, 491, 61));
+        music_2->setGeometry(QRect(0, -5, 651, 91));
         QFont font;
         font.setPointSize(22);
         music_2->setFont(font);
@@ -69,12 +69,12 @@ public:
         music_2->setAlignment(Qt::AlignmentFlag::AlignCenter);
         btnLogin = new QPushButton(nen);
         btnLogin->setObjectName("btnLogin");
-        btnLogin->setGeometry(QRect(110, 300, 221, 31));
+        btnLogin->setGeometry(QRect(170, 290, 221, 31));
         btnLogin->setStyleSheet(QString::fromUtf8("background-color: #A9D1C7; /* M\303\243 m\303\240u xanh l\341\273\245c nh\341\272\241t */\n"
 "color: #1F1F1F; /* \304\220\341\272\267t m\303\240u ch\341\273\257 l\303\240 \304\221en \304\221\341\272\255m ho\341\272\267c x\303\241m \304\221\341\272\255m \304\221\341\273\203 d\341\273\205 \304\221\341\273\215c */"));
         btnRegister = new QPushButton(nen);
         btnRegister->setObjectName("btnRegister");
-        btnRegister->setGeometry(QRect(110, 350, 221, 31));
+        btnRegister->setGeometry(QRect(170, 340, 221, 31));
         btnRegister->setStyleSheet(QString::fromUtf8("background-color: #A9D1C7; /* M\303\243 m\303\240u xanh l\341\273\245c nh\341\272\241t */\n"
 "color: #1F1F1F; /* \304\220\341\272\267t m\303\240u ch\341\273\257 l\303\240 \304\221en \304\221\341\272\255m ho\341\272\267c x\303\241m \304\221\341\272\255m \304\221\341\273\203 d\341\273\205 \304\221\341\273\215c */"));
 

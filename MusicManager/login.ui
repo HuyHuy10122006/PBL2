@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>992</width>
-    <height>748</height>
+    <width>1317</width>
+    <height>771</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,9 +17,9 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>0</y>
-     <width>1001</width>
-     <height>761</height>
+     <y>-10</y>
+     <width>1321</width>
+     <height>751</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -52,8 +52,8 @@ background-color: #ADD8E6;
         <rect>
          <x>0</x>
          <y>-5</y>
-         <width>491</width>
-         <height>61</height>
+         <width>651</width>
+         <height>91</height>
         </rect>
        </property>
        <property name="font">
@@ -75,8 +75,8 @@ color: #1F1F1F; /* Đặt màu chữ là đen đậm hoặc xám đậm để d�
       <widget class="QPushButton" name="btnLogin">
        <property name="geometry">
         <rect>
-         <x>110</x>
-         <y>300</y>
+         <x>170</x>
+         <y>290</y>
          <width>221</width>
          <height>31</height>
         </rect>
@@ -92,8 +92,8 @@ color: #1F1F1F; /* Đặt màu chữ là đen đậm hoặc xám đậm để d�
       <widget class="QPushButton" name="btnRegister">
        <property name="geometry">
         <rect>
-         <x>110</x>
-         <y>350</y>
+         <x>170</x>
+         <y>340</y>
          <width>221</width>
          <height>31</height>
         </rect>
