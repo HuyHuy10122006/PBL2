@@ -23,9 +23,11 @@ private:
         QTextStream in(&file); // Tạo luồng đọc file
         QString user, storedHash; // Biến tạm lưu trữ dữ liệu
         // Đọc 2 giá trị (user và hash)
-        while (in >> user >> storedHash)
-        {
-            if (user == username) return true;
+        while (!in.atEnd()) {
+            in >> user >> storedHash;
+
+            if (user == username)
+                return true;
         }
         return false;
     }
@@ -59,12 +61,13 @@ public:
         QString user, storedHash;
         
         // Vòng lặp đọc 2 giá trị (user và hash)
-        while (in >> user >> storedHash)
-        {
-            if (user == username)
-            {
+        while (!in.atEnd()) {
+            in >> user >> storedHash;
+
+            if (user == username) {
                 // 1. Tái tạo Hash từ mật khẩu người dùng nhập vào
                 QByteArray enteredHash = hashPassword(password);
+
                 // 2. So sánh Hash
                 return enteredHash == storedHash.toUtf8();
             }

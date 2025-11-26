@@ -146,7 +146,7 @@ QLineEdit:focus {
         <string/>
        </property>
        <property name="icon">
-        <iconset>
+        <iconset resource="resources.qrc">
          <normaloff>:/images/avatar.jpg</normaloff>:/images/avatar.jpg</iconset>
        </property>
        <property name="iconSize">
@@ -404,7 +404,7 @@ QPushButton:checked {
         </size>
        </property>
        <property name="currentIndex">
-        <number>2</number>
+        <number>0</number>
        </property>
        <widget class="QWidget" name="homePage">
         <widget class="QScrollArea" name="scrollArea">
@@ -429,7 +429,7 @@ QPushButton:checked {
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>-611</y>
+            <y>-742</y>
             <width>1232</width>
             <height>1600</height>
            </rect>
@@ -1194,7 +1194,7 @@ QPushButton:checked {
                         <string/>
                        </property>
                        <property name="pixmap">
-                        <pixmap>../../../Users/ADMIN/OneDrive/画像/haithuhiu.jpg</pixmap>
+                        <pixmap resource="resources.qrc">:/images/haithuhiu.jpg</pixmap>
                        </property>
                        <property name="scaledContents">
                         <bool>true</bool>
@@ -1243,7 +1243,7 @@ QPushButton:checked {
                         <string/>
                        </property>
                        <property name="pixmap">
-                        <pixmap>../../../Users/ADMIN/OneDrive/画像/lowg.jpg</pixmap>
+                        <pixmap resource="resources.qrc">:/images/b-ray.jpg</pixmap>
                        </property>
                        <property name="scaledContents">
                         <bool>true</bool>
@@ -1292,7 +1292,7 @@ QPushButton:checked {
                         <string/>
                        </property>
                        <property name="pixmap">
-                        <pixmap>../../../Users/ADMIN/OneDrive/画像/b-ray.png</pixmap>
+                        <pixmap resource="resources.qrc">:/images/lowg.jpg</pixmap>
                        </property>
                        <property name="scaledContents">
                         <bool>true</bool>
@@ -2039,7 +2039,7 @@ QPushButton:checked {
                         <string/>
                        </property>
                        <property name="pixmap">
-                        <pixmap>../../../Users/ADMIN/OneDrive/画像/buom.jpg</pixmap>
+                        <pixmap resource="resources.qrc">:/images/buon.jpg</pixmap>
                        </property>
                        <property name="scaledContents">
                         <bool>true</bool>
@@ -2088,7 +2088,7 @@ QPushButton:checked {
                         <string/>
                        </property>
                        <property name="pixmap">
-                        <pixmap>../../../Users/ADMIN/OneDrive/画像/chill.jpg</pixmap>
+                        <pixmap resource="resources.qrc">:/images/chill.jpg</pixmap>
                        </property>
                        <property name="scaledContents">
                         <bool>true</bool>
@@ -2790,7 +2790,7 @@ QPushButton:checked {
         </widget>
        </widget>
        <widget class="QWidget" name="artistDetailPage">
-        <widget class="QWidget" name="">
+        <widget class="QWidget" name="layoutWidget">
          <property name="geometry">
           <rect>
            <x>0</x>
@@ -2811,7 +2811,7 @@ QPushButton:checked {
               <height>0</height>
              </size>
             </property>
-            <widget class="QWidget" name="">
+            <widget class="QWidget" name="layoutWidget">
              <property name="geometry">
               <rect>
                <x>0</x>
@@ -2915,7 +2915,7 @@ QPushButton:checked {
            <height>730</height>
           </size>
          </property>
-         <widget class="QWidget" name="">
+         <widget class="QWidget" name="layoutWidget">
           <property name="geometry">
            <rect>
             <x>30</x>
@@ -2978,7 +2978,7 @@ QLineEdit:focus {
            </item>
           </layout>
          </widget>
-         <widget class="QWidget" name="">
+         <widget class="QWidget" name="layoutWidget">
           <property name="geometry">
            <rect>
             <x>20</x>
@@ -3067,6 +3067,8 @@ QPushButton:hover {
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -123,13 +123,9 @@ login::login(QWidget *parent)
         );
     connect(submitBtn, &QPushButton::clicked, this, [=](){
         //lấy dữ liệu user
-        QString qUsername = usernameEdit->text();
-        QString qPassword = passwordEdit->text();
-        QString qRePassword = rePasswordEdit->text();
-        //chuyển sang string
-        std::string username = qUsername.toStdString();
-        std::string password = qPassword.toStdString();
-        std::string rePassword = qRePassword.toStdString();
+        QString username = usernameEdit->text();
+        QString password = passwordEdit->text();
+        QString rePassword = rePasswordEdit->text();
         if(submitBtn->text() == "Đăng ký"){
             if(password != rePassword){
                 QMessageBox::warning(this, "Đăng ký", "Mật khẩu nhập lại không khớp!");
