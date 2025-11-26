@@ -9,6 +9,13 @@ MusicPlayer::MusicPlayer()
     player->setAudioOutput(audioOutput);
 }
 
+MusicPlayer::MusicPlayer(Playlist* Plist)
+    :APlist(Plist), currentIndex(0)
+{
+    player = new QMediaPlayer;
+    audioOutput = new QAudioOutput;
+    player->setAudioOutput(audioOutput);
+}
 MusicPlayer::~MusicPlayer(){
     delete player;
     delete audioOutput;
@@ -42,14 +49,13 @@ void MusicPlayer::removePlist(const QString& name)
                 APlist = nullptr;
                 player->stop();
                 currentIndex = 0;
-
             }
-            playlists.removeAt(i);
+            playlists.removeAt(i); 
             qDebug() << "Xoa Playlist " << name << " khoi danh sach";
             return;
         }
-        qDebug() <<"Khong tim thay Playlist can xoa!";
     }
+    qDebug() <<"Khong tim thay Playlist can xoa!"; 
 }
 void MusicPlayer::setAPlist(const QString& name)
 {
@@ -60,9 +66,10 @@ void MusicPlayer::setAPlist(const QString& name)
             APlist = playlists(i);
             currentIndex = 0;
             qDebug()<<"Dat Playlist hoat dong la:" << name;
+            return;
         }
-        qDebug()<<"Khong tim thay Playlist co ten " << name;
     }
+    qDebug()<<"Khong tim thay Playlist co ten " << name;
 }
 Playlist* MusicPlayer::getAPlist() const{
     return this->APlist;
@@ -102,4 +109,11 @@ void MusicPlayer::previous(){
 
 void MusicPlayer::pause(){
     player->pause();
+}
+void MusicPlayer::playSingleSong(const QString& songTitle, const QString& artistName){
+    player->stop();
+    QString filePath = QString("music/%1 - %2.mp3").arg(artistName, songTitle);
+    player->setSource(QUrl::fromLocalFile(filePath));
+    qDebug() << "Playing single song:" << songTitle << "by" << artistName;
+    player->play();
 }

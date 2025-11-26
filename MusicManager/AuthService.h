@@ -1,50 +1,77 @@
 #ifndef AUTHSERVICE_H
 #define AUTHSERVICE_H
 
-#include <string>
-#include <fstream>
-using namespace std;
+#include <QString>
+#include <QByteArray>
+#include <QCryptographicHash>
+#include <QFile>
+#include <QTextStream>
+#include <QDebug> 
 
 class AuthService{
-    static bool isUserExist(const string& username)
+private:
+    static const QString ACCOUNT_FILE; // Tên file lưu trữ tài khoản
+    static QByteArray hashPassword(const QString& password) // Hàm băm mật khẩu
     {
-        ifstream file("account.txt");
-        if(!file.is_open()) return false;
-        string user, pass;
-        while(file >> user >> pass)
+        return QCryptographicHash::hash(password.toUtf8(), QCryptographicHash::Sha256).toHex();
+    }
+    // Hàm kiểm tra tồn tại (chỉ tìm username)
+    static bool isUserExist(const QString& username)
+    {
+        QFile file(ACCOUNT_FILE); // Mở file
+        if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) return false; // Nếu không mở được, trả về false
+        QTextStream in(&file); // Tạo luồng đọc file
+        QString user, storedHash; // Biến tạm lưu trữ dữ liệu
+        // Đọc 2 giá trị (user và hash)
+        while (in >> user >> storedHash)
         {
-            if(user == username){
-                file.close();
-                return true; //đã tồn tại
-            }
+            if (user == username) return true;
         }
-        file.close();
         return false;
     }
-    public:
-    static bool registerUser(const string& username, const string& password)
+
+public:
+    // ĐĂNG KÝ: Chỉ lưu trữ Hash
+    static bool registerUser(const QString& username, const QString& password)
     {
-        if(isUserExist(username)) return false;
-        ofstream file("account.txt",ios::app);// ghi nối vào cuối file
-        if(!file.is_open()) return false;
-        file << username << " " << password << "\n";
-        file.close();
+        if(isUserExist(username)) {
+            qDebug() << "username đã tồn tại.";
+            return false;
+        }
+        // 1. Tạo Hash
+        QByteArray hashedPassword = hashPassword(password);
+        QFile file(ACCOUNT_FILE); // Mở file để ghi
+        if (!file.open(QIODevice::Append | QIODevice::Text)) return false; // Nếu không mở được, trả về false
+        QTextStream out(&file);// Tạo luồng ghi file
+        // Lưu trữ: username, hash
+        out << username << " " << hashedPassword << "\n";
+        qDebug() << "User registered:" << username;
         return true;
     }
-    static bool loginUser(const string& username, const string& password)
+
+    // ĐĂNG NHẬP: Tái tạo Hash để so sánh
+    static bool loginUser(const QString& username, const QString& password)
     {
-        ifstream file("account.txt");
-        if(!file.is_open()) return false;
-        string user, pass;
-        while(file >> user >> pass)
+        QFile file(ACCOUNT_FILE);
+        if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) return false;
+        QTextStream in(&file);// Tạo luồng đọc file
+        
+        QString user, storedHash;
+        
+        // Vòng lặp đọc 2 giá trị (user và hash)
+        while (in >> user >> storedHash)
         {
-            if(user == username && pass == password){
-                file.close();
-                return true;
+            if (user == username)
+            {
+                // 1. Tái tạo Hash từ mật khẩu người dùng nhập vào
+                QByteArray enteredHash = hashPassword(password);
+                // 2. So sánh Hash
+                return enteredHash == storedHash.toUtf8();
+            }
         }
-        }
-        file.close();
-        return false; 
+        qDebug() << "Login failed: User or password incorrect.";
+        return false;
     }
 };
+const QString AuthService::ACCOUNT_FILE = "account.txt";
 #endif

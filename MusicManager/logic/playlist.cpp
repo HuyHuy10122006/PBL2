@@ -1,7 +1,6 @@
 #include "playlist.h"
 using namespace std;
 Playlist::Playlist(const QString &name) : name(name){}
-
 bool Playlist::operator ==(const Playlist &p) const
 {
     return name == p.getName();
@@ -10,11 +9,6 @@ bool Playlist::operator ==(const Playlist &p) const
 QString Playlist::getName() const
 {
     return this->name;
-}
-
-
-bool Playlist::isTemporaryPlaylist() const{
-    return isTemporary;
 }
 void Playlist::addSong(Song* song){
     if(!song)
@@ -48,9 +42,6 @@ void Playlist::removeSong(const QString &title, const QString &artist){
     }
     qDebug() << "Song not found:" << title << "by" << artist;
 }
-
-
-
 void Playlist::listSongs() const{
     qDebug() << "\n=== Playlist:" << name << "===";
 

@@ -4,23 +4,26 @@
 #include <stdexcept>
 class Song{
 private:
-    QString title;
-    QString artist;
-    int duration;   //giây
-    QString filePath;
+    QString title;   
+    QString artist; 
+    int duration;     
+    QString filePath; 
 public:
-    Song();
-    Song(const QString &title,const QString &artist,int duration,const QString &filePath);
-    QString printTime(int s) const;
-    bool operator ==(const Song &other) const;
-    QString getTitle() const;
-    QString getArtist() const;
-    int getDuration() const;
-    QString getFilePath() const;
+    Song(); 
+    Song(const QString &title,const QString &artist,int duration,const QString &filePath); 
+    
+    QString printTime(int s) const; //phút:giây
+    bool operator ==(const Song &other) const; // so sánh 2 song
+
+    QString getTitle() const; 
+    QString getArtist() const;   
+    int getDuration() const;     
+    QString getFilePath() const;  
+
     void setTitle(const QString &t);
     void setArtist(const QString &a);
     void setDuration(int d);
     void setFilePath(const QString &path);
-    QString toString() const;
+    QString toString() const; // Trả về chuỗi mô tả đầy đủ thông tin bài hát
 };
 #endif
