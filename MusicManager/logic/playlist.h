@@ -14,7 +14,7 @@ private:
 public:
     Playlist(const QString &name = "Default", bool isTemporary = false); 
 
-    bool isTemporary() const; 
+    bool getIsTemporary() const; 
 
     bool operator ==(const Playlist &p) const; 
     QString getName() const; 

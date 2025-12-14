@@ -7,7 +7,7 @@ MusicPlayer::MusicPlayer()
 {
     player = new QMediaPlayer;
     audioOutput = new QAudioOutput;
-    player->setAudioOutput(audioOutput);
+    player->setAudioOutput(audioOutput);  
 }
 
 MusicPlayer::MusicPlayer(Playlist* Plist)
@@ -20,7 +20,7 @@ MusicPlayer::MusicPlayer(Playlist* Plist)
 MusicPlayer::~MusicPlayer(){
 // Xóa các Playlist tạm thời do MusicPlayer tạo ra
     for(int i = 0; i < playlists.getSize(); ++i){
-        if(playlists(i)->isTemporary()){
+        if(playlists(i)->getIsTemporary()){
             delete playlists(i);
         }
     }
@@ -87,10 +87,12 @@ void MusicPlayer::play(int index){
     if(!APlist) return;
     auto songs = APlist->getSongs();
     if(index < 0 || index >= songs.getSize()) return;
+
     currentIndex = index;
     Song* currentSong = songs(index);
-    int newCount = currentSong->getPlayCount() + 1;
-    currentSong->setPlayCount(newCount);
+    int newCount = currentSong->getPlayCount() + 1; 
+    currentSong->setPlayCount(newCount);           
+    
     qDebug() << "PlayCount updated for:" << currentSong->getTitle() << "| New Count:" << newCount; 
     player->setSource(QUrl::fromLocalFile(currentSong->getFilePath()));
     qDebug() << "Playing:" << currentSong->getTitle();

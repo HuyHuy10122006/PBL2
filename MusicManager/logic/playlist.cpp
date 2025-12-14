@@ -7,7 +7,7 @@ Playlist::Playlist(const QString &name, bool isTemporary)
     if (name.isEmpty()) throw invalid_argument("Playlist name cannot be empty!");
 }
 
-bool Playlist::isTemporary() const {
+bool Playlist::getIsTemporary() const {
     return isTemporary;
 }
 
