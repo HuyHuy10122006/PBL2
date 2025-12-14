@@ -30,6 +30,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         login.h login.cpp login.ui
         resources.qrc
         home.h home.cpp home.ui
+        ClickableLabel.h
     )
 else()
     if(ANDROID)
@@ -66,7 +67,9 @@ install(TARGETS MusicManager
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
-
+target_include_directories(MusicManager PRIVATE
+    ${CMAKE_SOURCE_DIR}
+)
 if(QT_VERSION_MAJOR EQUAL 6)
     qt_finalize_executable(MusicManager)
 endif()

@@ -7,7 +7,7 @@
 				{
 					"build" : ".",
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-.-Debug-b354a89eeaac7f25525c.json",
+					"jsonFile" : "directory-.-Debug-06217099814caa2575a2.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.16"
@@ -44,7 +44,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "MusicManager::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-MusicManager-Debug-c3dc9dfea942f4d0c5cd.json",
+					"jsonFile" : "target-MusicManager-Debug-3bc3554083d32b31b0fe.json",
 					"name" : "MusicManager",
 					"projectIndex" : 0
 				},

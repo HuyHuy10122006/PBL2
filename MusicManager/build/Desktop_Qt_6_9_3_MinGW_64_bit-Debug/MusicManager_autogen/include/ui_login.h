@@ -33,10 +33,10 @@ public:
     {
         if (login->objectName().isEmpty())
             login->setObjectName("login");
-        login->resize(1317, 771);
+        login->resize(1317, 925);
         widget = new QWidget(login);
         widget->setObjectName("widget");
-        widget->setGeometry(QRect(0, -10, 1321, 751));
+        widget->setGeometry(QRect(10, -10, 1311, 951));
         horizontalLayout_2 = new QHBoxLayout(widget);
         horizontalLayout_2->setObjectName("horizontalLayout_2");
         nen = new QWidget(widget);

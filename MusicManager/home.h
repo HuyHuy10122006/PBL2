@@ -2,7 +2,7 @@
 #define HOME_H
 
 #include <QWidget>
-
+#include <QString>
 
 namespace Ui {
 class Home;
@@ -16,8 +16,12 @@ public:
     explicit Home(QWidget *parent = nullptr);
     ~Home();
 
+private slots:
+    void showArtistDetail(const QString &artistName);
+    void showMoodDetail(const QString &moodName);
+
 private:
     Ui::Home *ui;
 };
 
-#endif // HOME_H
+#endif
