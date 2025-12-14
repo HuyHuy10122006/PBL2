@@ -663,7 +663,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName("scrollAreaWidgetContents");
-        scrollAreaWidgetContents->setGeometry(QRect(0, -107, 1235, 1600));
+        scrollAreaWidgetContents->setGeometry(QRect(0, -731, 1232, 1600));
         scrollAreaWidgetContents->setMinimumSize(QSize(0, 1600));
         widget_3 = new QWidget(scrollAreaWidgetContents);
         widget_3->setObjectName("widget_3");
@@ -1802,7 +1802,7 @@ public:
         widget_5->setMinimumSize(QSize(300, 0));
         layoutWidget5 = new QWidget(widget_5);
         layoutWidget5->setObjectName("layoutWidget5");
-        layoutWidget5->setGeometry(QRect(11, 10, 281, 371));
+        layoutWidget5->setGeometry(QRect(11, 10, 302, 371));
         verticalLayout_34 = new QVBoxLayout(layoutWidget5);
         verticalLayout_34->setObjectName("verticalLayout_34");
         verticalLayout_34->setContentsMargins(0, 0, 0, 0);
@@ -1827,7 +1827,7 @@ public:
         scrollArea_2->setWidgetResizable(true);
         scrollAreaWidgetContents_2 = new QWidget();
         scrollAreaWidgetContents_2->setObjectName("scrollAreaWidgetContents_2");
-        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 913, 1000));
+        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 81, 1000));
         scrollAreaWidgetContents_2->setMinimumSize(QSize(0, 1000));
         widget_6 = new QWidget(scrollAreaWidgetContents_2);
         widget_6->setObjectName("widget_6");
@@ -1854,7 +1854,7 @@ public:
         widget_13->setMinimumSize(QSize(300, 0));
         layoutWidget_3 = new QWidget(widget_13);
         layoutWidget_3->setObjectName("layoutWidget_3");
-        layoutWidget_3->setGeometry(QRect(11, 0, 291, 381));
+        layoutWidget_3->setGeometry(QRect(11, 0, 302, 381));
         verticalLayout_35 = new QVBoxLayout(layoutWidget_3);
         verticalLayout_35->setObjectName("verticalLayout_35");
         verticalLayout_35->setContentsMargins(0, 0, 0, 0);
@@ -1879,7 +1879,7 @@ public:
         scrollArea_3->setWidgetResizable(true);
         scrollAreaWidgetContents_3 = new QWidget();
         scrollAreaWidgetContents_3->setObjectName("scrollAreaWidgetContents_3");
-        scrollAreaWidgetContents_3->setGeometry(QRect(0, 0, 913, 1000));
+        scrollAreaWidgetContents_3->setGeometry(QRect(0, 0, 910, 1000));
         scrollAreaWidgetContents_3->setMinimumSize(QSize(0, 1000));
         widget_29 = new QWidget(scrollAreaWidgetContents_3);
         widget_29->setObjectName("widget_29");
@@ -1996,7 +1996,7 @@ public:
         retranslateUi(Home);
 
         pushButton->setDefault(false);
-        stackedWidgetMain->setCurrentIndex(2);
+        stackedWidgetMain->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(Home);

@@ -1,6 +1,16 @@
 #include "playlist.h"
+#include <stdexcept>
 using namespace std;
-Playlist::Playlist(const QString &name) : name(name){}
+Playlist::Playlist(const QString &name, bool isTemporary) 
+    : name(name), isTemporary(isTemporary) 
+{
+    if (name.isEmpty()) throw invalid_argument("Playlist name cannot be empty!");
+}
+
+bool Playlist::isTemporary() const {
+    return isTemporary;
+}
+
 bool Playlist::operator ==(const Playlist &p) const
 {
     return name == p.getName();
@@ -34,7 +44,6 @@ void Playlist::removeSong(const QString &title, const QString &artist){
         Song* s = songs(i);
         if (s->getTitle().compare(title, Qt::CaseInsensitive) == 0 &&
             s->getArtist().compare(artist, Qt::CaseInsensitive) == 0) {
-            delete s;              
             songs.removeAt(i); 
             qDebug() << "Removed song:" << title << "by" << artist;
             return;
@@ -90,8 +99,4 @@ DoubleLinkedList<Song*>Playlist::searchSongs(const QString &in) const
     }
     return results;
 }
-
-Playlist::~Playlist(){
-    for(int i = 0; i < songs.getSize(); ++i)
-        delete songs(i);
-}
+Playlist::~Playlist(){}

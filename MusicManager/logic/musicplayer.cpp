@@ -1,6 +1,7 @@
 #include "musicplayer.h"
 #include <QUrl>
 #include <QDebug>
+
 MusicPlayer::MusicPlayer()
     :APlist(nullptr), currentIndex(0)
 {
@@ -17,9 +18,16 @@ MusicPlayer::MusicPlayer(Playlist* Plist)
     player->setAudioOutput(audioOutput);
 }
 MusicPlayer::~MusicPlayer(){
+// Xóa các Playlist tạm thời do MusicPlayer tạo ra
+    for(int i = 0; i < playlists.getSize(); ++i){
+        if(playlists(i)->isTemporary()){
+            delete playlists(i);
+        }
+    }
     delete player;
     delete audioOutput;
 }
+
 void MusicPlayer::addPlist(Playlist* Plist)
 {
     if(!Plist) throw std::invalid_argument("Playlist khong the rong!");
@@ -71,6 +79,7 @@ void MusicPlayer::setAPlist(const QString& name)
     }
     qDebug()<<"Khong tim thay Playlist co ten " << name;
 }
+
 Playlist* MusicPlayer::getAPlist() const{
     return this->APlist;
 }
@@ -79,8 +88,12 @@ void MusicPlayer::play(int index){
     auto songs = APlist->getSongs();
     if(index < 0 || index >= songs.getSize()) return;
     currentIndex = index;
-    player->setSource(QUrl::fromLocalFile(songs(index)->getFilePath()));
-    qDebug() << "Playing:" << songs(index)->getTitle();
+    Song* currentSong = songs(index);
+    int newCount = currentSong->getPlayCount() + 1;
+    currentSong->setPlayCount(newCount);
+    qDebug() << "PlayCount updated for:" << currentSong->getTitle() << "| New Count:" << newCount; 
+    player->setSource(QUrl::fromLocalFile(currentSong->getFilePath()));
+    qDebug() << "Playing:" << currentSong->getTitle();
     player->play();
 }
 
@@ -109,11 +122,4 @@ void MusicPlayer::previous(){
 
 void MusicPlayer::pause(){
     player->pause();
-}
-void MusicPlayer::playSingleSong(const QString& songTitle, const QString& artistName){
-    player->stop();
-    QString filePath = QString("music/%1 - %2.mp3").arg(artistName, songTitle);
-    player->setSource(QUrl::fromLocalFile(filePath));
-    qDebug() << "Playing single song:" << songTitle << "by" << artistName;
-    player->play();
 }

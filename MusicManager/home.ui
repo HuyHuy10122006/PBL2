@@ -648,7 +648,7 @@ QPushButton:checked {
         </size>
        </property>
        <property name="currentIndex">
-        <number>2</number>
+        <number>0</number>
        </property>
        <widget class="QWidget" name="homePage">
         <widget class="QScrollArea" name="scrollArea">
@@ -673,8 +673,8 @@ QPushButton:checked {
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>-107</y>
-            <width>1235</width>
+            <y>-731</y>
+            <width>1232</width>
             <height>1600</height>
            </rect>
           </property>
@@ -3060,7 +3060,7 @@ QPushButton:checked {
               <rect>
                <x>11</x>
                <y>10</y>
-               <width>281</width>
+               <width>302</width>
                <height>371</height>
               </rect>
              </property>
@@ -3111,7 +3111,7 @@ QPushButton:checked {
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>913</width>
+               <width>81</width>
                <height>1000</height>
               </rect>
              </property>
@@ -3173,7 +3173,7 @@ QPushButton:checked {
                <rect>
                 <x>11</x>
                 <y>0</y>
-                <width>291</width>
+                <width>302</width>
                 <height>381</height>
                </rect>
               </property>
@@ -3224,7 +3224,7 @@ QPushButton:checked {
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>913</width>
+                <width>910</width>
                 <height>1000</height>
                </rect>
               </property>
