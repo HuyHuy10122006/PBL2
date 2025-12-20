@@ -34,6 +34,9 @@ private:
 
     Ui::Home *ui;
     MusicManager *m_manager; //
+    void setupPlayerControls();
+    void loadPlaylistPage();
+    void hienThiChiTietPlaylist(Playlist* pl);
 };
 
 #endif

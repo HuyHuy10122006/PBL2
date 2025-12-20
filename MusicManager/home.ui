@@ -648,7 +648,7 @@ QPushButton:checked {
         </size>
        </property>
        <property name="currentIndex">
-        <number>0</number>
+        <number>4</number>
        </property>
        <widget class="QWidget" name="homePage">
         <widget class="QScrollArea" name="scrollArea">
@@ -674,7 +674,7 @@ QPushButton:checked {
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>1232</width>
+            <width>1235</width>
             <height>1600</height>
            </rect>
           </property>
@@ -781,7 +781,26 @@ QPushButton:checked {
                       <widget class="QWidget" name="widget_12" native="true">
                        <layout class="QVBoxLayout" name="verticalLayout_5">
                         <item>
+                         <spacer name="verticalSpacer_21">
+                          <property name="orientation">
+                           <enum>Qt::Orientation::Vertical</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>20</width>
+                            <height>40</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                        <item>
                          <widget class="QLabel" name="label_8">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>14</pointsize>
+                           </font>
+                          </property>
                           <property name="text">
                            <string>bài hát</string>
                           </property>
@@ -789,6 +808,12 @@ QPushButton:checked {
                         </item>
                         <item>
                          <widget class="QLabel" name="label_9">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>10</pointsize>
+                           </font>
+                          </property>
                           <property name="text">
                            <string>ca sỹ</string>
                           </property>
@@ -900,7 +925,7 @@ QPushButton:checked {
                           <property name="font">
                            <font>
                             <family>Segoe UI</family>
-                            <pointsize>12</pointsize>
+                            <pointsize>14</pointsize>
                            </font>
                           </property>
                           <property name="text">
@@ -910,6 +935,12 @@ QPushButton:checked {
                         </item>
                         <item>
                          <widget class="QLabel" name="label_15">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>10</pointsize>
+                           </font>
+                          </property>
                           <property name="text">
                            <string>Châu Thâm</string>
                           </property>
@@ -1004,7 +1035,26 @@ QPushButton:checked {
                       <widget class="QWidget" name="widget_10" native="true">
                        <layout class="QVBoxLayout" name="verticalLayout_4">
                         <item>
+                         <spacer name="verticalSpacer_22">
+                          <property name="orientation">
+                           <enum>Qt::Orientation::Vertical</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>20</width>
+                            <height>40</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                        <item>
                          <widget class="QLabel" name="label_5">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>14</pointsize>
+                           </font>
+                          </property>
                           <property name="text">
                            <string>bài hát</string>
                           </property>
@@ -1012,6 +1062,12 @@ QPushButton:checked {
                         </item>
                         <item>
                          <widget class="QLabel" name="label_6">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>10</pointsize>
+                           </font>
+                          </property>
                           <property name="text">
                            <string>ca sỹ</string>
                           </property>
@@ -1106,7 +1162,26 @@ QPushButton:checked {
                       <widget class="QWidget" name="widget_16" native="true">
                        <layout class="QVBoxLayout" name="verticalLayout_9">
                         <item>
+                         <spacer name="verticalSpacer_23">
+                          <property name="orientation">
+                           <enum>Qt::Orientation::Vertical</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>20</width>
+                            <height>40</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                        <item>
                          <widget class="QLabel" name="label_20">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>14</pointsize>
+                           </font>
+                          </property>
                           <property name="text">
                            <string>bài hát</string>
                           </property>
@@ -1114,6 +1189,12 @@ QPushButton:checked {
                         </item>
                         <item>
                          <widget class="QLabel" name="label_21">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>10</pointsize>
+                           </font>
+                          </property>
                           <property name="text">
                            <string>ca sỹ</string>
                           </property>
@@ -1208,7 +1289,26 @@ QPushButton:checked {
                       <widget class="QWidget" name="widget_11" native="true">
                        <layout class="QVBoxLayout" name="verticalLayout_8">
                         <item>
+                         <spacer name="verticalSpacer_24">
+                          <property name="orientation">
+                           <enum>Qt::Orientation::Vertical</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>20</width>
+                            <height>40</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                        <item>
                          <widget class="QLabel" name="label_16">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>14</pointsize>
+                           </font>
+                          </property>
                           <property name="text">
                            <string>bài hát</string>
                           </property>
@@ -1216,6 +1316,12 @@ QPushButton:checked {
                         </item>
                         <item>
                          <widget class="QLabel" name="label_17">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>10</pointsize>
+                           </font>
+                          </property>
                           <property name="text">
                            <string>ca sỹ</string>
                           </property>
@@ -1310,7 +1416,26 @@ QPushButton:checked {
                       <widget class="QWidget" name="widget_15" native="true">
                        <layout class="QVBoxLayout" name="verticalLayout_10">
                         <item>
+                         <spacer name="verticalSpacer_25">
+                          <property name="orientation">
+                           <enum>Qt::Orientation::Vertical</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>20</width>
+                            <height>40</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                        <item>
                          <widget class="QLabel" name="label_22">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>14</pointsize>
+                           </font>
+                          </property>
                           <property name="text">
                            <string>bài hát</string>
                           </property>
@@ -1318,6 +1443,12 @@ QPushButton:checked {
                         </item>
                         <item>
                          <widget class="QLabel" name="label_23">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>10</pointsize>
+                           </font>
+                          </property>
                           <property name="text">
                            <string>ca sỹ</string>
                           </property>
@@ -1621,7 +1752,7 @@ QPushButton:checked {
                 <widget class="QWidget" name="luoi3" native="true">
                  <layout class="QGridLayout" name="gridLayout_4">
                   <item row="0" column="0">
-                   <widget class="QFrame" name="bai13">
+                   <widget class="QFrame" name="bai41_2">
                     <property name="minimumSize">
                      <size>
                       <width>0</width>
@@ -1634,9 +1765,9 @@ QPushButton:checked {
                     <property name="frameShadow">
                      <enum>QFrame::Shadow::Raised</enum>
                     </property>
-                    <layout class="QHBoxLayout" name="horizontalLayout_17">
+                    <layout class="QHBoxLayout" name="horizontalLayout_27">
                      <item>
-                      <widget class="QLabel" name="label_48">
+                      <widget class="QLabel" name="label_24">
                        <property name="minimumSize">
                         <size>
                          <width>50</width>
@@ -1655,24 +1786,10 @@ QPushButton:checked {
                       </widget>
                      </item>
                      <item>
-                      <widget class="QWidget" name="widget_24" native="true">
-                       <layout class="QVBoxLayout" name="verticalLayout_24">
+                      <widget class="QWidget" name="widget_30" native="true">
+                       <layout class="QVBoxLayout" name="verticalLayout_36">
                         <item>
-                         <widget class="QLabel" name="label_49">
-                          <property name="text">
-                           <string>Pháo Hoa</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <widget class="QLabel" name="label_50">
-                          <property name="text">
-                           <string>Châu Thâm</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <spacer name="verticalSpacer_15">
+                         <spacer name="verticalSpacer_32">
                           <property name="orientation">
                            <enum>Qt::Orientation::Vertical</enum>
                           </property>
@@ -1684,97 +1801,34 @@ QPushButton:checked {
                           </property>
                          </spacer>
                         </item>
-                       </layout>
-                      </widget>
-                     </item>
-                     <item>
-                      <spacer name="horizontalSpacer_16">
-                       <property name="orientation">
-                        <enum>Qt::Orientation::Horizontal</enum>
-                       </property>
-                       <property name="sizeHint" stdset="0">
-                        <size>
-                         <width>40</width>
-                         <height>20</height>
-                        </size>
-                       </property>
-                      </spacer>
-                     </item>
-                     <item>
-                      <widget class="QPushButton" name="pushButton_16">
-                       <property name="minimumSize">
-                        <size>
-                         <width>10</width>
-                         <height>0</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>30</width>
-                         <height>16777215</height>
-                        </size>
-                       </property>
-                       <property name="text">
-                        <string>...</string>
-                       </property>
-                      </widget>
-                     </item>
-                    </layout>
-                   </widget>
-                  </item>
-                  <item row="0" column="2">
-                   <widget class="QFrame" name="bai33">
-                    <property name="minimumSize">
-                     <size>
-                      <width>0</width>
-                      <height>60</height>
-                     </size>
-                    </property>
-                    <property name="frameShape">
-                     <enum>QFrame::Shape::StyledPanel</enum>
-                    </property>
-                    <property name="frameShadow">
-                     <enum>QFrame::Shadow::Raised</enum>
-                    </property>
-                    <layout class="QHBoxLayout" name="horizontalLayout_18">
-                     <item>
-                      <widget class="QLabel" name="label_51">
-                       <property name="minimumSize">
-                        <size>
-                         <width>50</width>
-                         <height>50</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>50</width>
-                         <height>50</height>
-                        </size>
-                       </property>
-                       <property name="text">
-                        <string>TextLabel</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QWidget" name="widget_25" native="true">
-                       <layout class="QVBoxLayout" name="verticalLayout_25">
                         <item>
-                         <widget class="QLabel" name="label_52">
+                         <widget class="QLabel" name="label_25">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>14</pointsize>
+                           </font>
+                          </property>
                           <property name="text">
                            <string>bài hát</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QLabel" name="label_53">
+                         <widget class="QLabel" name="label_28">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>10</pointsize>
+                           </font>
+                          </property>
                           <property name="text">
                            <string>ca sỹ</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <spacer name="verticalSpacer_16">
+                         <spacer name="verticalSpacer_33">
                           <property name="orientation">
                            <enum>Qt::Orientation::Vertical</enum>
                           </property>
@@ -1790,7 +1844,7 @@ QPushButton:checked {
                       </widget>
                      </item>
                      <item>
-                      <spacer name="horizontalSpacer_17">
+                      <spacer name="horizontalSpacer_22">
                        <property name="orientation">
                         <enum>Qt::Orientation::Horizontal</enum>
                        </property>
@@ -1803,313 +1857,7 @@ QPushButton:checked {
                       </spacer>
                      </item>
                      <item>
-                      <widget class="QPushButton" name="pushButton_17">
-                       <property name="minimumSize">
-                        <size>
-                         <width>10</width>
-                         <height>0</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>30</width>
-                         <height>16777215</height>
-                        </size>
-                       </property>
-                       <property name="text">
-                        <string>...</string>
-                       </property>
-                      </widget>
-                     </item>
-                    </layout>
-                   </widget>
-                  </item>
-                  <item row="1" column="0">
-                   <widget class="QFrame" name="bai43">
-                    <property name="minimumSize">
-                     <size>
-                      <width>0</width>
-                      <height>60</height>
-                     </size>
-                    </property>
-                    <property name="frameShape">
-                     <enum>QFrame::Shape::StyledPanel</enum>
-                    </property>
-                    <property name="frameShadow">
-                     <enum>QFrame::Shadow::Raised</enum>
-                    </property>
-                    <layout class="QHBoxLayout" name="horizontalLayout_19">
-                     <item>
-                      <widget class="QLabel" name="label_54">
-                       <property name="minimumSize">
-                        <size>
-                         <width>50</width>
-                         <height>50</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>50</width>
-                         <height>50</height>
-                        </size>
-                       </property>
-                       <property name="text">
-                        <string>TextLabel</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QWidget" name="widget_26" native="true">
-                       <layout class="QVBoxLayout" name="verticalLayout_26">
-                        <item>
-                         <widget class="QLabel" name="label_55">
-                          <property name="text">
-                           <string>bài hát</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <widget class="QLabel" name="label_56">
-                          <property name="text">
-                           <string>ca sỹ</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <spacer name="verticalSpacer_17">
-                          <property name="orientation">
-                           <enum>Qt::Orientation::Vertical</enum>
-                          </property>
-                          <property name="sizeHint" stdset="0">
-                           <size>
-                            <width>20</width>
-                            <height>40</height>
-                           </size>
-                          </property>
-                         </spacer>
-                        </item>
-                       </layout>
-                      </widget>
-                     </item>
-                     <item>
-                      <spacer name="horizontalSpacer_18">
-                       <property name="orientation">
-                        <enum>Qt::Orientation::Horizontal</enum>
-                       </property>
-                       <property name="sizeHint" stdset="0">
-                        <size>
-                         <width>40</width>
-                         <height>20</height>
-                        </size>
-                       </property>
-                      </spacer>
-                     </item>
-                     <item>
-                      <widget class="QPushButton" name="pushButton_18">
-                       <property name="minimumSize">
-                        <size>
-                         <width>10</width>
-                         <height>0</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>30</width>
-                         <height>16777215</height>
-                        </size>
-                       </property>
-                       <property name="text">
-                        <string>...</string>
-                       </property>
-                      </widget>
-                     </item>
-                    </layout>
-                   </widget>
-                  </item>
-                  <item row="1" column="1">
-                   <widget class="QFrame" name="bai53">
-                    <property name="minimumSize">
-                     <size>
-                      <width>0</width>
-                      <height>60</height>
-                     </size>
-                    </property>
-                    <property name="frameShape">
-                     <enum>QFrame::Shape::StyledPanel</enum>
-                    </property>
-                    <property name="frameShadow">
-                     <enum>QFrame::Shadow::Raised</enum>
-                    </property>
-                    <layout class="QHBoxLayout" name="horizontalLayout_20">
-                     <item>
-                      <widget class="QLabel" name="label_57">
-                       <property name="minimumSize">
-                        <size>
-                         <width>50</width>
-                         <height>50</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>50</width>
-                         <height>50</height>
-                        </size>
-                       </property>
-                       <property name="text">
-                        <string>TextLabel</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QWidget" name="widget_27" native="true">
-                       <layout class="QVBoxLayout" name="verticalLayout_27">
-                        <item>
-                         <widget class="QLabel" name="label_58">
-                          <property name="text">
-                           <string>bài hát</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <widget class="QLabel" name="label_59">
-                          <property name="text">
-                           <string>ca sỹ</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <spacer name="verticalSpacer_18">
-                          <property name="orientation">
-                           <enum>Qt::Orientation::Vertical</enum>
-                          </property>
-                          <property name="sizeHint" stdset="0">
-                           <size>
-                            <width>20</width>
-                            <height>40</height>
-                           </size>
-                          </property>
-                         </spacer>
-                        </item>
-                       </layout>
-                      </widget>
-                     </item>
-                     <item>
-                      <spacer name="horizontalSpacer_19">
-                       <property name="orientation">
-                        <enum>Qt::Orientation::Horizontal</enum>
-                       </property>
-                       <property name="sizeHint" stdset="0">
-                        <size>
-                         <width>40</width>
-                         <height>20</height>
-                        </size>
-                       </property>
-                      </spacer>
-                     </item>
-                     <item>
-                      <widget class="QPushButton" name="pushButton_19">
-                       <property name="minimumSize">
-                        <size>
-                         <width>10</width>
-                         <height>0</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>30</width>
-                         <height>16777215</height>
-                        </size>
-                       </property>
-                       <property name="text">
-                        <string>...</string>
-                       </property>
-                      </widget>
-                     </item>
-                    </layout>
-                   </widget>
-                  </item>
-                  <item row="1" column="2">
-                   <widget class="QFrame" name="bai63">
-                    <property name="minimumSize">
-                     <size>
-                      <width>0</width>
-                      <height>60</height>
-                     </size>
-                    </property>
-                    <property name="frameShape">
-                     <enum>QFrame::Shape::StyledPanel</enum>
-                    </property>
-                    <property name="frameShadow">
-                     <enum>QFrame::Shadow::Raised</enum>
-                    </property>
-                    <layout class="QHBoxLayout" name="horizontalLayout_21">
-                     <item>
-                      <widget class="QLabel" name="label_60">
-                       <property name="minimumSize">
-                        <size>
-                         <width>50</width>
-                         <height>50</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>50</width>
-                         <height>50</height>
-                        </size>
-                       </property>
-                       <property name="text">
-                        <string>TextLabel</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QWidget" name="widget_28" native="true">
-                       <layout class="QVBoxLayout" name="verticalLayout_28">
-                        <item>
-                         <widget class="QLabel" name="label_61">
-                          <property name="text">
-                           <string>bài hát</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <widget class="QLabel" name="label_62">
-                          <property name="text">
-                           <string>ca sỹ</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <spacer name="verticalSpacer_19">
-                          <property name="orientation">
-                           <enum>Qt::Orientation::Vertical</enum>
-                          </property>
-                          <property name="sizeHint" stdset="0">
-                           <size>
-                            <width>20</width>
-                            <height>40</height>
-                           </size>
-                          </property>
-                         </spacer>
-                        </item>
-                       </layout>
-                      </widget>
-                     </item>
-                     <item>
-                      <spacer name="horizontalSpacer_20">
-                       <property name="orientation">
-                        <enum>Qt::Orientation::Horizontal</enum>
-                       </property>
-                       <property name="sizeHint" stdset="0">
-                        <size>
-                         <width>40</width>
-                         <height>20</height>
-                        </size>
-                       </property>
-                      </spacer>
-                     </item>
-                     <item>
-                      <widget class="QPushButton" name="pushButton_20">
+                      <widget class="QPushButton" name="pushButton_23">
                        <property name="minimumSize">
                         <size>
                          <width>10</width>
@@ -2131,7 +1879,7 @@ QPushButton:checked {
                    </widget>
                   </item>
                   <item row="0" column="1">
-                   <widget class="QFrame" name="bai23">
+                   <widget class="QFrame" name="bai11_2">
                     <property name="minimumSize">
                      <size>
                       <width>0</width>
@@ -2144,9 +1892,9 @@ QPushButton:checked {
                     <property name="frameShadow">
                      <enum>QFrame::Shadow::Raised</enum>
                     </property>
-                    <layout class="QHBoxLayout" name="horizontalLayout_16">
+                    <layout class="QHBoxLayout" name="horizontalLayout_30">
                      <item>
-                      <widget class="QLabel" name="label_45">
+                      <widget class="QLabel" name="label_71">
                        <property name="minimumSize">
                         <size>
                          <width>50</width>
@@ -2165,24 +1913,49 @@ QPushButton:checked {
                       </widget>
                      </item>
                      <item>
-                      <widget class="QWidget" name="widget_23" native="true">
-                       <layout class="QVBoxLayout" name="verticalLayout_23">
+                      <widget class="QWidget" name="widget_33" native="true">
+                       <layout class="QVBoxLayout" name="verticalLayout_39">
                         <item>
-                         <widget class="QLabel" name="label_46">
+                         <spacer name="verticalSpacer_38">
+                          <property name="orientation">
+                           <enum>Qt::Orientation::Vertical</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>20</width>
+                            <height>40</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="label_72">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>14</pointsize>
+                           </font>
+                          </property>
                           <property name="text">
-                           <string>bài hát</string>
+                           <string>Pháo Hoa</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QLabel" name="label_47">
+                         <widget class="QLabel" name="label_73">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>10</pointsize>
+                           </font>
+                          </property>
                           <property name="text">
-                           <string>ca sỹ</string>
+                           <string>Châu Thâm</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <spacer name="verticalSpacer_14">
+                         <spacer name="verticalSpacer_39">
                           <property name="orientation">
                            <enum>Qt::Orientation::Vertical</enum>
                           </property>
@@ -2198,7 +1971,7 @@ QPushButton:checked {
                       </widget>
                      </item>
                      <item>
-                      <spacer name="horizontalSpacer_15">
+                      <spacer name="horizontalSpacer_25">
                        <property name="orientation">
                         <enum>Qt::Orientation::Horizontal</enum>
                        </property>
@@ -2211,7 +1984,515 @@ QPushButton:checked {
                       </spacer>
                      </item>
                      <item>
-                      <widget class="QPushButton" name="pushButton_15">
+                      <widget class="QPushButton" name="pushButton_26">
+                       <property name="minimumSize">
+                        <size>
+                         <width>10</width>
+                         <height>0</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>30</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>...</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item row="0" column="2">
+                   <widget class="QFrame" name="bai11_3">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>60</height>
+                     </size>
+                    </property>
+                    <property name="frameShape">
+                     <enum>QFrame::Shape::StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Shadow::Raised</enum>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_32">
+                     <item>
+                      <widget class="QLabel" name="label_77">
+                       <property name="minimumSize">
+                        <size>
+                         <width>50</width>
+                         <height>50</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>50</width>
+                         <height>50</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>TextLabel</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QWidget" name="widget_35" native="true">
+                       <layout class="QVBoxLayout" name="verticalLayout_41">
+                        <item>
+                         <spacer name="verticalSpacer_42">
+                          <property name="orientation">
+                           <enum>Qt::Orientation::Vertical</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>20</width>
+                            <height>40</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="label_78">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>14</pointsize>
+                           </font>
+                          </property>
+                          <property name="text">
+                           <string>Pháo Hoa</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="label_79">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>10</pointsize>
+                           </font>
+                          </property>
+                          <property name="text">
+                           <string>Châu Thâm</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <spacer name="verticalSpacer_43">
+                          <property name="orientation">
+                           <enum>Qt::Orientation::Vertical</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>20</width>
+                            <height>40</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="horizontalSpacer_27">
+                       <property name="orientation">
+                        <enum>Qt::Orientation::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="pushButton_28">
+                       <property name="minimumSize">
+                        <size>
+                         <width>10</width>
+                         <height>0</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>30</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>...</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item row="1" column="0">
+                   <widget class="QFrame" name="bai11_4">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>60</height>
+                     </size>
+                    </property>
+                    <property name="frameShape">
+                     <enum>QFrame::Shape::StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Shadow::Raised</enum>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_33">
+                     <item>
+                      <widget class="QLabel" name="label_80">
+                       <property name="minimumSize">
+                        <size>
+                         <width>50</width>
+                         <height>50</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>50</width>
+                         <height>50</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>TextLabel</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QWidget" name="widget_36" native="true">
+                       <layout class="QVBoxLayout" name="verticalLayout_42">
+                        <item>
+                         <spacer name="verticalSpacer_44">
+                          <property name="orientation">
+                           <enum>Qt::Orientation::Vertical</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>20</width>
+                            <height>40</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="label_81">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>14</pointsize>
+                           </font>
+                          </property>
+                          <property name="text">
+                           <string>Pháo Hoa</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="label_82">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>10</pointsize>
+                           </font>
+                          </property>
+                          <property name="text">
+                           <string>Châu Thâm</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <spacer name="verticalSpacer_45">
+                          <property name="orientation">
+                           <enum>Qt::Orientation::Vertical</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>20</width>
+                            <height>40</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="horizontalSpacer_28">
+                       <property name="orientation">
+                        <enum>Qt::Orientation::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="pushButton_29">
+                       <property name="minimumSize">
+                        <size>
+                         <width>10</width>
+                         <height>0</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>30</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>...</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item row="1" column="1">
+                   <widget class="QFrame" name="bai11_5">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>60</height>
+                     </size>
+                    </property>
+                    <property name="frameShape">
+                     <enum>QFrame::Shape::StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Shadow::Raised</enum>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_34">
+                     <item>
+                      <widget class="QLabel" name="label_83">
+                       <property name="minimumSize">
+                        <size>
+                         <width>50</width>
+                         <height>50</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>50</width>
+                         <height>50</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>TextLabel</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QWidget" name="widget_37" native="true">
+                       <layout class="QVBoxLayout" name="verticalLayout_43">
+                        <item>
+                         <spacer name="verticalSpacer_46">
+                          <property name="orientation">
+                           <enum>Qt::Orientation::Vertical</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>20</width>
+                            <height>40</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="label_84">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>14</pointsize>
+                           </font>
+                          </property>
+                          <property name="text">
+                           <string>Pháo Hoa</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="label_85">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>10</pointsize>
+                           </font>
+                          </property>
+                          <property name="text">
+                           <string>Châu Thâm</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <spacer name="verticalSpacer_47">
+                          <property name="orientation">
+                           <enum>Qt::Orientation::Vertical</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>20</width>
+                            <height>40</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="horizontalSpacer_29">
+                       <property name="orientation">
+                        <enum>Qt::Orientation::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="pushButton_30">
+                       <property name="minimumSize">
+                        <size>
+                         <width>10</width>
+                         <height>0</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>30</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>...</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item row="1" column="2">
+                   <widget class="QFrame" name="bai11_6">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>60</height>
+                     </size>
+                    </property>
+                    <property name="frameShape">
+                     <enum>QFrame::Shape::StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Shadow::Raised</enum>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_35">
+                     <item>
+                      <widget class="QLabel" name="label_88">
+                       <property name="minimumSize">
+                        <size>
+                         <width>50</width>
+                         <height>50</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>50</width>
+                         <height>50</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>TextLabel</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QWidget" name="widget_38" native="true">
+                       <layout class="QVBoxLayout" name="verticalLayout_45">
+                        <item>
+                         <spacer name="verticalSpacer_50">
+                          <property name="orientation">
+                           <enum>Qt::Orientation::Vertical</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>20</width>
+                            <height>40</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="label_89">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>14</pointsize>
+                           </font>
+                          </property>
+                          <property name="text">
+                           <string>Pháo Hoa</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="label_90">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>10</pointsize>
+                           </font>
+                          </property>
+                          <property name="text">
+                           <string>Châu Thâm</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <spacer name="verticalSpacer_51">
+                          <property name="orientation">
+                           <enum>Qt::Orientation::Vertical</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>20</width>
+                            <height>40</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="horizontalSpacer_30">
+                       <property name="orientation">
+                        <enum>Qt::Orientation::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>40</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="pushButton_31">
                        <property name="minimumSize">
                         <size>
                          <width>10</width>
@@ -2429,8 +2710,8 @@ QPushButton:checked {
                <item>
                 <widget class="QWidget" name="luoi5" native="true">
                  <layout class="QGridLayout" name="gridLayout_5">
-                  <item row="0" column="1">
-                   <widget class="QFrame" name="bai25">
+                  <item row="0" column="0">
+                   <widget class="QFrame" name="bai11_7">
                     <property name="minimumSize">
                      <size>
                       <width>0</width>
@@ -2443,9 +2724,9 @@ QPushButton:checked {
                     <property name="frameShadow">
                      <enum>QFrame::Shadow::Raised</enum>
                     </property>
-                    <layout class="QHBoxLayout" name="horizontalLayout_10">
+                    <layout class="QHBoxLayout" name="horizontalLayout_36">
                      <item>
-                      <widget class="QLabel" name="label_31">
+                      <widget class="QLabel" name="label_91">
                        <property name="minimumSize">
                         <size>
                          <width>50</width>
@@ -2464,24 +2745,49 @@ QPushButton:checked {
                       </widget>
                      </item>
                      <item>
-                      <widget class="QWidget" name="widget_17" native="true">
-                       <layout class="QVBoxLayout" name="verticalLayout_20">
+                      <widget class="QWidget" name="widget_39" native="true">
+                       <layout class="QVBoxLayout" name="verticalLayout_46">
                         <item>
-                         <widget class="QLabel" name="label_32">
+                         <spacer name="verticalSpacer_52">
+                          <property name="orientation">
+                           <enum>Qt::Orientation::Vertical</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>20</width>
+                            <height>40</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="label_92">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>14</pointsize>
+                           </font>
+                          </property>
                           <property name="text">
-                           <string>bài hát</string>
+                           <string>Pháo Hoa</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QLabel" name="label_33">
+                         <widget class="QLabel" name="label_93">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>10</pointsize>
+                           </font>
+                          </property>
                           <property name="text">
-                           <string>ca sỹ</string>
+                           <string>Châu Thâm</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <spacer name="verticalSpacer_8">
+                         <spacer name="verticalSpacer_53">
                           <property name="orientation">
                            <enum>Qt::Orientation::Vertical</enum>
                           </property>
@@ -2497,7 +2803,7 @@ QPushButton:checked {
                       </widget>
                      </item>
                      <item>
-                      <spacer name="horizontalSpacer_10">
+                      <spacer name="horizontalSpacer_31">
                        <property name="orientation">
                         <enum>Qt::Orientation::Horizontal</enum>
                        </property>
@@ -2510,7 +2816,7 @@ QPushButton:checked {
                       </spacer>
                      </item>
                      <item>
-                      <widget class="QPushButton" name="pushButton_9">
+                      <widget class="QPushButton" name="pushButton_32">
                        <property name="minimumSize">
                         <size>
                          <width>10</width>
@@ -2531,8 +2837,8 @@ QPushButton:checked {
                     </layout>
                    </widget>
                   </item>
-                  <item row="0" column="0">
-                   <widget class="QFrame" name="bai15">
+                  <item row="0" column="1">
+                   <widget class="QFrame" name="bai11_8">
                     <property name="minimumSize">
                      <size>
                       <width>0</width>
@@ -2545,9 +2851,9 @@ QPushButton:checked {
                     <property name="frameShadow">
                      <enum>QFrame::Shadow::Raised</enum>
                     </property>
-                    <layout class="QHBoxLayout" name="horizontalLayout_11">
+                    <layout class="QHBoxLayout" name="horizontalLayout_37">
                      <item>
-                      <widget class="QLabel" name="label_34">
+                      <widget class="QLabel" name="label_94">
                        <property name="minimumSize">
                         <size>
                          <width>50</width>
@@ -2566,24 +2872,49 @@ QPushButton:checked {
                       </widget>
                      </item>
                      <item>
-                      <widget class="QWidget" name="widget_18" native="true">
-                       <layout class="QVBoxLayout" name="verticalLayout_21">
+                      <widget class="QWidget" name="widget_40" native="true">
+                       <layout class="QVBoxLayout" name="verticalLayout_47">
                         <item>
-                         <widget class="QLabel" name="label_35">
+                         <spacer name="verticalSpacer_54">
+                          <property name="orientation">
+                           <enum>Qt::Orientation::Vertical</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>20</width>
+                            <height>40</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="label_95">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>14</pointsize>
+                           </font>
+                          </property>
                           <property name="text">
                            <string>Pháo Hoa</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QLabel" name="label_36">
+                         <widget class="QLabel" name="label_96">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>10</pointsize>
+                           </font>
+                          </property>
                           <property name="text">
                            <string>Châu Thâm</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <spacer name="verticalSpacer_9">
+                         <spacer name="verticalSpacer_55">
                           <property name="orientation">
                            <enum>Qt::Orientation::Vertical</enum>
                           </property>
@@ -2599,7 +2930,7 @@ QPushButton:checked {
                       </widget>
                      </item>
                      <item>
-                      <spacer name="horizontalSpacer_11">
+                      <spacer name="horizontalSpacer_32">
                        <property name="orientation">
                         <enum>Qt::Orientation::Horizontal</enum>
                        </property>
@@ -2612,7 +2943,7 @@ QPushButton:checked {
                       </spacer>
                      </item>
                      <item>
-                      <widget class="QPushButton" name="pushButton_10">
+                      <widget class="QPushButton" name="pushButton_33">
                        <property name="minimumSize">
                         <size>
                          <width>10</width>
@@ -2634,7 +2965,7 @@ QPushButton:checked {
                    </widget>
                   </item>
                   <item row="0" column="2">
-                   <widget class="QFrame" name="bai35">
+                   <widget class="QFrame" name="bai11_9">
                     <property name="minimumSize">
                      <size>
                       <width>0</width>
@@ -2647,9 +2978,9 @@ QPushButton:checked {
                     <property name="frameShadow">
                      <enum>QFrame::Shadow::Raised</enum>
                     </property>
-                    <layout class="QHBoxLayout" name="horizontalLayout_12">
+                    <layout class="QHBoxLayout" name="horizontalLayout_38">
                      <item>
-                      <widget class="QLabel" name="label_37">
+                      <widget class="QLabel" name="label_97">
                        <property name="minimumSize">
                         <size>
                          <width>50</width>
@@ -2668,24 +2999,49 @@ QPushButton:checked {
                       </widget>
                      </item>
                      <item>
-                      <widget class="QWidget" name="widget_19" native="true">
-                       <layout class="QVBoxLayout" name="verticalLayout_29">
+                      <widget class="QWidget" name="widget_41" native="true">
+                       <layout class="QVBoxLayout" name="verticalLayout_48">
                         <item>
-                         <widget class="QLabel" name="label_38">
+                         <spacer name="verticalSpacer_56">
+                          <property name="orientation">
+                           <enum>Qt::Orientation::Vertical</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>20</width>
+                            <height>40</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="label_98">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>14</pointsize>
+                           </font>
+                          </property>
                           <property name="text">
-                           <string>bài hát</string>
+                           <string>Pháo Hoa</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QLabel" name="label_39">
+                         <widget class="QLabel" name="label_99">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>10</pointsize>
+                           </font>
+                          </property>
                           <property name="text">
-                           <string>ca sỹ</string>
+                           <string>Châu Thâm</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <spacer name="verticalSpacer_10">
+                         <spacer name="verticalSpacer_57">
                           <property name="orientation">
                            <enum>Qt::Orientation::Vertical</enum>
                           </property>
@@ -2701,7 +3057,7 @@ QPushButton:checked {
                       </widget>
                      </item>
                      <item>
-                      <spacer name="horizontalSpacer_12">
+                      <spacer name="horizontalSpacer_33">
                        <property name="orientation">
                         <enum>Qt::Orientation::Horizontal</enum>
                        </property>
@@ -2714,7 +3070,7 @@ QPushButton:checked {
                       </spacer>
                      </item>
                      <item>
-                      <widget class="QPushButton" name="pushButton_11">
+                      <widget class="QPushButton" name="pushButton_34">
                        <property name="minimumSize">
                         <size>
                          <width>10</width>
@@ -2736,7 +3092,7 @@ QPushButton:checked {
                    </widget>
                   </item>
                   <item row="1" column="0">
-                   <widget class="QFrame" name="bai45">
+                   <widget class="QFrame" name="bai11_10">
                     <property name="minimumSize">
                      <size>
                       <width>0</width>
@@ -2749,9 +3105,9 @@ QPushButton:checked {
                     <property name="frameShadow">
                      <enum>QFrame::Shadow::Raised</enum>
                     </property>
-                    <layout class="QHBoxLayout" name="horizontalLayout_13">
+                    <layout class="QHBoxLayout" name="horizontalLayout_39">
                      <item>
-                      <widget class="QLabel" name="label_40">
+                      <widget class="QLabel" name="label_100">
                        <property name="minimumSize">
                         <size>
                          <width>50</width>
@@ -2770,24 +3126,49 @@ QPushButton:checked {
                       </widget>
                      </item>
                      <item>
-                      <widget class="QWidget" name="widget_20" native="true">
-                       <layout class="QVBoxLayout" name="verticalLayout_30">
+                      <widget class="QWidget" name="widget_42" native="true">
+                       <layout class="QVBoxLayout" name="verticalLayout_49">
                         <item>
-                         <widget class="QLabel" name="label_41">
+                         <spacer name="verticalSpacer_58">
+                          <property name="orientation">
+                           <enum>Qt::Orientation::Vertical</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>20</width>
+                            <height>40</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="label_101">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>14</pointsize>
+                           </font>
+                          </property>
                           <property name="text">
-                           <string>bài hát</string>
+                           <string>Pháo Hoa</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QLabel" name="label_42">
+                         <widget class="QLabel" name="label_102">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>10</pointsize>
+                           </font>
+                          </property>
                           <property name="text">
-                           <string>ca sỹ</string>
+                           <string>Châu Thâm</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <spacer name="verticalSpacer_11">
+                         <spacer name="verticalSpacer_59">
                           <property name="orientation">
                            <enum>Qt::Orientation::Vertical</enum>
                           </property>
@@ -2803,7 +3184,7 @@ QPushButton:checked {
                       </widget>
                      </item>
                      <item>
-                      <spacer name="horizontalSpacer_13">
+                      <spacer name="horizontalSpacer_34">
                        <property name="orientation">
                         <enum>Qt::Orientation::Horizontal</enum>
                        </property>
@@ -2816,7 +3197,7 @@ QPushButton:checked {
                       </spacer>
                      </item>
                      <item>
-                      <widget class="QPushButton" name="pushButton_12">
+                      <widget class="QPushButton" name="pushButton_35">
                        <property name="minimumSize">
                         <size>
                          <width>10</width>
@@ -2838,7 +3219,7 @@ QPushButton:checked {
                    </widget>
                   </item>
                   <item row="1" column="1">
-                   <widget class="QFrame" name="bai55">
+                   <widget class="QFrame" name="bai11_11">
                     <property name="minimumSize">
                      <size>
                       <width>0</width>
@@ -2851,9 +3232,9 @@ QPushButton:checked {
                     <property name="frameShadow">
                      <enum>QFrame::Shadow::Raised</enum>
                     </property>
-                    <layout class="QHBoxLayout" name="horizontalLayout_14">
+                    <layout class="QHBoxLayout" name="horizontalLayout_40">
                      <item>
-                      <widget class="QLabel" name="label_43">
+                      <widget class="QLabel" name="label_103">
                        <property name="minimumSize">
                         <size>
                          <width>50</width>
@@ -2872,24 +3253,49 @@ QPushButton:checked {
                       </widget>
                      </item>
                      <item>
-                      <widget class="QWidget" name="widget_21" native="true">
-                       <layout class="QVBoxLayout" name="verticalLayout_31">
+                      <widget class="QWidget" name="widget_43" native="true">
+                       <layout class="QVBoxLayout" name="verticalLayout_50">
                         <item>
-                         <widget class="QLabel" name="label_44">
+                         <spacer name="verticalSpacer_60">
+                          <property name="orientation">
+                           <enum>Qt::Orientation::Vertical</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>20</width>
+                            <height>40</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="label_104">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>14</pointsize>
+                           </font>
+                          </property>
                           <property name="text">
-                           <string>bài hát</string>
+                           <string>Pháo Hoa</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QLabel" name="label_63">
+                         <widget class="QLabel" name="label_105">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>10</pointsize>
+                           </font>
+                          </property>
                           <property name="text">
-                           <string>ca sỹ</string>
+                           <string>Châu Thâm</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <spacer name="verticalSpacer_12">
+                         <spacer name="verticalSpacer_61">
                           <property name="orientation">
                            <enum>Qt::Orientation::Vertical</enum>
                           </property>
@@ -2905,7 +3311,7 @@ QPushButton:checked {
                       </widget>
                      </item>
                      <item>
-                      <spacer name="horizontalSpacer_14">
+                      <spacer name="horizontalSpacer_35">
                        <property name="orientation">
                         <enum>Qt::Orientation::Horizontal</enum>
                        </property>
@@ -2918,7 +3324,7 @@ QPushButton:checked {
                       </spacer>
                      </item>
                      <item>
-                      <widget class="QPushButton" name="pushButton_13">
+                      <widget class="QPushButton" name="pushButton_36">
                        <property name="minimumSize">
                         <size>
                          <width>10</width>
@@ -2940,7 +3346,7 @@ QPushButton:checked {
                    </widget>
                   </item>
                   <item row="1" column="2">
-                   <widget class="QFrame" name="bai65">
+                   <widget class="QFrame" name="bai11_12">
                     <property name="minimumSize">
                      <size>
                       <width>0</width>
@@ -2953,9 +3359,9 @@ QPushButton:checked {
                     <property name="frameShadow">
                      <enum>QFrame::Shadow::Raised</enum>
                     </property>
-                    <layout class="QHBoxLayout" name="horizontalLayout_15">
+                    <layout class="QHBoxLayout" name="horizontalLayout_41">
                      <item>
-                      <widget class="QLabel" name="label_64">
+                      <widget class="QLabel" name="label_106">
                        <property name="minimumSize">
                         <size>
                          <width>50</width>
@@ -2974,24 +3380,49 @@ QPushButton:checked {
                       </widget>
                      </item>
                      <item>
-                      <widget class="QWidget" name="widget_22" native="true">
-                       <layout class="QVBoxLayout" name="verticalLayout_32">
+                      <widget class="QWidget" name="widget_44" native="true">
+                       <layout class="QVBoxLayout" name="verticalLayout_51">
                         <item>
-                         <widget class="QLabel" name="label_65">
+                         <spacer name="verticalSpacer_62">
+                          <property name="orientation">
+                           <enum>Qt::Orientation::Vertical</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>20</width>
+                            <height>40</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="label_107">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>14</pointsize>
+                           </font>
+                          </property>
                           <property name="text">
-                           <string>bài hát</string>
+                           <string>Pháo Hoa</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QLabel" name="label_66">
+                         <widget class="QLabel" name="label_108">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>10</pointsize>
+                           </font>
+                          </property>
                           <property name="text">
-                           <string>ca sỹ</string>
+                           <string>Châu Thâm</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <spacer name="verticalSpacer_13">
+                         <spacer name="verticalSpacer_63">
                           <property name="orientation">
                            <enum>Qt::Orientation::Vertical</enum>
                           </property>
@@ -3007,7 +3438,7 @@ QPushButton:checked {
                       </widget>
                      </item>
                      <item>
-                      <spacer name="horizontalSpacer_21">
+                      <spacer name="horizontalSpacer_36">
                        <property name="orientation">
                         <enum>Qt::Orientation::Horizontal</enum>
                        </property>
@@ -3020,7 +3451,7 @@ QPushButton:checked {
                       </spacer>
                      </item>
                      <item>
-                      <widget class="QPushButton" name="pushButton_14">
+                      <widget class="QPushButton" name="pushButton_37">
                        <property name="minimumSize">
                         <size>
                          <width>10</width>
@@ -3130,7 +3561,7 @@ QPushButton:checked {
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>910</width>
+               <width>913</width>
                <height>1000</height>
               </rect>
              </property>
@@ -3243,7 +3674,7 @@ QPushButton:checked {
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>910</width>
+                <width>913</width>
                 <height>1000</height>
                </rect>
               </property>
@@ -3435,6 +3866,82 @@ QPushButton:hover {
             </spacer>
            </item>
           </layout>
+         </widget>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="playlistDetailPage">
+        <widget class="QWidget" name="widget_17" native="true">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>0</y>
+           <width>1241</width>
+           <height>721</height>
+          </rect>
+         </property>
+         <widget class="QLabel" name="tenp">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>351</width>
+            <height>91</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>Segoe UI</family>
+            <pointsize>16</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>tên </string>
+          </property>
+         </widget>
+         <widget class="QScrollArea" name="scrollArea_4">
+          <property name="geometry">
+           <rect>
+            <x>-10</x>
+            <y>90</y>
+            <width>1251</width>
+            <height>631</height>
+           </rect>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="widgetResizable">
+           <bool>true</bool>
+          </property>
+          <widget class="QWidget" name="scrollAreaWidgetContents_4">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>-371</y>
+             <width>1235</width>
+             <height>1000</height>
+            </rect>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>1000</height>
+            </size>
+           </property>
+           <widget class="QWidget" name="widget_31" native="true">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>0</y>
+              <width>1221</width>
+              <height>1001</height>
+             </rect>
+            </property>
+           </widget>
+          </widget>
          </widget>
         </widget>
        </widget>

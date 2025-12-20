@@ -20,6 +20,7 @@ public:
     MusicPlayer(Playlist* Plist); 
     ~MusicPlayer(); 
     QMediaPlayer* getMediaPlayer(); 
+    QAudioOutput* getAudioOutput() { return audioOutput; }
     void addPlist(Playlist* Plist);
     void removePlist(const QString& name); 
     void setAPlist(const QString& name); 

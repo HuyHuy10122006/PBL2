@@ -80,6 +80,8 @@ void MusicPlayer::play(int index) {
     
     // Cập nhật PlayCount
     currentSong->setPlayCount(currentSong->getPlayCount() + 1);
+
+    qDebug() << "Dang co gang mo file:" << currentSong->getFilePath();
     
     // 2. THIẾT LẬP NGUỒN MỚI VÀ PHÁT
     player->setSource(QUrl::fromLocalFile(currentSong->getFilePath()));

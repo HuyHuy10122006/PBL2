@@ -25,6 +25,8 @@ public:
     void removePlaylist(const QString& name);
     Playlist* getPlaylist(const QString& name) const;
     DoubleLinkedList<Playlist*>& getPlaylists();
+    void savePlaylists() const;
+    void loadPlaylists();
     
     void addSongToPlaylist(const QString& playlistName, Song* song);
     void removeSongFromPlaylist(const QString& playlistName,const QString& songTitle,const QString& artistName);

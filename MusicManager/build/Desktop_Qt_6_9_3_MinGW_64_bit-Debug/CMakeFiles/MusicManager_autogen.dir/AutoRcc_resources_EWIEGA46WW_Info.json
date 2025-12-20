@@ -25,7 +25,7 @@
 	"OPTIONS" : [ "--no-zstd", "-name", "resources" ],
 	"OUTPUT_CHECKSUM" : "EWIEGA46WW",
 	"OUTPUT_NAME" : "qrc_resources.cpp",
-	"RCC_EXECUTABLE" : "D:/download/6.9.3/mingw_64/bin/rcc.exe",
+	"RCC_EXECUTABLE" : "C:/Qt/6.9.3/mingw_64/bin/rcc.exe",
 	"RCC_LIST_OPTIONS" : [ "--list" ],
 	"SETTINGS_FILE" : "D:/Projects/PBL2/MusicManager/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/CMakeFiles/MusicManager_autogen.dir/AutoRcc_resources_EWIEGA46WW_Used.txt",
 	"SOURCE" : "D:/Projects/PBL2/MusicManager/resources.qrc",
