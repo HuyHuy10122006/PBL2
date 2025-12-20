@@ -91,6 +91,7 @@ public:
     QLabel *label_13;
     QWidget *widget_14;
     QVBoxLayout *verticalLayout_7;
+    QSpacerItem *verticalSpacer_3;
     QLabel *label_14;
     QLabel *label_15;
     QSpacerItem *verticalSpacer_4;
@@ -663,7 +664,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName("scrollAreaWidgetContents");
-        scrollAreaWidgetContents->setGeometry(QRect(0, -731, 1232, 1600));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 1232, 1600));
         scrollAreaWidgetContents->setMinimumSize(QSize(0, 1600));
         widget_3 = new QWidget(scrollAreaWidgetContents);
         widget_3->setObjectName("widget_3");
@@ -763,8 +764,16 @@ public:
         widget_14->setObjectName("widget_14");
         verticalLayout_7 = new QVBoxLayout(widget_14);
         verticalLayout_7->setObjectName("verticalLayout_7");
+        verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
+
+        verticalLayout_7->addItem(verticalSpacer_3);
+
         label_14 = new QLabel(widget_14);
         label_14->setObjectName("label_14");
+        QFont font3;
+        font3.setFamilies({QString::fromUtf8("Segoe UI")});
+        font3.setPointSize(12);
+        label_14->setFont(font3);
 
         verticalLayout_7->addWidget(label_14);
 
@@ -1827,7 +1836,7 @@ public:
         scrollArea_2->setWidgetResizable(true);
         scrollAreaWidgetContents_2 = new QWidget();
         scrollAreaWidgetContents_2->setObjectName("scrollAreaWidgetContents_2");
-        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 81, 1000));
+        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 910, 1000));
         scrollAreaWidgetContents_2->setMinimumSize(QSize(0, 1000));
         widget_6 = new QWidget(scrollAreaWidgetContents_2);
         widget_6->setObjectName("widget_6");
@@ -1909,11 +1918,11 @@ public:
         horizontalLayout_22->setContentsMargins(0, 0, 0, 0);
         tvplaylist = new QLabel(layoutWidget6);
         tvplaylist->setObjectName("tvplaylist");
-        QFont font3;
-        font3.setFamilies({QString::fromUtf8("Segoe UI")});
-        font3.setPointSize(20);
-        font3.setBold(true);
-        tvplaylist->setFont(font3);
+        QFont font4;
+        font4.setFamilies({QString::fromUtf8("Segoe UI")});
+        font4.setPointSize(20);
+        font4.setBold(true);
+        tvplaylist->setFont(font4);
         tvplaylist->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "    color: white; /* \304\220\341\272\243m b\341\272\243o ch\341\273\257 m\303\240u tr\341\272\257ng */\n"
 "    font-size: 20pt; /* K\303\255ch th\306\260\341\273\233c ch\341\273\257 l\341\273\233n */\n"
@@ -1954,11 +1963,11 @@ public:
         themplaylist->setObjectName("themplaylist");
         themplaylist->setMinimumSize(QSize(50, 0));
         themplaylist->setMaximumSize(QSize(400, 16777215));
-        QFont font4;
-        font4.setFamilies({QString::fromUtf8("Segoe UI")});
-        font4.setPointSize(14);
-        font4.setBold(true);
-        themplaylist->setFont(font4);
+        QFont font5;
+        font5.setFamilies({QString::fromUtf8("Segoe UI")});
+        font5.setPointSize(14);
+        font5.setBold(true);
+        themplaylist->setFont(font5);
         themplaylist->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: #3A007B; /* N\341\273\201n T\303\255m \304\221\341\272\255m */\n"
 "    color: white; /* Ch\341\273\257 tr\341\272\257ng */\n"

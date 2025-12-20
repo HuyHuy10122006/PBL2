@@ -411,6 +411,13 @@ D:/Projects/PBL2/MusicManager/home.h
  mmc:Q_OBJECT
  mdp:D:/Projects/PBL2/MusicManager/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/MusicManager_autogen/moc_predefs.h
  mdp:D:/Projects/PBL2/MusicManager/home.h
+ mdp:D:/Projects/PBL2/MusicManager/logic/doublelinkedlist.h
+ mdp:D:/Projects/PBL2/MusicManager/logic/musicManager.h
+ mdp:D:/Projects/PBL2/MusicManager/logic/musicplayer.h
+ mdp:D:/Projects/PBL2/MusicManager/logic/playlist.h
+ mdp:D:/Projects/PBL2/MusicManager/logic/song.h
+ mdp:D:/download/6.9.3/mingw_64/include/QtCore/QDate
+ mdp:D:/download/6.9.3/mingw_64/include/QtCore/QDebug
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/QString
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/q17memory.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/q20functional.h
@@ -433,6 +440,7 @@ D:/Projects/PBL2/MusicManager/home.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qbytearrayalgorithms.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qbytearraylist.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qbytearrayview.h
+ mdp:D:/download/6.9.3/mingw_64/include/QtCore/qcalendar.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qchar.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qcompare.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qcompare_impl.h
@@ -446,6 +454,7 @@ D:/Projects/PBL2/MusicManager/home.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qcontiguouscache.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qdarwinhelpers.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qdatastream.h
+ mdp:D:/download/6.9.3/mingw_64/include/QtCore/qdatetime.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qdebug.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qendian.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qexceptionhandling.h
@@ -459,12 +468,14 @@ D:/Projects/PBL2/MusicManager/home.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qglobalstatic.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qhash.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qhashfunctions.h
+ mdp:D:/download/6.9.3/mingw_64/include/QtCore/qiodevice.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qiodevicebase.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qiterable.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qiterator.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qlatin1stringview.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qline.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qlist.h
+ mdp:D:/download/6.9.3/mingw_64/include/QtCore/qlocale.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qlogging.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qmalloc.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qmap.h
@@ -531,6 +542,7 @@ D:/Projects/PBL2/MusicManager/home.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qtversionchecks.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qtypeinfo.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qtypes.h
+ mdp:D:/download/6.9.3/mingw_64/include/QtCore/qurl.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qutf8stringview.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qvariant.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qvarlengtharray.h
@@ -551,19 +563,34 @@ D:/Projects/PBL2/MusicManager/home.h
  mdp:D:/download/6.9.3/mingw_64/include/QtGui/qkeysequence.h
  mdp:D:/download/6.9.3/mingw_64/include/QtGui/qpaintdevice.h
  mdp:D:/download/6.9.3/mingw_64/include/QtGui/qpalette.h
+ mdp:D:/download/6.9.3/mingw_64/include/QtGui/qpicture.h
  mdp:D:/download/6.9.3/mingw_64/include/QtGui/qpixelformat.h
  mdp:D:/download/6.9.3/mingw_64/include/QtGui/qpixmap.h
  mdp:D:/download/6.9.3/mingw_64/include/QtGui/qpolygon.h
  mdp:D:/download/6.9.3/mingw_64/include/QtGui/qregion.h
  mdp:D:/download/6.9.3/mingw_64/include/QtGui/qrgb.h
  mdp:D:/download/6.9.3/mingw_64/include/QtGui/qrgba64.h
+ mdp:D:/download/6.9.3/mingw_64/include/QtGui/qtextdocument.h
  mdp:D:/download/6.9.3/mingw_64/include/QtGui/qtgui-config.h
  mdp:D:/download/6.9.3/mingw_64/include/QtGui/qtguiexports.h
  mdp:D:/download/6.9.3/mingw_64/include/QtGui/qtguiglobal.h
  mdp:D:/download/6.9.3/mingw_64/include/QtGui/qtransform.h
  mdp:D:/download/6.9.3/mingw_64/include/QtGui/qwindowdefs.h
  mdp:D:/download/6.9.3/mingw_64/include/QtGui/qwindowdefs_win.h
+ mdp:D:/download/6.9.3/mingw_64/include/QtMultimedia/QAudioOutput
+ mdp:D:/download/6.9.3/mingw_64/include/QtMultimedia/QMediaPlayer
+ mdp:D:/download/6.9.3/mingw_64/include/QtMultimedia/qaudio.h
+ mdp:D:/download/6.9.3/mingw_64/include/QtMultimedia/qaudiooutput.h
+ mdp:D:/download/6.9.3/mingw_64/include/QtMultimedia/qmediaplayer.h
+ mdp:D:/download/6.9.3/mingw_64/include/QtMultimedia/qtaudio.h
+ mdp:D:/download/6.9.3/mingw_64/include/QtMultimedia/qtmultimedia-config.h
+ mdp:D:/download/6.9.3/mingw_64/include/QtMultimedia/qtmultimediaexports.h
+ mdp:D:/download/6.9.3/mingw_64/include/QtMultimedia/qtmultimediaglobal.h
+ mdp:D:/download/6.9.3/mingw_64/include/QtWidgets/QFrame
+ mdp:D:/download/6.9.3/mingw_64/include/QtWidgets/QLabel
  mdp:D:/download/6.9.3/mingw_64/include/QtWidgets/QWidget
+ mdp:D:/download/6.9.3/mingw_64/include/QtWidgets/qframe.h
+ mdp:D:/download/6.9.3/mingw_64/include/QtWidgets/qlabel.h
  mdp:D:/download/6.9.3/mingw_64/include/QtWidgets/qsizepolicy.h
  mdp:D:/download/6.9.3/mingw_64/include/QtWidgets/qtwidgets-config.h
  mdp:D:/download/6.9.3/mingw_64/include/QtWidgets/qtwidgetsexports.h
@@ -785,7 +812,15 @@ D:/Projects/PBL2/MusicManager/home.h
 D:/Projects/PBL2/MusicManager/login.h
  mmc:Q_OBJECT
  mdp:D:/Projects/PBL2/MusicManager/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/MusicManager_autogen/moc_predefs.h
+ mdp:D:/Projects/PBL2/MusicManager/logic/doublelinkedlist.h
+ mdp:D:/Projects/PBL2/MusicManager/logic/musicManager.h
+ mdp:D:/Projects/PBL2/MusicManager/logic/musicplayer.h
+ mdp:D:/Projects/PBL2/MusicManager/logic/playlist.h
+ mdp:D:/Projects/PBL2/MusicManager/logic/song.h
  mdp:D:/Projects/PBL2/MusicManager/login.h
+ mdp:D:/download/6.9.3/mingw_64/include/QtCore/QDate
+ mdp:D:/download/6.9.3/mingw_64/include/QtCore/QDebug
+ mdp:D:/download/6.9.3/mingw_64/include/QtCore/QString
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/q17memory.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/q20functional.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/q20iterator.h
@@ -807,6 +842,7 @@ D:/Projects/PBL2/MusicManager/login.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qbytearrayalgorithms.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qbytearraylist.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qbytearrayview.h
+ mdp:D:/download/6.9.3/mingw_64/include/QtCore/qcalendar.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qchar.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qcompare.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qcompare_impl.h
@@ -820,6 +856,7 @@ D:/Projects/PBL2/MusicManager/login.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qcontiguouscache.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qdarwinhelpers.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qdatastream.h
+ mdp:D:/download/6.9.3/mingw_64/include/QtCore/qdatetime.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qdebug.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qendian.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qexceptionhandling.h
@@ -839,6 +876,7 @@ D:/Projects/PBL2/MusicManager/login.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qlatin1stringview.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qline.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qlist.h
+ mdp:D:/download/6.9.3/mingw_64/include/QtCore/qlocale.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qlogging.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qmalloc.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qmap.h
@@ -905,6 +943,7 @@ D:/Projects/PBL2/MusicManager/login.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qtversionchecks.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qtypeinfo.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qtypes.h
+ mdp:D:/download/6.9.3/mingw_64/include/QtCore/qurl.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qutf8stringview.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qvariant.h
  mdp:D:/download/6.9.3/mingw_64/include/QtCore/qvarlengtharray.h
@@ -937,6 +976,15 @@ D:/Projects/PBL2/MusicManager/login.h
  mdp:D:/download/6.9.3/mingw_64/include/QtGui/qtransform.h
  mdp:D:/download/6.9.3/mingw_64/include/QtGui/qwindowdefs.h
  mdp:D:/download/6.9.3/mingw_64/include/QtGui/qwindowdefs_win.h
+ mdp:D:/download/6.9.3/mingw_64/include/QtMultimedia/QAudioOutput
+ mdp:D:/download/6.9.3/mingw_64/include/QtMultimedia/QMediaPlayer
+ mdp:D:/download/6.9.3/mingw_64/include/QtMultimedia/qaudio.h
+ mdp:D:/download/6.9.3/mingw_64/include/QtMultimedia/qaudiooutput.h
+ mdp:D:/download/6.9.3/mingw_64/include/QtMultimedia/qmediaplayer.h
+ mdp:D:/download/6.9.3/mingw_64/include/QtMultimedia/qtaudio.h
+ mdp:D:/download/6.9.3/mingw_64/include/QtMultimedia/qtmultimedia-config.h
+ mdp:D:/download/6.9.3/mingw_64/include/QtMultimedia/qtmultimediaexports.h
+ mdp:D:/download/6.9.3/mingw_64/include/QtMultimedia/qtmultimediaglobal.h
  mdp:D:/download/6.9.3/mingw_64/include/QtWidgets/QWidget
  mdp:D:/download/6.9.3/mingw_64/include/QtWidgets/qsizepolicy.h
  mdp:D:/download/6.9.3/mingw_64/include/QtWidgets/qtwidgets-config.h

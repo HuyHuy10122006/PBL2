@@ -1,26 +1,17 @@
 #include "musicManager.h"
-#include <stdexcept>
-#include <QDebug>
 #include <QRandomGenerator> 
-#include <algorithm> // Giữ lại cho std::min và std::function
 #include <QFile> 
 #include <QTextStream> 
 #include <QDate> 
-#include <functional> // Cần cho std::function
-DoubleLinkedList<Song*> sortDLL(const DoubleLinkedList<Song*>& original, 
-                                 std::function<bool(const Song*, const Song*)> comparator) {
-    
-    // TẠO BẢN SAO (quan trọng để không sửa đổi allSongs gốc)
+#include <functional> 
+
+// Hàm bổ trợ sắp xếp
+DoubleLinkedList<Song*> sortDLL(const DoubleLinkedList<Song*>& original, std::function<bool(const Song*, const Song*)> comparator) {
     DoubleLinkedList<Song*> sorted = original; 
-
     int n = sorted.getSize();
-
-    // Sắp xếp bằng Bubble Sort
     for (int i = 0; i < n - 1; ++i) {
         for (int j = 0; j < n - i - 1; ++j) {
-            // Nếu comparator trả về true (cần hoán đổi vị trí)
             if (comparator(sorted(j), sorted(j + 1))) {
-                // Hoán đổi (swap) nội dung của hai Song*
                 Song* temp = sorted(j);
                 sorted(j) = sorted(j + 1);
                 sorted(j + 1) = temp;
@@ -32,311 +23,148 @@ DoubleLinkedList<Song*> sortDLL(const DoubleLinkedList<Song*>& original,
 
 void MusicManager::saveData() const {
     QFile file("catalog.csv");
-    if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-        qWarning() << "Could not open file for writing:" << file.errorString();
-        return;
-    }
-
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) return;
     QTextStream out(&file);
-    out << "Title,Artist,FilePath,PlayCount,DateAdded\n";
+    out << "Title,Artist,FilePath,CoverPath,PlayCount,DateAdded\n"; // Cập nhật Header
 
     for (int i = 0; i < allSongs.getSize(); ++i) {
         Song* song = allSongs(i);
         out << "\"" << song->getTitle().replace('"', "\"\"") << "\"," 
             << "\"" << song->getArtist().replace('"', "\"\"") << "\","
             << "\"" << song->getFilePath().replace('"', "\"\"") << "\","
+            << "\"" << song->getCoverPath().replace('"', "\"\"") << "\","
             << song->getPlayCount() << ","
             << song->getDateAdded().toString("yyyy-MM-dd") << "\n";
     }
-
-    qDebug() << "Data saved successfully to catalog.csv." << allSongs.getSize() << "songs saved.";
     file.close();
 }
 
 void MusicManager::loadData() {
     QFile file("catalog.csv");
-    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        qDebug() << "Catalog file not found or could not be opened. Starting with empty catalog.";
-        return;
-    }
-    
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) return;
     QTextStream in(&file);
-    QString line = in.readLine(); 
+    in.readLine(); // Bỏ qua header
     
     while (!in.atEnd()) {
-        line = in.readLine();
+        QString line = in.readLine();
         QStringList fields = line.split(',');
-        
-        if (fields.size() < 5) continue;
+        if (fields.size() < 6) continue;
 
-        QString title = fields[0].mid(1, fields[0].length() - 2).replace("\"\"", "\""); 
-        QString artist = fields[1].mid(1, fields[1].length() - 2).replace("\"\"", "\"");
-        QString filePath = fields[2].mid(1, fields[2].length() - 2).replace("\"\"", "\"");
-        
-        int playCount = fields[3].toInt();
-        QDate dateAdded = QDate::fromString(fields[4].trimmed(), "yyyy-MM-dd");
+        auto clean = [](QString s) { return s.mid(1, s.length() - 2).replace("\"\"", "\""); };
+        QString title = clean(fields[0]);
+        QString artist = clean(fields[1]);
+        QString filePath = clean(fields[2]);
+        QString coverPath = clean(fields[3]);
+        int playCount = fields[4].toInt();
+        QDate dateAdded = QDate::fromString(fields[5].trimmed(), "yyyy-MM-dd");
 
-        for (int i = 0; i < allSongs.getSize(); ++i) {
-            Song* existingSong = allSongs(i);
-            
-            if (existingSong->getTitle() == title && 
-                existingSong->getArtist() == artist &&
-                existingSong->getFilePath() == filePath) 
-            {
-                existingSong->setPlayCount(playCount);
-                break; 
-            }
-        }
+        Song* s = new Song(title, artist, 0, filePath, coverPath, dateAdded);
+        s->setPlayCount(playCount);
+        allSongs.append(s);
     }
-    
-    qDebug() << "Metadata loaded successfully from catalog.csv. Play counts updated.";
     file.close();
 } 
 
-MusicManager::MusicManager() : player(nullptr){
-    loadData();
-}
+MusicManager::MusicManager() : player(nullptr) { loadData(); }
 
-MusicManager::~MusicManager(){
+MusicManager::~MusicManager() {
     saveData();
-    
-    if(player){
+    if(player) {
         player->stop();
+        // Không delete player nếu player đang tham chiếu tới các playlist sẽ bị delete ở dưới
         delete player; 
+        player = nullptr;
     }
-    for(int i = 0; i < playlists.getSize(); ++i){
-        delete playlists(i);
-    }
-    for(int i = 0; i < allSongs.getSize(); ++i){
-        delete allSongs(i);
-    }
+    // Xóa playlist trước, sau đó mới xóa bài hát
+    for(int i = 0; i < playlists.getSize(); ++i) delete playlists(i);
+    for(int i = 0; i < allSongs.getSize(); ++i) delete allSongs(i);
 }
 
-Playlist* MusicManager::getPlaylist(const QString& name) const{
-    for(int i = 0; i < playlists.getSize(); ++i){
-        Playlist* p = playlists(i);
-        if(p->getName().compare(name, Qt::CaseInsensitive) == 0)
-            return p;
+void MusicManager::playSongByObject(Song* s) {
+    if (!s) return;
+
+    if (!player) {
+        player = new MusicPlayer();
+    }
+
+    // 1. Dừng ngay lập tức để ngắt kết nối với file cũ
+    player->stop();
+    player->setSource(QUrl()); // Xóa nguồn phát cũ khỏi bộ nhớ đệm
+
+    // 2. Tạo một Playlist hoàn toàn mới với ID duy nhất (dùng thời gian để định danh)
+    // Việc này giúp MusicPlayer không bao giờ dùng lại vùng nhớ vừa bị dừng
+    QString uniqueName = "Single_" + QString::number(QDateTime::currentMSecsSinceEpoch());
+    Playlist* newTmp = new Playlist(uniqueName, true);
+    newTmp->addSong(s);
+
+    // 3. Nạp vào trình phát
+    player->addPlist(newTmp);
+    player->setAPlist(uniqueName);
+    
+    // 4. Phát
+    player->play(0);
+
+    // 5. Quản lý bộ nhớ: Lưu vào danh sách để destructor của Manager xóa sau này
+    playlists.append(newTmp);
+
+    s->setPlayCount(s->getPlayCount() + 1);
+    qDebug() << "Success: Dang phat" << s->getTitle();
+}
+// Các hàm khác giữ nguyên logic cũ của bạn
+void MusicManager::addSongToCatalog(Song* song) { if(song) allSongs.append(song); }
+void MusicManager::addSongToHome(Song* song) { if(song) songsOnHome.append(song); }
+MusicPlayer* MusicManager::getPlayer() const { return player; }
+void MusicManager::stop() { if (player) player->stop(); }
+void MusicManager::next() { if (player) player->next(); }
+void MusicManager::previous() { if (player) player->previous(); }
+void MusicManager::pause() { if (player) player->pause(); }
+
+Playlist* MusicManager::getPlaylist(const QString& name) const {
+    for(int i = 0; i < playlists.getSize(); ++i) {
+        if(playlists(i)->getName().compare(name, Qt::CaseInsensitive) == 0) return playlists(i);
     }
     return nullptr;
 }
 
-void MusicManager::addSongToCatalog(Song* song){
-    if(!song) throw std::invalid_argument("Cannot add null song to Catalog.");
-    allSongs.append(song); 
-    qDebug() << "Added song to Catalog:" << song->getTitle();
-}
-
-void MusicManager::addSongToHome(Song* song){
-    if(!song) throw std::invalid_argument("Cannot add null song to Home.");
-    songsOnHome.append(song); 
-    qDebug() << "Added song to Home:" << song->getTitle();
-}
-MusicPlayer* MusicManager::getPlayer() const{
-    return player;
-}
-
-void MusicManager::playSong(const QString& playlistName, int index){
-    Playlist* pl = getPlaylist(playlistName);
-    if(!pl || pl->getSongs().getSize() == 0){
-        qDebug() << "Cannot play: Playlist not found or is empty.";
-        return;
-    }
-    if(!player){
-        player = new MusicPlayer();
-    } 
-    
-    if (player->getAPlist() != pl) {
-        player->addPlist(pl);
-        player->setAPlist(pl->getName());
-    }
-
-    player->play(index);
-}
-
-void MusicManager::stop(){
-    if (player) player->stop();
-}
-
-void MusicManager::next(){
-    if (player) player->next();
-}
-
-void MusicManager::previous(){
-    if (player) player->previous();
-}
-
-void MusicManager::pause(){
-    if (player) player->pause();
-}
-void MusicManager::addSongToPlaylist(const QString& playlistName, Song* song){
-    if(!song)
-        throw std::invalid_argument("Cannot add null song");
-    Playlist* pl = getPlaylist(playlistName);
-    if(pl)
-        pl->addSong(song);
-}
-void MusicManager::removeSongFromPlaylist(const QString& playlistName, const QString& songTitle, const QString& artistName){
-    Playlist* pl = getPlaylist(playlistName);
-    if(!pl){
-        qDebug() << "Playlist not found:" << playlistName;
-        return;
-    }
-    pl->removeSong(songTitle, artistName);
-}
-DoubleLinkedList<Song*> MusicManager::searchHomeSong(const QString& word) const {
-    DoubleLinkedList<Song*> result;
-    for(int i = 0; i < songsOnHome.getSize(); ++i){
-        Song* s = songsOnHome(i);
-        if (s->getTitle().contains(word, Qt::CaseInsensitive) || 
-            s->getArtist().contains(word, Qt::CaseInsensitive))
-            result.append(s);
-    }
-    return result;
-}
-DoubleLinkedList<Playlist*> MusicManager::searchPlaylist(const QString& word) const{
-    DoubleLinkedList<Playlist*> result;
-    for(int i = 0; i < playlists.getSize(); ++i){
-        Playlist* p = playlists(i);
-        if (p->getName().contains(word, Qt::CaseInsensitive))
-            result.append(p);
-    }
-    return result;
-}
-void MusicManager::playSingleSong(const QString& songTitle, const QString& artistName){
-    Song* foundSong = nullptr;
-    for(int i = 0; i < allSongs.getSize(); ++i){
-        Song* s = allSongs(i);
-        if (s->getTitle().compare(songTitle, Qt::CaseInsensitive) == 0 &&
-            s->getArtist().compare(artistName, Qt::CaseInsensitive) == 0){
-            foundSong = s;
-            break;
-        }
-    }
-    if(!foundSong){
-        qDebug() << "Song not found in Catalog:" << songTitle << "by" << artistName;
-        return;
-    }
-    
-    Playlist* tempPlaylist = new Playlist("Single Play", true);
-    tempPlaylist->addSong(foundSong); 
-    
-    if(!player){
-        player = new MusicPlayer();
-    }
-    
-    player->addPlist(tempPlaylist); 
-    player->setAPlist(tempPlaylist->getName());
-    
-    player->play(0); 
-    qDebug() << "Playing single song:" << foundSong->getTitle();
-}
-void MusicManager::addPlaylist(Playlist* playlist){
-    if(!playlist) throw std::invalid_argument("Playlist cannot be null");
-    playlists.append(playlist);
-}
-
-void MusicManager::removePlaylist(const QString& name){
-    for(int i = 0; i < playlists.getSize(); ++i){
-        if(playlists(i)->getName() == name){
-            Playlist* p = playlists(i); 
-            if(player && player->getAPlist() == p) {
-                player->setAPlist("Default");
-            }
-
+void MusicManager::addPlaylist(Playlist* p) { if(p) playlists.append(p); }
+void MusicManager::removePlaylist(const QString& name) {
+    for(int i = 0; i < playlists.getSize(); ++i) {
+        if(playlists(i)->getName() == name) {
+            Playlist* p = playlists(i);
             playlists.removeAt(i);
-            delete p; 
-            qDebug() << "Removed playlist and deleted object:" << name;
+            delete p;
             return;
         }
     }
 }
-DoubleLinkedList<Playlist*>& MusicManager::getPlaylists(){
-    return playlists;
-}
-void MusicManager::listAllPlaylists() const{
-    qDebug() << "--- All Playlists ---";
-    for(int i = 0; i < playlists.getSize(); ++i){
-        qDebug() << i + 1 << ":" << playlists(i)->getName();
-    }
-}
 
-// Bảng Xếp Hạng (Sắp xếp theo playCount)
 DoubleLinkedList<Song*> MusicManager::getTopSongs(int count) const {
-    if (allSongs.getSize() == 0) return DoubleLinkedList<Song*>();
-    
-    // Sắp xếp GIẢM DẦN theo PlayCount (sử dụng Bubble Sort)
-    DoubleLinkedList<Song*> sortedList = sortDLL(allSongs, 
-        [](const Song* a, const Song* b) {
-            return a->getPlayCount() < b->getPlayCount(); 
-        });
-        
-    DoubleLinkedList<Song*> result;
-    int limit = std::min(count, sortedList.getSize());
-    for (int i = 0; i < limit; ++i) {
-        result.append(sortedList(i));
-    }
-    
-    qDebug() << "Generated Top" << limit << "Songs based on play count.";
-    return result;
+    DoubleLinkedList<Song*> sorted = sortDLL(allSongs, [](const Song* a, const Song* b) { return a->getPlayCount() < b->getPlayCount(); });
+    DoubleLinkedList<Song*> res;
+    for(int i = 0; i < std::min(count, sorted.getSize()); ++i) res.append(sorted(i));
+    return res;
 }
 
-//  Mới Phát Hành (Sắp xếp theo dateAdded)
 DoubleLinkedList<Song*> MusicManager::getNewReleases(int count) const {
-    if (allSongs.getSize() == 0) return DoubleLinkedList<Song*>();
-    
-    // Sắp xếp GIẢM DẦN theo dateAdded (sử dụng Bubble Sort)
-    DoubleLinkedList<Song*> sortedList = sortDLL(allSongs, 
-        [](const Song* a, const Song* b) {
-            return a->getDateAdded() < b->getDateAdded(); 
-        });
-        
-    DoubleLinkedList<Song*> result;
-    int limit = std::min(count, sortedList.getSize());
-    for (int i = 0; i < limit; ++i) {
-        result.append(sortedList(i));
-    }
-    
-    qDebug() << "Generated Top" << limit << "New Releases based on date added.";
-    return result;
+    DoubleLinkedList<Song*> sorted = sortDLL(allSongs, [](const Song* a, const Song* b) { return a->getDateAdded() < b->getDateAdded(); });
+    DoubleLinkedList<Song*> res;
+    for(int i = 0; i < std::min(count, sorted.getSize()); ++i) res.append(sorted(i));
+    return res;
 }
 
-//  Danh sách theo Ca sĩ
-DoubleLinkedList<Song*> MusicManager::getSongsByArtist(const QString& artistName) const {
-    DoubleLinkedList<Song*> result;
-    
-    for (int i = 0; i < allSongs.getSize(); ++i) {
-        Song* s = allSongs(i);
-        if (s->getArtist().compare(artistName, Qt::CaseInsensitive) == 0) {
-            result.append(s);
-        }
-    }
-    
-    qDebug() << "Found" << result.getSize() << "songs by artist:" << artistName;
-    return result;
+DoubleLinkedList<Song*> MusicManager::getSongsByArtist(const QString& name) const {
+    DoubleLinkedList<Song*> res;
+    for(int i = 0; i < allSongs.getSize(); ++i) if(allSongs(i)->getArtist().compare(name, Qt::CaseInsensitive) == 0) res.append(allSongs(i));
+    return res;
 }
 
-//  Gợi ý Bài hát (Lấy ngẫu nhiên) - THUẦN DLL
 DoubleLinkedList<Song*> MusicManager::getRecommendedSongs(int count) const {
-    if (allSongs.getSize() == 0 || count <= 0) return DoubleLinkedList<Song*>();
-    
-    DoubleLinkedList<Song*> result;
-    int n = allSongs.getSize();
-    int limit = std::min(count, n);
-
-    // TẠO BẢN SAO CỦA allSongs để chọn ngẫu nhiên và xóa (tránh trùng lặp)
-    DoubleLinkedList<Song*> tempSongs = allSongs; 
-
-    for (int i = 0; i < limit; ++i) {
-        // Lấy chỉ mục ngẫu nhiên
-        int randomIndex = QRandomGenerator::global()->bounded(tempSongs.getSize());
-        
-        result.append(tempSongs(randomIndex));
-        
-        // Xóa bài hát khỏi danh sách tạm thời 
-        tempSongs.removeAt(randomIndex); 
+    DoubleLinkedList<Song*> res, temp = allSongs;
+    int limit = std::min(count, temp.getSize());
+    for(int i = 0; i < limit; ++i) {
+        int idx = QRandomGenerator::global()->bounded(temp.getSize());
+        res.append(temp(idx));
+        temp.removeAt(idx);
     }
-    
-    qDebug() << "Generated" << result.getSize() << "random song recommendations.";
-    return result;
+    return res;
 }

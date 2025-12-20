@@ -9,6 +9,7 @@ MusicManager_autogen/timestamp: \
 	D:/Projects/PBL2/MusicManager/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/MusicManager_autogen/moc_predefs.h \
 	D:/Projects/PBL2/MusicManager/home.cpp \
 	D:/Projects/PBL2/MusicManager/home.h \
+	D:/Projects/PBL2/MusicManager/logic/doublelinkedlist.h \
 	D:/Projects/PBL2/MusicManager/logic/musicManager.cpp \
 	D:/Projects/PBL2/MusicManager/logic/musicManager.h \
 	D:/Projects/PBL2/MusicManager/logic/musicplayer.cpp \
@@ -23,6 +24,8 @@ MusicManager_autogen/timestamp: \
 	D:/Projects/PBL2/MusicManager/mainwindow.cpp \
 	D:/Projects/PBL2/MusicManager/mainwindow.h \
 	D:/Projects/PBL2/MusicManager/resources.qrc \
+	D:/download/6.9.3/mingw_64/include/QtCore/QDate \
+	D:/download/6.9.3/mingw_64/include/QtCore/QDebug \
 	D:/download/6.9.3/mingw_64/include/QtCore/QList \
 	D:/download/6.9.3/mingw_64/include/QtCore/QObject \
 	D:/download/6.9.3/mingw_64/include/QtCore/QRect \
@@ -52,6 +55,7 @@ MusicManager_autogen/timestamp: \
 	D:/download/6.9.3/mingw_64/include/QtCore/qbytearrayalgorithms.h \
 	D:/download/6.9.3/mingw_64/include/QtCore/qbytearraylist.h \
 	D:/download/6.9.3/mingw_64/include/QtCore/qbytearrayview.h \
+	D:/download/6.9.3/mingw_64/include/QtCore/qcalendar.h \
 	D:/download/6.9.3/mingw_64/include/QtCore/qchar.h \
 	D:/download/6.9.3/mingw_64/include/QtCore/qcompare.h \
 	D:/download/6.9.3/mingw_64/include/QtCore/qcompare_impl.h \
@@ -68,6 +72,7 @@ MusicManager_autogen/timestamp: \
 	D:/download/6.9.3/mingw_64/include/QtCore/qcoreevent.h \
 	D:/download/6.9.3/mingw_64/include/QtCore/qdarwinhelpers.h \
 	D:/download/6.9.3/mingw_64/include/QtCore/qdatastream.h \
+	D:/download/6.9.3/mingw_64/include/QtCore/qdatetime.h \
 	D:/download/6.9.3/mingw_64/include/QtCore/qdeadlinetimer.h \
 	D:/download/6.9.3/mingw_64/include/QtCore/qdebug.h \
 	D:/download/6.9.3/mingw_64/include/QtCore/qelapsedtimer.h \
@@ -207,6 +212,16 @@ MusicManager_autogen/timestamp: \
 	D:/download/6.9.3/mingw_64/include/QtGui/qvectornd.h \
 	D:/download/6.9.3/mingw_64/include/QtGui/qwindowdefs.h \
 	D:/download/6.9.3/mingw_64/include/QtGui/qwindowdefs_win.h \
+	D:/download/6.9.3/mingw_64/include/QtMultimedia/QAudioOutput \
+	D:/download/6.9.3/mingw_64/include/QtMultimedia/QMediaPlayer \
+	D:/download/6.9.3/mingw_64/include/QtMultimedia/qaudio.h \
+	D:/download/6.9.3/mingw_64/include/QtMultimedia/qaudiooutput.h \
+	D:/download/6.9.3/mingw_64/include/QtMultimedia/qmediaplayer.h \
+	D:/download/6.9.3/mingw_64/include/QtMultimedia/qtaudio.h \
+	D:/download/6.9.3/mingw_64/include/QtMultimedia/qtmultimedia-config.h \
+	D:/download/6.9.3/mingw_64/include/QtMultimedia/qtmultimediaexports.h \
+	D:/download/6.9.3/mingw_64/include/QtMultimedia/qtmultimediaglobal.h \
+	D:/download/6.9.3/mingw_64/include/QtWidgets/QFrame \
 	D:/download/6.9.3/mingw_64/include/QtWidgets/QLabel \
 	D:/download/6.9.3/mingw_64/include/QtWidgets/QMainWindow \
 	D:/download/6.9.3/mingw_64/include/QtWidgets/QWidget \
@@ -449,94 +464,31 @@ MusicManager_autogen/timestamp: \
 	D:/download/6.9.3/mingw_64/lib/cmake/Qt6ZlibPrivate/Qt6ZlibPrivateConfigVersionImpl.cmake \
 	D:/download/6.9.3/mingw_64/lib/cmake/Qt6ZlibPrivate/Qt6ZlibPrivateTargets.cmake \
 	D:/download/6.9.3/mingw_64/lib/cmake/Qt6ZlibPrivate/Qt6ZlibPrivateVersionlessAliasTargets.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/CMakeCXXCompiler.cmake.in \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp \
 	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/CMakeCXXInformation.cmake \
 	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake \
 	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/CMakeCompilerIdDetection.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCXXCompiler.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompiler.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerSupport.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineRCCompiler.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineSystem.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/CMakeFindBinUtils.cmake \
 	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/CMakeFindDependencyMacro.cmake \
 	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/CMakeGenericSystem.cmake \
 	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/CMakeInitializeConfigs.cmake \
 	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/CMakeLanguageInformation.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/CMakeNinjaFindMake.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/CMakeParseImplicitIncludeInfo.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/CMakeParseImplicitLinkInfo.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/CMakeParseLibraryArchitecture.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/CMakeRCCompiler.cmake.in \
 	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/CMakeRCInformation.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/CMakeSystem.cmake.in \
 	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/CMakeSystemSpecificInformation.cmake \
 	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/CMakeSystemSpecificInitialize.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/CMakeTestCompilerCommon.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/CMakeTestRCCompiler.cmake \
 	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/CheckCXXCompilerFlag.cmake \
 	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/CheckCXXSourceCompiles.cmake \
 	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/CheckIncludeFileCXX.cmake \
 	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/CheckLibraryExists.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/ADSP-DetermineCompiler.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/ARMCC-DetermineCompiler.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/ARMClang-DetermineCompiler.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/AppleClang-DetermineCompiler.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/Borland-DetermineCompiler.cmake \
 	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/CMakeCommonCompilerMacros.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/Clang-DetermineCompiler.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/Clang-DetermineCompilerInternal.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/Cray-DetermineCompiler.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/CrayClang-DetermineCompiler.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/Embarcadero-DetermineCompiler.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/Fujitsu-DetermineCompiler.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/GHS-DetermineCompiler.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake \
 	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/GNU-CXX.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/GNU-FindBinUtils.cmake \
 	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/GNU.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/HP-CXX-DetermineCompiler.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/IAR-DetermineCompiler.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/IBMClang-CXX-DetermineCompiler.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/Intel-DetermineCompiler.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/LCC-CXX-DetermineCompiler.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/MSVC-DetermineCompiler.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/NVHPC-DetermineCompiler.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/NVIDIA-DetermineCompiler.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/OrangeC-DetermineCompiler.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/PGI-DetermineCompiler.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/PathScale-DetermineCompiler.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/SCO-DetermineCompiler.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/TI-DetermineCompiler.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/TIClang-DetermineCompiler.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/Tasking-DetermineCompiler.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/Watcom-DetermineCompiler.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/XL-CXX-DetermineCompiler.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake \
 	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/FindPackageHandleStandardArgs.cmake \
 	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/FindPackageMessage.cmake \
 	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/FindThreads.cmake \
 	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/FindVulkan.cmake \
 	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/GNUInstallDirs.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Internal/CMakeDetermineLinkerId.cmake \
 	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Internal/CheckCompilerFlag.cmake \
 	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Internal/CheckFlagCommonConfig.cmake \
 	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Internal/FeatureTesting.cmake \
-	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Platform/Windows-Determine-CXX.cmake \
 	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX-ABI.cmake \
 	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX.cmake \
 	D:/download/Tools/CMake_64/share/cmake-3.30/Modules/Platform/Windows-GNU.cmake \

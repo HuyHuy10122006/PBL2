@@ -19,10 +19,11 @@ public:
     MusicPlayer(); 
     MusicPlayer(Playlist* Plist); 
     ~MusicPlayer(); 
-
+    QMediaPlayer* getMediaPlayer(); 
     void addPlist(Playlist* Plist);
     void removePlist(const QString& name); 
     void setAPlist(const QString& name); 
+    void setSource(const QUrl &source);
     Playlist* getAPlist() const; 
     
     void play(int index); 

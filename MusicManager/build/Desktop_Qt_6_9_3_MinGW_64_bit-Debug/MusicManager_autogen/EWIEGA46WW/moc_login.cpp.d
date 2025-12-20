@@ -1,5 +1,13 @@
 D:/Projects/PBL2/MusicManager/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/MusicManager_autogen/EWIEGA46WW/moc_login.cpp: D:/Projects/PBL2/MusicManager/login.h \
   D:/Projects/PBL2/MusicManager/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/MusicManager_autogen/moc_predefs.h \
+  D:/Projects/PBL2/MusicManager/logic/doublelinkedlist.h \
+  D:/Projects/PBL2/MusicManager/logic/musicManager.h \
+  D:/Projects/PBL2/MusicManager/logic/musicplayer.h \
+  D:/Projects/PBL2/MusicManager/logic/playlist.h \
+  D:/Projects/PBL2/MusicManager/logic/song.h \
+  D:/download/6.9.3/mingw_64/include/QtCore/QDate \
+  D:/download/6.9.3/mingw_64/include/QtCore/QDebug \
+  D:/download/6.9.3/mingw_64/include/QtCore/QString \
   D:/download/6.9.3/mingw_64/include/QtCore/q17memory.h \
   D:/download/6.9.3/mingw_64/include/QtCore/q20functional.h \
   D:/download/6.9.3/mingw_64/include/QtCore/q20iterator.h \
@@ -21,6 +29,7 @@ D:/Projects/PBL2/MusicManager/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/MusicMan
   D:/download/6.9.3/mingw_64/include/QtCore/qbytearrayalgorithms.h \
   D:/download/6.9.3/mingw_64/include/QtCore/qbytearraylist.h \
   D:/download/6.9.3/mingw_64/include/QtCore/qbytearrayview.h \
+  D:/download/6.9.3/mingw_64/include/QtCore/qcalendar.h \
   D:/download/6.9.3/mingw_64/include/QtCore/qchar.h \
   D:/download/6.9.3/mingw_64/include/QtCore/qcompare.h \
   D:/download/6.9.3/mingw_64/include/QtCore/qcompare_impl.h \
@@ -34,6 +43,7 @@ D:/Projects/PBL2/MusicManager/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/MusicMan
   D:/download/6.9.3/mingw_64/include/QtCore/qcontiguouscache.h \
   D:/download/6.9.3/mingw_64/include/QtCore/qdarwinhelpers.h \
   D:/download/6.9.3/mingw_64/include/QtCore/qdatastream.h \
+  D:/download/6.9.3/mingw_64/include/QtCore/qdatetime.h \
   D:/download/6.9.3/mingw_64/include/QtCore/qdebug.h \
   D:/download/6.9.3/mingw_64/include/QtCore/qendian.h \
   D:/download/6.9.3/mingw_64/include/QtCore/qexceptionhandling.h \
@@ -53,6 +63,7 @@ D:/Projects/PBL2/MusicManager/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/MusicMan
   D:/download/6.9.3/mingw_64/include/QtCore/qlatin1stringview.h \
   D:/download/6.9.3/mingw_64/include/QtCore/qline.h \
   D:/download/6.9.3/mingw_64/include/QtCore/qlist.h \
+  D:/download/6.9.3/mingw_64/include/QtCore/qlocale.h \
   D:/download/6.9.3/mingw_64/include/QtCore/qlogging.h \
   D:/download/6.9.3/mingw_64/include/QtCore/qmalloc.h \
   D:/download/6.9.3/mingw_64/include/QtCore/qmap.h \
@@ -119,6 +130,7 @@ D:/Projects/PBL2/MusicManager/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/MusicMan
   D:/download/6.9.3/mingw_64/include/QtCore/qtversionchecks.h \
   D:/download/6.9.3/mingw_64/include/QtCore/qtypeinfo.h \
   D:/download/6.9.3/mingw_64/include/QtCore/qtypes.h \
+  D:/download/6.9.3/mingw_64/include/QtCore/qurl.h \
   D:/download/6.9.3/mingw_64/include/QtCore/qutf8stringview.h \
   D:/download/6.9.3/mingw_64/include/QtCore/qvariant.h \
   D:/download/6.9.3/mingw_64/include/QtCore/qvarlengtharray.h \
@@ -151,6 +163,15 @@ D:/Projects/PBL2/MusicManager/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/MusicMan
   D:/download/6.9.3/mingw_64/include/QtGui/qtransform.h \
   D:/download/6.9.3/mingw_64/include/QtGui/qwindowdefs.h \
   D:/download/6.9.3/mingw_64/include/QtGui/qwindowdefs_win.h \
+  D:/download/6.9.3/mingw_64/include/QtMultimedia/QAudioOutput \
+  D:/download/6.9.3/mingw_64/include/QtMultimedia/QMediaPlayer \
+  D:/download/6.9.3/mingw_64/include/QtMultimedia/qaudio.h \
+  D:/download/6.9.3/mingw_64/include/QtMultimedia/qaudiooutput.h \
+  D:/download/6.9.3/mingw_64/include/QtMultimedia/qmediaplayer.h \
+  D:/download/6.9.3/mingw_64/include/QtMultimedia/qtaudio.h \
+  D:/download/6.9.3/mingw_64/include/QtMultimedia/qtmultimedia-config.h \
+  D:/download/6.9.3/mingw_64/include/QtMultimedia/qtmultimediaexports.h \
+  D:/download/6.9.3/mingw_64/include/QtMultimedia/qtmultimediaglobal.h \
   D:/download/6.9.3/mingw_64/include/QtWidgets/QWidget \
   D:/download/6.9.3/mingw_64/include/QtWidgets/qsizepolicy.h \
   D:/download/6.9.3/mingw_64/include/QtWidgets/qtwidgets-config.h \

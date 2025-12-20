@@ -21,6 +21,7 @@ set(PROJECT_SOURCES
     logic/playlist.cpp
     logic/musicplayer.cpp
     logic/musicManager.cpp
+    logic/musicManager.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
