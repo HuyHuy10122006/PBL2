@@ -73,9 +73,15 @@ Home::Home(MusicManager *manager, QWidget *parent) :
                                                                   "Bạn có chắc chắn muốn đăng xuất không?",
                                                                   QMessageBox::Yes|QMessageBox::No);
         if (reply == QMessageBox::Yes) {
-            this->close();
+            if (m_manager) {
+                m_manager->stop();
+            }
             login *loginForm = new login(m_manager);
+            loginForm->setAttribute(Qt::WA_DeleteOnClose);
             loginForm->show();
+            this->hide();
+            this->deleteLater();
+
         }
     });
 
@@ -85,7 +91,6 @@ Home::Home(MusicManager *manager, QWidget *parent) :
     connect(ui->anh14_2, &ClickableLabel::clicked, this, [=](){ showMoodDetail("Happy"); });
     connect(ui->anh24_2, &ClickableLabel::clicked, this, [=](){ showMoodDetail("Sad"); });
 
-    // --- HOÀN THIỆN LOGIC ĐIỀU KHIỂN (DÙNG ĐÚNG ID TỪ OBJECT INSPECTOR) ---
 }
 // Hàm nạp dữ liệu và xử lý "trong suốt" cho các widget con (GIỮ NGUYÊN)
 void Home::setupSongUI(Song* s, QLabel* titleLbl, QLabel* artistLbl, QLabel* coverLbl, QFrame* songFrame) {
@@ -158,12 +163,14 @@ void Home::setupSongUI(Song* s, QLabel* titleLbl, QLabel* artistLbl, QLabel* cov
 
 bool Home::eventFilter(QObject *obj, QEvent *event) {
     if (event->type() == QEvent::MouseButtonPress) {
+        QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
         QFrame *frame = qobject_cast<QFrame*>(obj);
+
         // Nếu khung đó chứa thông tin Playlist (đã gán ở loadPlaylistPage)
-        if (frame && frame->property("playlistPtr").isValid()) {
+        if (frame && frame->property("playlistPtr").isValid() && mouseEvent->button() == Qt::LeftButton) {
             Playlist* pl = static_cast<Playlist*>(frame->property("playlistPtr").value<void*>());
             if (pl) {
-                hienThiChiTietPlaylist(pl); // Gọi hàm hiển thị bài hát bên dưới
+                hienThiChiTietPlaylist(pl);
                 return true;
             }
         }
@@ -187,12 +194,13 @@ bool Home::eventFilter(QObject *obj, QEvent *event) {
 
     // 2. XỬ LÝ CLICK KHUNG BÀI HÁT (GIỮ NGUYÊN)
     if (event->type() == QEvent::MouseButtonPress) {
+        QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
         static bool isProcessing = false;
         if (isProcessing) return true;
         isProcessing = true;
 
         QFrame *frame = qobject_cast<QFrame*>(obj);
-        if (frame && frame->property("songPtr").isValid()) {
+        if (frame && frame->property("songPtr").isValid() && mouseEvent->button() == Qt::LeftButton) {
             Song* s = static_cast<Song*>(frame->property("songPtr").value<void*>());
             if (s && m_manager) {
                 m_manager->playSongByObject(s);
@@ -333,6 +341,40 @@ void Home::loadPlaylistPage() {
         // GÁN CON TRỎ PLAYLIST VÀO FRAME
         plFrame->setProperty("playlistPtr", QVariant::fromValue((void*)pl));
         plFrame->installEventFilter(this); // Cho phép nhận sự kiện click
+        // --- ĐOẠN MÃ HIỆN MENU XÓA KHI CHUỘT PHẢI ---
+        plFrame->setContextMenuPolicy(Qt::CustomContextMenu);
+        connect(plFrame, &QFrame::customContextMenuRequested, this, [=](const QPoint &pos) {
+            QMenu contextMenu(this);
+            contextMenu.setStyleSheet("QMenu { background-color: #2A2A2A; color: white; border: 1px solid #444; }"
+                                      "QMenu::item:selected { background-color: #FF4444; }"); // Màu đỏ khi rê chuột vào mục xóa
+
+            QAction *deleteAction = contextMenu.addAction("Xóa Playlist này");
+
+            connect(deleteAction, &QAction::triggered, this, [=]() {
+                QMessageBox::StandardButton reply = QMessageBox::question(this, "Xác nhận xóa",
+                                                                          QString("Bạn có chắc muốn xóa playlist '%1' không?").arg(pl->getName()),
+                                                                          QMessageBox::Yes | QMessageBox::No);
+
+                if (reply == QMessageBox::Yes) {
+                    // 1. Gọi manager xóa trong dữ liệu và file csv
+                    m_manager->removePlaylist(pl->getName());
+
+                    // 2. Vẽ lại danh sách bên trái ngay lập tức
+                    loadPlaylistPage();
+
+                    // 3. Nếu đang đứng ở trang chi tiết của chính playlist vừa xóa, hãy quay về trang Home
+                    if (ui->stackedWidgetMain->currentWidget() == ui->playlistDetailPage &&
+                        ui->tenp->text() == pl->getName()) {
+                        ui->stackedWidgetMain->setCurrentWidget(ui->homePage);
+                        ui->home->setChecked(true);
+                    }
+                }
+            });
+
+            // Hiển thị menu tại vị trí con trỏ chuột
+            contextMenu.exec(plFrame->mapToGlobal(pos));
+        });
+
 
         QHBoxLayout* layout = new QHBoxLayout(plFrame);
         QLabel* name = new QLabel(pl->getName(), plFrame);
@@ -404,6 +446,7 @@ void Home::hienThiChiTietPlaylist(Playlist* pl) {
             sFrame->setProperty("songPtr", QVariant::fromValue((void*)s));
             sFrame->installEventFilter(this);
             sFrame->setCursor(Qt::PointingHandCursor);
+
 
             sFrame->setContextMenuPolicy(Qt::CustomContextMenu);
             connect(sFrame, &QFrame::customContextMenuRequested, this, [=](const QPoint &pos) {
