@@ -18,11 +18,13 @@ public:
     ~MusicManager();
     void addSongToCatalog(Song* song);
     void addSongToHome(Song* song);
+    const DoubleLinkedList<Song*>& getAllSongs() const { return allSongs; }
     const DoubleLinkedList<Song*>& getSongsOnHome() const { return songsOnHome; }
     MusicPlayer* getPlayer() const;
 
     void addPlaylist(Playlist* playlist); 
     void removePlaylist(const QString& name);
+    void renamePlaylist(const QString& oldName, const QString& newName);
     Playlist* getPlaylist(const QString& name) const;
     DoubleLinkedList<Playlist*>& getPlaylists();
     void savePlaylists() const;

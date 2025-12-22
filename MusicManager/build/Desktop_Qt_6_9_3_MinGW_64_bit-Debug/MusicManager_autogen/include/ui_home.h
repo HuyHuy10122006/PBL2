@@ -34,8 +34,8 @@ public:
     QWidget *widget;
     QWidget *layoutWidget;
     QHBoxLayout *horizontalLayout;
-    QLineEdit *lineEdit_2;
-    QPushButton *pushButton;
+    QLineEdit *timkiembaihat;
+    QPushButton *avatar;
     QFrame *controlFrame;
     QHBoxLayout *horizontalLayout_6;
     QWidget *songInfo;
@@ -381,14 +381,14 @@ public:
         horizontalLayout->setSpacing(410);
         horizontalLayout->setObjectName("horizontalLayout");
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        lineEdit_2 = new QLineEdit(layoutWidget);
-        lineEdit_2->setObjectName("lineEdit_2");
-        lineEdit_2->setMinimumSize(QSize(400, 0));
+        timkiembaihat = new QLineEdit(layoutWidget);
+        timkiembaihat->setObjectName("timkiembaihat");
+        timkiembaihat->setMinimumSize(QSize(400, 0));
         QFont font;
         font.setFamilies({QString::fromUtf8("Segoe UI")});
         font.setPointSize(11);
-        lineEdit_2->setFont(font);
-        lineEdit_2->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
+        timkiembaihat->setFont(font);
+        timkiembaihat->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
 "    background-color: #2A2A2A;\n"
 "    color: white;\n"
 "    border: none;\n"
@@ -401,37 +401,37 @@ public:
 "}\n"
 ""));
 
-        horizontalLayout->addWidget(lineEdit_2);
+        horizontalLayout->addWidget(timkiembaihat);
 
-        pushButton = new QPushButton(layoutWidget);
-        pushButton->setObjectName("pushButton");
-        pushButton->setEnabled(true);
+        avatar = new QPushButton(layoutWidget);
+        avatar->setObjectName("avatar");
+        avatar->setEnabled(true);
         QSizePolicy sizePolicy(QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Expanding);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(pushButton->sizePolicy().hasHeightForWidth());
-        pushButton->setSizePolicy(sizePolicy);
-        pushButton->setMinimumSize(QSize(50, 50));
-        pushButton->setMaximumSize(QSize(50, 50));
-        pushButton->setMouseTracking(false);
-        pushButton->setTabletTracking(false);
-        pushButton->setAcceptDrops(false);
-        pushButton->setAutoFillBackground(false);
-        pushButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+        sizePolicy.setHeightForWidth(avatar->sizePolicy().hasHeightForWidth());
+        avatar->setSizePolicy(sizePolicy);
+        avatar->setMinimumSize(QSize(50, 50));
+        avatar->setMaximumSize(QSize(50, 50));
+        avatar->setMouseTracking(false);
+        avatar->setTabletTracking(false);
+        avatar->setAcceptDrops(false);
+        avatar->setAutoFillBackground(false);
+        avatar->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    border-radius: 25px;   /* 50px / 2 = tr\303\262n */\n"
 "    background-color: #666;\n"
 "}\n"
 ""));
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/images/avatar.jpg"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
-        pushButton->setIcon(icon);
-        pushButton->setIconSize(QSize(80, 80));
-        pushButton->setCheckable(false);
-        pushButton->setAutoRepeat(false);
-        pushButton->setAutoExclusive(false);
-        pushButton->setFlat(true);
+        avatar->setIcon(icon);
+        avatar->setIconSize(QSize(80, 80));
+        avatar->setCheckable(false);
+        avatar->setAutoRepeat(false);
+        avatar->setAutoExclusive(false);
+        avatar->setFlat(true);
 
-        horizontalLayout->addWidget(pushButton);
+        horizontalLayout->addWidget(avatar);
 
         controlFrame = new QFrame(Home);
         controlFrame->setObjectName("controlFrame");
@@ -645,7 +645,7 @@ public:
         label->setAlignment(Qt::AlignmentFlag::AlignCenter);
         layoutWidget3 = new QWidget(Sidebar);
         layoutWidget3->setObjectName("layoutWidget3");
-        layoutWidget3->setGeometry(QRect(10, 290, 172, 121));
+        layoutWidget3->setGeometry(QRect(10, 290, 151, 121));
         verticalLayout = new QVBoxLayout(layoutWidget3);
         verticalLayout->setSpacing(20);
         verticalLayout->setObjectName("verticalLayout");
@@ -2146,7 +2146,7 @@ public:
         scrollArea_4->setWidgetResizable(true);
         scrollAreaWidgetContents_4 = new QWidget();
         scrollAreaWidgetContents_4->setObjectName("scrollAreaWidgetContents_4");
-        scrollAreaWidgetContents_4->setGeometry(QRect(0, -371, 1235, 1000));
+        scrollAreaWidgetContents_4->setGeometry(QRect(0, 0, 1235, 1000));
         scrollAreaWidgetContents_4->setMinimumSize(QSize(0, 1000));
         widget_31 = new QWidget(scrollAreaWidgetContents_4);
         widget_31->setObjectName("widget_31");
@@ -2159,8 +2159,8 @@ public:
 
         retranslateUi(Home);
 
-        pushButton->setDefault(false);
-        stackedWidgetMain->setCurrentIndex(4);
+        avatar->setDefault(false);
+        stackedWidgetMain->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(Home);
@@ -2169,8 +2169,8 @@ public:
     void retranslateUi(QWidget *Home)
     {
         Home->setWindowTitle(QCoreApplication::translate("Home", "Form", nullptr));
-        lineEdit_2->setPlaceholderText(QCoreApplication::translate("Home", "Search ", nullptr));
-        pushButton->setText(QString());
+        timkiembaihat->setPlaceholderText(QCoreApplication::translate("Home", "Search ", nullptr));
+        avatar->setText(QString());
         labelSongImage->setText(QCoreApplication::translate("Home", "TextLabel", nullptr));
         SongTitle->setText(QCoreApplication::translate("Home", "tencasy", nullptr));
         SongArtist->setText(QCoreApplication::translate("Home", "TextLabel", nullptr));

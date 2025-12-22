@@ -21,6 +21,7 @@ Home::Home(MusicManager *manager, QWidget *parent) :
     m_manager(manager)
 {
     ui->setupUi(this);
+    m_currentPlaylistSearch = "";
 
     // Mặc định hiển thị homePage
     ui->stackedWidgetMain->setCurrentWidget(ui->homePage);
@@ -55,7 +56,6 @@ Home::Home(MusicManager *manager, QWidget *parent) :
         loadPlaylistPage();
     });
 
-    // --- CÁC KẾT NỐI CONNECT CỦA BẠN (GIỮ NGUYÊN) ---
     connect(ui->home, &QPushButton::clicked, this, [=](){
         ui->stackedWidgetMain->setCurrentWidget(ui->homePage);
         ui->home->setChecked(true);
@@ -84,6 +84,13 @@ Home::Home(MusicManager *manager, QWidget *parent) :
 
         }
     });
+    connect(ui->timplaylist, &QLineEdit::textChanged, this, [=](const QString &text) {
+        m_currentPlaylistSearch = text;
+        loadPlaylistPage();
+    });
+    connect(ui->pushButton_4, &QPushButton::clicked, this, [=]() { m_manager->previous(); });
+    connect(ui->pushButton_22, &QPushButton::clicked, this, [=]() { m_manager->next(); });
+
 
     connect(ui->label_2, &ClickableLabel::clicked, this, [=](){ showArtistDetail("Hai Thu Hiếu"); });
     connect(ui->label_27, &ClickableLabel::clicked, this, [=](){ showArtistDetail("B-Ray"); });
@@ -221,7 +228,7 @@ bool Home::eventFilter(QObject *obj, QEvent *event) {
     return QWidget::eventFilter(obj, event);
 }
 
-// --- CÁC HÀM CÒN LẠI GIỮ NGUYÊN ---
+
 void Home::loadHomePageData() {
     if (!m_manager) return;
     DoubleLinkedList<Song*> sugSongs = m_manager->getRecommendedSongs(6);
@@ -248,8 +255,29 @@ void Home::setupPlayerControls() {
     QMediaPlayer* mediaPlayer = m_manager->getPlayer()->getMediaPlayer();
     QAudioOutput* audioOutput = m_manager->getPlayer()->getAudioOutput();
 
+    // --- 1. CẬP NHẬT THÔNG TIN BÀI HÁT (Góc trái) ---
+    connect(mediaPlayer, &QMediaPlayer::sourceChanged, this, [=](){
+        Song* s = m_manager->getPlayer()->getCurrentSong();
+        if (s) {
+            // Khớp chính xác với XML: SongTitle và SongArtist
+            ui->SongTitle->setText(s->getTitle());
+            ui->SongArtist->setText(s->getArtist());
+
+            // Khớp chính xác với XML: labelSongImage
+            QString imgPath = s->getCoverPath().isEmpty() ? ":/images/default_cover.jpg" : s->getCoverPath();
+            QPixmap pix(imgPath);
+            if (!pix.isNull()) {
+                ui->labelSongImage->setPixmap(pix.scaled(ui->labelSongImage->size(),
+                                                         Qt::KeepAspectRatioByExpanding,
+                                                         Qt::SmoothTransformation));
+            }
+            // Khi đổi bài tự động chuyển nút thành Pause
+            ui->pushButton_21->setText("⏸");
+        }
+    });
+
+    // --- 2. ĐIỀU KHIỂN PHÁT/TẠM DỪNG (Nút giữa: pushButton_21) ---
     connect(ui->pushButton_21, &QPushButton::clicked, this, [=](){
-        qDebug() << "Nut Play da duoc bam!";
         if (mediaPlayer->playbackState() == QMediaPlayer::PlayingState) {
             mediaPlayer->pause();
             ui->pushButton_21->setText("▶");
@@ -259,8 +287,19 @@ void Home::setupPlayerControls() {
         }
     });
 
+    // --- 3. ĐIỀU KHIỂN TIẾN/LÙI BÀI ---
+    connect(ui->pushButton_4, &QPushButton::clicked, this, [=]() {
+        if (m_manager && m_manager->getPlayer()) {
+            m_manager->previous();
+        }
+    });
 
-    // 2. THANH TIẾN TRÌNH (ID: sliderProgress)
+    connect(ui->pushButton_22, &QPushButton::clicked, this, [=]() {
+        if (m_manager && m_manager->getPlayer()) {
+            m_manager->next();
+        }
+    });
+    // --- 4. THANH TIẾN TRÌNH (sliderProgress) VÀ THỜI GIAN (label_10) ---
     connect(mediaPlayer, &QMediaPlayer::durationChanged, this, [=](qint64 duration) {
         ui->sliderProgress->setRange(0, duration);
     });
@@ -269,68 +308,50 @@ void Home::setupPlayerControls() {
         if (!ui->sliderProgress->isSliderDown()) {
             ui->sliderProgress->setValue(position);
         }
-        // Cập nhật nhãn thời gian hiện tại (ID: label_10)
+        // Tính toán hiển thị thời gian lên label_10
         int seconds = (position / 1000) % 60;
         int minutes = (position / 60000) % 60;
         ui->label_10->setText(QString("%1:%2").arg(minutes, 2, 10, QChar('0')).arg(seconds, 2, 10, QChar('0')));
     });
 
-    // Tua nhạc khi kéo slider
+    // Cho phép kéo thanh sliderProgress để tua nhạc
     connect(ui->sliderProgress, &QSlider::sliderMoved, mediaPlayer, &QMediaPlayer::setPosition);
 
-    // 3. THANH ÂM LƯỢNG (ID: horizontalSlider)
+    // --- 5. THANH ÂM LƯỢNG (horizontalSlider) ---
     ui->horizontalSlider->setRange(0, 100);
     ui->horizontalSlider->setValue(70);
     connect(ui->horizontalSlider, &QSlider::valueChanged, this, [=](int value) {
-        if (audioOutput) {
-            audioOutput->setVolume(value / 100.0);
+        if (audioOutput) audioOutput->setVolume(value / 100.0);
+    });
+
+    // --- 6. TỰ ĐỘNG CHUYỂN BÀI KHI HẾT NHẠC ---
+    connect(mediaPlayer, &QMediaPlayer::mediaStatusChanged, this, [=](QMediaPlayer::MediaStatus status) {
+        if (status == QMediaPlayer::EndOfMedia) {
+            m_manager->next();
         }
     });
-    // 5. EVENT FILTER (Cho phép click nhảy vị trí trên slider)
-    ui->sliderProgress->installEventFilter(this);
-    // Tự động cập nhật giao diện khi bài hát thay đổi (Source Changed)
-    // Sửa đoạn connect(mediaPlayer, &QMediaPlayer::sourceChanged, ...) tại dòng 195
-    connect(mediaPlayer, &QMediaPlayer::sourceChanged, this, [=](){
-        if (m_manager->getPlayer()) {
-            Playlist* ap = m_manager->getPlayer()->getAPlist();
-            // Lấy thông tin bài hát đang phát từ MusicPlayer thông qua currentIndex
-            // Giả sử bạn đã có getter getCurrentIndex() trong MusicPlayer
-            // Hoặc đơn giản là lấy thông tin từ UI nếu m_manager->playSong đã cập nhật nó.
-            ui->pushButton_21->setText("⏸");
-        }
-    });
-    connect(ui->pushButton_21, &QPushButton::clicked, this, [=](){
-        qDebug() << "Nut Play da duoc bam!"; // Neu bam ma khong hien dong nay, thi connect dang loi
-        if (mediaPlayer->playbackState() == QMediaPlayer::PlayingState) {
-            mediaPlayer->pause();
-            ui->pushButton_21->setText("▶");
-        } else {
-            mediaPlayer->play();
-            ui->pushButton_21->setText("⏸");
-        }
-    });
-    connect(mediaPlayer, &QMediaPlayer::durationChanged, this,
-            [=](qint64 duration) {
-                qDebug() << "Duration =" << duration;
-                ui->sliderProgress->setRange(0, duration);
-            });
 }
 void Home::loadPlaylistPage() {
     if (!m_manager) return;
 
-    // 1. Dọn dẹp layout cũ trong verticalLayout_18
+
     QLayoutItem *child;
     while ((child = ui->verticalLayout_18->takeAt(0)) != nullptr) {
         if (child->widget()) delete child->widget();
         delete child;
     }
 
-    // 2. Lấy danh sách từ Manager
     DoubleLinkedList<Playlist*>& allPlaylists = m_manager->getPlaylists();
 
     for (int i = 0; i < allPlaylists.getSize(); ++i) {
         Playlist* pl = allPlaylists(i);
         if (pl->getIsTemporary()) continue;
+        if (!m_currentPlaylistSearch.isEmpty()) {
+            if (!pl->getName().contains(m_currentPlaylistSearch, Qt::CaseInsensitive)) {
+                continue; // Nếu tên playlist không chứa từ khóa thì bỏ qua
+            }
+        }
+
 
         QFrame* plFrame = new QFrame(this);
         plFrame->setMinimumHeight(70);
@@ -347,6 +368,27 @@ void Home::loadPlaylistPage() {
             QMenu contextMenu(this);
             contextMenu.setStyleSheet("QMenu { background-color: #2A2A2A; color: white; border: 1px solid #444; }"
                                       "QMenu::item:selected { background-color: #FF4444; }"); // Màu đỏ khi rê chuột vào mục xóa
+            QAction *renameAction = contextMenu.addAction("Đổi tên Playlist");
+            connect(renameAction, &QAction::triggered, this, [=]() {
+                bool ok;
+                QString newName = QInputDialog::getText(this, "Đổi tên Playlist",
+                                                        "Nhập tên mới cho playlist:",
+                                                        QLineEdit::Normal, pl->getName(), &ok);
+                if (ok && !newName.isEmpty() && newName != pl->getName()) {
+                    // Kiểm tra tên mới đã tồn tại chưa
+                    if (m_manager->getPlaylist(newName) == nullptr) {
+                        m_manager->renamePlaylist(pl->getName(), newName);
+                        loadPlaylistPage();
+
+                        // Nếu đang mở trang chi tiết của chính nó, cập nhật tiêu đề trên màn hình
+                        if (ui->stackedWidgetMain->currentWidget() == ui->playlistDetailPage) {
+                            ui->tenp->setText(newName);
+                        }
+                    } else {
+                        QMessageBox::warning(this, "Lỗi", "Tên playlist này đã tồn tại!");
+                    }
+                }
+            });
 
             QAction *deleteAction = contextMenu.addAction("Xóa Playlist này");
 

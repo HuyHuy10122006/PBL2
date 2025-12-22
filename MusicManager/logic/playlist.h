@@ -13,7 +13,7 @@ private:
 
 public:
     Playlist(const QString &name = "Default", bool isTemporary = false); 
-
+    void setName(const QString& newName) { name = newName; }
     bool getIsTemporary() const; 
 
     bool operator ==(const Playlist &p) const; 

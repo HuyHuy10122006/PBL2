@@ -10,6 +10,9 @@
 DoubleLinkedList<Song*> sortDLL(const DoubleLinkedList<Song*>& original, std::function<bool(const Song*, const Song*)> comparator) {
     DoubleLinkedList<Song*> sorted = original; 
     int n = sorted.getSize();
+    if (n < 2) {
+        return sorted;
+    }
     for (int i = 0; i < n - 1; ++i) {
         for (int j = 0; j < n - i - 1; ++j) {
             if (comparator(sorted(j), sorted(j + 1))) {
@@ -72,9 +75,8 @@ MusicManager::MusicManager() : player(nullptr) {
 }
 
 MusicManager::~MusicManager() {
-    //  Lưu dữ liệu trước khi xóa đối tượng khỏi bộ nhớ
-    saveData();       // Lưu kho nhạc gốc
-    savePlaylists();  // Lưu các playlist (hàm này đã có bộ lọc isTemporary)
+    saveData();
+    savePlaylists();
     if(player) {
         player->stop();
         delete player; 
@@ -95,30 +97,25 @@ void MusicManager::playSongByObject(Song* s) {
         player = new MusicPlayer();
     }
 
-    // 1. Dừng ngay lập tức để ngắt kết nối với file cũ
     player->stop();
-    player->setSource(QUrl()); // Xóa nguồn phát cũ khỏi bộ nhớ đệm
+    player->setSource(QUrl());
 
-    // 2. Tạo một Playlist hoàn toàn mới với ID duy nhất (dùng thời gian để định danh)
-    // Việc này giúp MusicPlayer không bao giờ dùng lại vùng nhớ vừa bị dừng
     QString uniqueName = "Single_" + QString::number(QDateTime::currentMSecsSinceEpoch());
     Playlist* newTmp = new Playlist(uniqueName, true);
     newTmp->addSong(s);
 
-    // 3. Nạp vào trình phát
     player->addPlist(newTmp);
     player->setAPlist(uniqueName);
     
-    // 4. Phát
+
     player->play(0);
 
-    // 5. Quản lý bộ nhớ: Lưu vào danh sách để destructor của Manager xóa sau này
     playlists.append(newTmp);
 
     s->setPlayCount(s->getPlayCount() + 1);
     qDebug() << "Success: Dang phat" << s->getTitle();
 }
-// Các hàm khác giữ nguyên logic cũ của bạn
+
 void MusicManager::addSongToCatalog(Song* song) { if(song) allSongs.append(song); }
 void MusicManager::addSongToHome(Song* song) { if(song) songsOnHome.append(song); }
 MusicPlayer* MusicManager::getPlayer() const { return player; }
@@ -140,16 +137,27 @@ DoubleLinkedList<Playlist*>& MusicManager::getPlaylists() {
 void MusicManager::addPlaylist(Playlist* p) { if(p) playlists.append(p); }
 void MusicManager::removePlaylist(const QString& name) {
     for (int i = 0; i < playlists.getSize(); ++i) {
-        // Sử dụng so sánh không phân biệt hoa thường để an toàn
         if (playlists(i)->getName().compare(name, Qt::CaseInsensitive) == 0) {
             Playlist* p = playlists(i);
-            playlists.removeAt(i); // Sử dụng đúng tên hàm removeAt trong DoubleLinkedList của bạn
-            delete p; // Giải phóng bộ nhớ đối tượng Playlist
+            playlists.removeAt(i);
+            delete p;
             
-            savePlaylists(); // QUAN TRỌNG: Lưu lại file sau khi xóa để cập nhật dữ liệu
+            savePlaylists();
             qDebug() << "Da xoa playlist:" << name;
             return;
         }
+    }
+}
+void MusicManager::renamePlaylist(const QString& oldName, const QString& newName) {
+    Playlist* pl = getPlaylist(oldName);
+    
+    if (pl) {
+        pl->setName(newName);
+        savePlaylists();
+        
+        qDebug() << "Da doi ten playlist tu" << oldName << "thanh" << newName;
+    } else {
+        qDebug() << "Loi: Khong tim thay playlist de doi ten!";
     }
 }
 void MusicManager::savePlaylists() const {
@@ -163,18 +171,12 @@ void MusicManager::savePlaylists() const {
     QTextStream out(&file);
     for (int i = 0; i < playlists.getSize(); ++i) {
         Playlist* pl = playlists(i);
-
-        // ĐIỀU KIỆN QUAN TRỌNG: Chỉ lưu playlist người dùng tạo
-        // Nếu pl->getIsTemporary() là true (Single_...), chúng ta bỏ qua
         if (pl->getIsTemporary()) continue;
 
-        // Ghi tên Playlist với tiền tố PL:
         out << "PL:" << pl->getName() << "\n";
         
-        // Ghi danh sách bài hát trong playlist đó
         const DoubleLinkedList<Song*>& sList = pl->getSongs();
         for (int j = 0; j < sList.getSize(); ++j) {
-            // Lưu theo định dạng S:TênBài|TênCaSĩ để đối chiếu khi load
             out << "S:" << sList(j)->getTitle() << "|" << sList(j)->getArtist() << "\n";
         }
     }
@@ -196,13 +198,11 @@ void MusicManager::loadPlaylists() {
         if (line.isEmpty()) continue;
 
         if (line.startsWith("PL:")) {
-            // Bước 1: Tạo đối tượng Playlist mới từ tên trong file
             QString plName = line.mid(3); 
-            currentPl = new Playlist(plName, false); // false vì đây là playlist lưu trữ lâu dài
+            currentPl = new Playlist(plName, false);
             playlists.append(currentPl);
         } 
         else if (line.startsWith("S:") && currentPl) {
-            // Bước 2: Tách lấy Tên bài và Ca sĩ
             QString content = line.mid(2);
             QStringList parts = content.split('|');
             if (parts.size() < 2) continue;
@@ -210,8 +210,6 @@ void MusicManager::loadPlaylists() {
             QString title = parts[0];
             QString artist = parts[1];
 
-            // Bước 3: Tìm con trỏ bài hát tương ứng trong kho nhạc tổng (allSongs)
-            // Việc này giúp tiết kiệm bộ nhớ (không tạo bài hát trùng lặp)
             for (int k = 0; k < allSongs.getSize(); ++k) {
                 if (allSongs(k)->getTitle() == title && 
                     allSongs(k)->getArtist() == artist) {
@@ -275,7 +273,21 @@ void MusicManager::removeSongFromPlaylist(const QString& playlistName, const QSt
             return;
         }
     }
-}DoubleLinkedList<Song*> MusicManager::getTopSongs(int count) const {
+}
+DoubleLinkedList<Song*> MusicManager::searchHomeSong(const QString& word) const {
+    DoubleLinkedList<Song*> results;
+    if (word.isEmpty()) return results; 
+
+    for (int i = 0; i < allSongs.getSize(); ++i) { 
+        Song* s = allSongs(i);
+        if (s->getTitle().contains(word, Qt::CaseInsensitive) || 
+            s->getArtist().contains(word, Qt::CaseInsensitive)) {
+            results.append(s); 
+        }
+    }
+    return results;
+}
+DoubleLinkedList<Song*> MusicManager::getTopSongs(int count) const {
     DoubleLinkedList<Song*> sorted = sortDLL(allSongs, [](const Song* a, const Song* b) { return a->getPlayCount() < b->getPlayCount(); });
     DoubleLinkedList<Song*> res;
     for(int i = 0; i < std::min(count, sorted.getSize()); ++i) res.append(sorted(i));
@@ -283,12 +295,18 @@ void MusicManager::removeSongFromPlaylist(const QString& playlistName, const QSt
 }
 
 DoubleLinkedList<Song*> MusicManager::getNewReleases(int count) const {
-    DoubleLinkedList<Song*> sorted = sortDLL(allSongs, [](const Song* a, const Song* b) { return a->getDateAdded() < b->getDateAdded(); });
     DoubleLinkedList<Song*> res;
-    for(int i = 0; i < std::min(count, sorted.getSize()); ++i) res.append(sorted(i));
+    if (allSongs.getSize() == 0) return res; 
+    DoubleLinkedList<Song*> sorted = sortDLL(allSongs, [](const Song* a, const Song* b) { 
+        return a->getDateAdded() > b->getDateAdded(); 
+    }); 
+    int limit = std::min(count, sorted.getSize());
+    for(int i = 0; i < limit; ++i) {
+        res.append(sorted(i));
+    }
+    
     return res;
 }
-
 DoubleLinkedList<Song*> MusicManager::getSongsByArtist(const QString& name) const {
     DoubleLinkedList<Song*> res;
     for(int i = 0; i < allSongs.getSize(); ++i) if(allSongs(i)->getArtist().compare(name, Qt::CaseInsensitive) == 0) res.append(allSongs(i));

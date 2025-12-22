@@ -19,6 +19,7 @@ public:
     MusicPlayer(); 
     MusicPlayer(Playlist* Plist); 
     ~MusicPlayer(); 
+    Song* getCurrentSong();
     QMediaPlayer* getMediaPlayer(); 
     QAudioOutput* getAudioOutput() { return audioOutput; }
     void addPlist(Playlist* Plist);

@@ -17,6 +17,12 @@ MusicPlayer::~MusicPlayer() {
     delete player;
     delete audioOutput;
 }
+Song* MusicPlayer::getCurrentSong() {
+    if (APlist && currentIndex >= 0 && currentIndex < APlist->getSongs().getSize()) {
+        return APlist->getSongs()(currentIndex); // Trả về bài hát tại vị trí hiện tại
+    }
+    return nullptr;
+}
 
 QMediaPlayer* MusicPlayer::getMediaPlayer() {
     return player;
@@ -93,8 +99,12 @@ void MusicPlayer::stop() {
 }
 
 void MusicPlayer::next() {
-    if(!APlist || APlist->getSongs().isEmpty()) return;
-    currentIndex = (currentIndex + 1) % APlist->getSongs().getSize();
+    if(!APlist || APlist->getSongs().isEmpty()) return; 
+    
+    int totalSongs = APlist->getSongs().getSize();
+    if (totalSongs <= 0) return;
+
+    currentIndex = (currentIndex + 1) % totalSongs;
     play(currentIndex);
 }
 

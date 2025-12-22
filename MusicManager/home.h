@@ -16,12 +16,12 @@ class Home : public QWidget
     Q_OBJECT
 
 public:
-    // BẮT BUỘC: Constructor phải có tham số MusicManager*
+
     explicit Home(MusicManager *manager, QWidget *parent = nullptr);
     ~Home();
 
 protected:
-    // BẮT BUỘC: Để bắt sự kiện click vào khung bài hát
+
     bool eventFilter(QObject *obj, QEvent *event) override;
 
 private slots:
@@ -33,7 +33,8 @@ private:
     void setupSongUI(Song* s, QLabel* titleLbl, QLabel* artistLbl, QLabel* coverLbl, QFrame* songFrame); //
 
     Ui::Home *ui;
-    MusicManager *m_manager; //
+    MusicManager *m_manager;
+    QString m_currentPlaylistSearch = "";
     void setupPlayerControls();
     void loadPlaylistPage();
     void hienThiChiTietPlaylist(Playlist* pl);
