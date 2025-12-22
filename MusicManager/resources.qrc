@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/images">
+
         <file>background.jpg</file>
         <file>eye.jpg</file>
         <file>eye-slash.jpg</file>
@@ -10,5 +11,22 @@
         <file>buon.jpg</file>
         <file>chill.jpg</file>
         <file>default_cover.jpg</file>
+        <file>ANHBUON.jpg</file>
+        <file>ANHCHILL.jpg</file>
+        <file>ANHLOWG.jpg</file>
+        <file>ANH2.jpg</file>
+        <file>ANHBRAY.jpg</file>
+         <file>24H.jpg</file>
+<file>COEMCHO.jpg</file>
+<file>CONGIDEPHON.jpg</file>
+<file>DIVENHA.jpg</file>
+<file>HOABINH.jpg</file>
+<file>KHUTAOSONG.jpg</file>
+<file>MOTNAMMOI.jpg</file>
+<file>NOINAYCOANH.jpg</file>
+<file>PHEPMAU.jpg</file>
+<file>SAYYES.jpg</file>
+<file>TETDONGDAY.jpg</file>
+<file>TROCHOI.jpg</file>
     </qresource>
 </RCC>

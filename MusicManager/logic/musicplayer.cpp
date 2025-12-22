@@ -11,8 +11,6 @@ MusicPlayer::MusicPlayer()
 }
 
 MusicPlayer::~MusicPlayer() {
-    // KHÔNG xóa Playlist ở đây vì MusicManager đã chịu trách nhiệm quản lý bộ nhớ
-    // Việc xóa ở đây gây lỗi Double Free nếu Manager cũng xóa chúng.
     player->stop();
     delete player;
     delete audioOutput;
