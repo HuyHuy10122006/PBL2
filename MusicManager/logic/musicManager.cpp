@@ -256,6 +256,17 @@ void MusicManager::removeSongFromPlaylist(const QString& playlistName, const QSt
         }
     }
 }
+DoubleLinkedList<Song*> MusicManager::searchHomeSong(const QString& word) const {
+    DoubleLinkedList<Song*> res;
+    for(int i = 0; i < allSongs.getSize(); ++i) {
+        // Tìm kiếm theo tên hoặc nghệ sĩ (không phân biệt hoa thường)
+        if(allSongs(i)->getTitle().contains(word, Qt::CaseInsensitive) || 
+           allSongs(i)->getArtist().contains(word, Qt::CaseInsensitive)) {
+            res.append(allSongs(i));
+        }
+    }
+    return res;
+}
 
 DoubleLinkedList<Song*> MusicManager::getTopSongs(int count) const {
     // Sửa dấu < thành > để bài nghe nhiều nhất lên đầu

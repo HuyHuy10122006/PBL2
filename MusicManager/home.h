@@ -5,6 +5,7 @@
 #include <QString>
 #include <QLabel>
 #include <QFrame>
+#include <QListWidget>
 #include "logic/musicManager.h" //
 
 namespace Ui {
@@ -30,6 +31,8 @@ private slots:
     void loadHomePageData(); //
 
 private:
+    QListWidget *searchSuggestions;
+    void handleSearch(const QString &text);
     int m_lastVolume = 70;
     bool m_isMuted = false;
     void setupSongUI(Song* s, QLabel* titleLbl, QLabel* artistLbl, QLabel* coverLbl, QFrame* songFrame); //

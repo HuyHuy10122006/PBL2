@@ -32,3 +32,13 @@
 576	4602	7882035640000000	CMakeFiles/MusicManager.dir/login.cpp.obj	a781c7ca46cc007f
 582	5624	7882035640000000	CMakeFiles/MusicManager.dir/home.cpp.obj	8300078e32b7bbf2
 5624	7045	7882035700000000	MusicManager.exe	f374bd045cc82126
+49	1758	7882043240000000	MusicManager_autogen/timestamp	470565248f442b63
+49	1758	7882043240000000	MusicManager_autogen/mocs_compilation.cpp	470565248f442b63
+49	1758	7882043240000000	D:/Projects/PBL2/MusicManager/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/MusicManager_autogen/timestamp	470565248f442b63
+49	1758	7882043240000000	D:/Projects/PBL2/MusicManager/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/MusicManager_autogen/mocs_compilation.cpp	470565248f442b63
+1767	6556	7882043240000000	CMakeFiles/MusicManager.dir/mainwindow.cpp.obj	5754acfa69774b60
+1774	6981	7882043240000000	CMakeFiles/MusicManager.dir/logic/musicManager.cpp.obj	47afc9bee51f7757
+1760	7651	7882043240000000	CMakeFiles/MusicManager.dir/MusicManager_autogen/mocs_compilation.cpp.obj	1260d35762a5dd7
+1780	8323	7882043240000000	CMakeFiles/MusicManager.dir/login.cpp.obj	a781c7ca46cc007f
+1787	10044	7882043240000000	CMakeFiles/MusicManager.dir/home.cpp.obj	8300078e32b7bbf2
+10044	11585	7882043320000000	MusicManager.exe	f374bd045cc82126

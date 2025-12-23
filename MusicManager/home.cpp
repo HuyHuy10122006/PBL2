@@ -98,6 +98,69 @@ Home::Home(MusicManager *manager, QWidget *parent) :
     connect(ui->anh14_2, &ClickableLabel::clicked, this, [=](){ showMoodDetail("Chill"); });
     connect(ui->anh24_2, &ClickableLabel::clicked, this, [=](){ showMoodDetail("Buon"); });
 
+    searchSuggestions = new QListWidget(this);
+    searchSuggestions->hide();
+    searchSuggestions->setObjectName("searchSuggestions");
+
+    // Thiết lập giao diện cho danh sách gợi ý
+    searchSuggestions->setStyleSheet(
+        "QListWidget { background-color: #2A2A2A; color: white; border-radius: 15px; border: 1px solid #444; }"
+        "QListWidget::item { padding: 12px; border-bottom: 1px solid #333; font-size: 11pt; }"
+        "QListWidget::item:selected { background-color: #3A3A3A; color: #1DB954; }"
+        );
+
+    // Kết nối ô tìm kiếm của bạn (đã khớp tên 'timkiembaihat' từ file .ui)
+    connect(ui->timkiembaihat, &QLineEdit::textChanged, this, &Home::handleSearch);
+
+    // Xử lý khi chọn bài hát từ danh sách gợi ý
+    connect(searchSuggestions, &QListWidget::itemClicked, this, [=](QListWidgetItem* item){
+        Song* s = static_cast<Song*>(item->data(Qt::UserRole).value<void*>());
+        if (s) {
+            // Phát bài hát với ngữ cảnh là toàn bộ Catalog để có thể Next/Prev
+            m_manager->playSongByObject(s, m_manager->getAllSongs());
+
+            // Cập nhật thông tin hiển thị ở thanh Player bên dưới
+            ui->SongTitle->setText(s->getTitle());
+            ui->SongArtist->setText(s->getArtist());
+
+            // Reset ô tìm kiếm và ẩn danh sách gợi ý
+            ui->timkiembaihat->clear();
+            searchSuggestions->hide();
+        }
+    });
+
+}
+void Home::handleSearch(const QString &text) {
+    if (text.isEmpty()) {
+        searchSuggestions->hide();
+        return;
+    }
+
+    // Sử dụng hàm searchHomeSong đã có sẵn trong Manager của bạn
+    DoubleLinkedList<Song*> results = m_manager->searchHomeSong(text);
+
+    if (results.isEmpty()) {
+        searchSuggestions->hide();
+        return;
+    }
+
+    searchSuggestions->clear();
+    for (int i = 0; i < results.getSize(); ++i) {
+        Song* s = results(i);
+        // Hiển thị định dạng: Tên bài hát - Nghệ sĩ
+        QListWidgetItem* item = new QListWidgetItem(s->getTitle() + " - " + s->getArtist());
+        item->setData(Qt::UserRole, QVariant::fromValue((void*)s));
+        searchSuggestions->addItem(item);
+    }
+
+    // Đặt vị trí danh sách gợi ý ngay dưới ô timkiembaihat
+    // Tọa độ X, Y lấy theo widget timkiembaihat của bạn
+    searchSuggestions->setGeometry(ui->timkiembaihat->x() + 520, // 520 là offset từ layoutWidget của bạn
+                                   ui->timkiembaihat->y() + ui->timkiembaihat->height(),
+                                   ui->timkiembaihat->width(), 250);
+
+    searchSuggestions->raise(); // Đưa lên lớp trên cùng để không bị che
+    searchSuggestions->show();
 }
 // Hàm nạp dữ liệu và xử lý "trong suốt" cho các widget con (GIỮ NGUYÊN)
 void Home::setupSongUI(Song* s, QLabel* titleLbl, QLabel* artistLbl, QLabel* coverLbl, QFrame* songFrame) {
