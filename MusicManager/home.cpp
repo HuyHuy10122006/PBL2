@@ -199,18 +199,37 @@ bool Home::eventFilter(QObject *obj, QEvent *event) {
         }
     }
 
-    // 2. XỬ LÝ CLICK KHUNG BÀI HÁT (GIỮ NGUYÊN)
+    // 2. XỬ LÝ CLICK KHUNG BÀI HÁT
     if (event->type() == QEvent::MouseButtonPress) {
         QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
+
+        // DÒNG NÀY CỰC KỲ QUAN TRỌNG: Khai báo biến 'frame' từ đối tượng bị click
+        QFrame *frame = qobject_cast<QFrame*>(obj);
+
         static bool isProcessing = false;
         if (isProcessing) return true;
         isProcessing = true;
 
-        QFrame *frame = qobject_cast<QFrame*>(obj);
+        // Bây giờ 'frame' đã được khai báo, lỗi 'undeclared identifier' sẽ biến mất
         if (frame && frame->property("songPtr").isValid() && mouseEvent->button() == Qt::LeftButton) {
             Song* s = static_cast<Song*>(frame->property("songPtr").value<void*>());
+
             if (s && m_manager) {
-                m_manager->playSongByObject(s);
+                // --- LOGIC NHẬN DIỆN DANH SÁCH ĐANG HIỂN THỊ (CONTEXT) ---
+                if (ui->stackedWidgetMain->currentWidget() == ui->artistDetailPage) {
+                    m_manager->playSongByObject(s, m_manager->getSongsByArtist(ui->tencasy->text()));
+                }
+                else if (ui->stackedWidgetMain->currentWidget() == ui->moodDetailPage) {
+                    m_manager->playSongByObject(s, m_manager->getSongsByMood(ui->tencasy_2->text()));
+                }
+                else if (ui->stackedWidgetMain->currentWidget() == ui->playlistDetailPage) {
+                    Playlist* pl = m_manager->getPlaylist(ui->tenp->text());
+                    if (pl) m_manager->playSongByObject(s, pl->getSongs());
+                    else m_manager->playSongByObject(s, m_manager->getAllSongs());
+                }
+                else {
+                    m_manager->playSongByObject(s, m_manager->getAllSongs());
+                }
                 // Cập nhật nhãn thông tin góc trái
                 ui->SongTitle->setText(s->getTitle());
                 ui->SongArtist->setText(s->getArtist());
@@ -345,6 +364,7 @@ void Home::showArtistDetail(const QString &artistName) {
         sFrame->installEventFilter(this);
         sFrame->setCursor(Qt::PointingHandCursor);
 
+
         // Thêm Frame vào vùng chứa chính widget_6
         ui->widget_6->layout()->addWidget(sFrame);
     }
@@ -459,15 +479,19 @@ void Home::setupPlayerControls() {
     });
 
     // --- 3. ĐIỀU KHIỂN TIẾN/LÙI BÀI ---
-        connect(ui->pushButton_4, &QPushButton::clicked, this, [=]() {
-            m_manager->getPlayer()->previous(); // Gọi hàm previous() đã sửa ở trên
-            ui->pushButton_21->setText("⏸");
-        });
+    connect(ui->pushButton_4, &QPushButton::clicked, this, [=]() {
+        if (m_manager && m_manager->getPlayer()) {
+            m_manager->getPlayer()->previous();
+            ui->pushButton_21->setText("⏸"); // Luôn đổi icon sang Pause vì nhạc sẽ phát ngay
+        }
+    });
 
-    // Nút Tiếp theo (pushButton_22)
+    // Nút Tiến (pushButton_22)
     connect(ui->pushButton_22, &QPushButton::clicked, this, [=]() {
-        m_manager->getPlayer()->next(); // Gọi hàm next() đã sửa ở trên
-        ui->pushButton_21->setText("⏸");
+        if (m_manager && m_manager->getPlayer()) {
+            m_manager->getPlayer()->next();
+            ui->pushButton_21->setText("⏸");
+        }
     });
     // --- 4. THANH TIẾN TRÌNH (sliderProgress) VÀ THỜI GIAN (label_10) ---
     connect(mediaPlayer, &QMediaPlayer::durationChanged, this, [=](qint64 duration) {
@@ -527,7 +551,10 @@ void Home::setupPlayerControls() {
     // --- 6. TỰ ĐỘNG CHUYỂN BÀI KHI HẾT NHẠC ---
     connect(mediaPlayer, &QMediaPlayer::mediaStatusChanged, this, [=](QMediaPlayer::MediaStatus status) {
         if (status == QMediaPlayer::EndOfMedia) {
-            m_manager->next();
+            // Gọi hàm next() để chuyển sang bài tiếp theo trong danh sách
+            m_manager->getPlayer()->next();
+            // Đảm bảo nút vẫn hiện Pause vì bài mới sẽ tự động phát
+            ui->pushButton_21->setText("⏸");
         }
     });
 }

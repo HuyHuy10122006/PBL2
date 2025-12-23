@@ -37,7 +37,7 @@ public:
 
     void playSong(const QString& playlistName, int index);
     void playSingleSong(const QString& songTitle, const QString& artistName);
-    void playSongByObject(Song* s); // [MỚI] Phát trực tiếp từ đối tượng Song
+    void playSongByObject(Song* s, const DoubleLinkedList<Song*>& currentContext); // [MỚI] Phát trực tiếp từ đối tượng Song
     void stop();
     void next();
     void previous();

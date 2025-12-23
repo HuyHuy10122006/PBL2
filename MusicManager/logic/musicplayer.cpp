@@ -52,7 +52,6 @@ void MusicPlayer::setAPlist(const QString& name)
         if(playlists(i) && playlists(i)->getName() == name)
         {
             APlist = playlists(i);
-            currentIndex = 0;
             return;
         }
     }

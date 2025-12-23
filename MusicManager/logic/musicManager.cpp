@@ -97,25 +97,48 @@ MusicManager::~MusicManager(){
     }
 }
 
-void MusicManager::playSongByObject(Song* s){
-    if (!s) return;
-    if (!player) {
-        player = new MusicPlayer();
-    }
+void MusicManager::playSongByObject(Song* s, const DoubleLinkedList<Song*>& currentContext) {
+    if (!s || !player || currentContext.isEmpty()) return;
+
     player->stop();
-    player->setSource(QUrl()); 
     
-    QString uniqueName = "Single_" + QString::number(QDateTime::currentMSecsSinceEpoch());
-    Playlist* newTmp = new Playlist(uniqueName, true);
-    newTmp->addSong(s);
-    player->addPlist(newTmp);
-    player->setAPlist(uniqueName);
-    player->play(0);
-    playlists.append(newTmp);
-    // Tăng lượt phát
-    s->setPlayCount(s->getPlayCount() + 1);
-    saveData(); 
-    qDebug() << "Success: Dang phat" << s->getTitle() << "| Lượt nghe hien tai:" << s->getPlayCount();
+    // 1. Tìm vị trí (index) của bài hát trong danh sách đang hiển thị
+    int foundIndex = -1;
+    for (int i = 0; i < currentContext.getSize(); ++i) {
+        if (currentContext(i) == s) {
+            foundIndex = i;
+            break;
+        }
+    }
+
+    if (foundIndex != -1) {
+        // 2. Tạo hoặc cập nhật Playlist tạm thời "Current_Context"
+        QString contextName = "Current_Context";
+        Playlist* contextPl = getPlaylist(contextName);
+        
+        if (contextPl) {
+            // Xóa danh sách cũ để nạp danh sách mới của Playlist/Mood vừa nhấn
+            const_cast<DoubleLinkedList<Song*>&>(contextPl->getSongs()).clear();
+        } else {
+            contextPl = new Playlist(contextName, true); // true là playlist tạm
+            playlists.append(contextPl);
+        }
+
+        // 3. Sao chép các bài hát từ danh sách đang xem vào Playlist của Player
+        for(int i = 0; i < currentContext.getSize(); ++i) {
+            contextPl->addSong(currentContext(i));
+        }
+
+        // 4. Thiết lập cho Player
+        player->addPlist(contextPl);
+        player->setAPlist(contextName);
+        
+        // 5. Phát tại đúng vị trí index đã tìm thấy
+        player->play(foundIndex);
+        
+        s->setPlayCount(s->getPlayCount() + 1);
+        saveData();
+    }
 }
 
 void MusicManager::addSongToCatalog(Song* song) { if(song) allSongs.append(song); }
