@@ -96,7 +96,7 @@ Home::Home(MusicManager *manager, QWidget *parent) :
     connect(ui->label_27, &ClickableLabel::clicked, this, [=](){ showArtistDetail("B Ray"); });
     connect(ui->label_26, &ClickableLabel::clicked, this, [=](){ showArtistDetail("Low G"); });
     connect(ui->anh14_2, &ClickableLabel::clicked, this, [=](){ showMoodDetail("Chill"); });
-    connect(ui->anh24_2, &ClickableLabel::clicked, this, [=](){ showMoodDetail("Sad"); });
+    connect(ui->anh24_2, &ClickableLabel::clicked, this, [=](){ showMoodDetail("Buon"); });
 
 }
 // Hàm nạp dữ liệu và xử lý "trong suốt" cho các widget con (GIỮ NGUYÊN)
