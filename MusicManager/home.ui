@@ -648,7 +648,7 @@ QPushButton:checked {
         </size>
        </property>
        <property name="currentIndex">
-        <number>0</number>
+        <number>2</number>
        </property>
        <widget class="QWidget" name="homePage">
         <widget class="QScrollArea" name="scrollArea">
@@ -673,7 +673,7 @@ QPushButton:checked {
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>-420</y>
+            <y>0</y>
             <width>1232</width>
             <height>1600</height>
            </rect>
@@ -1536,19 +1536,6 @@ QPushButton:checked {
                <item>
                 <widget class="QWidget" name="luoi2" native="true">
                  <layout class="QGridLayout" name="gridLayout_2">
-                  <item row="0" column="3">
-                   <spacer name="horizontalSpacer_8">
-                    <property name="orientation">
-                     <enum>Qt::Orientation::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
                   <item row="0" column="0">
                    <widget class="QFrame" name="anh12">
                     <property name="minimumSize">
@@ -1695,6 +1682,19 @@ QPushButton:checked {
                      </item>
                     </layout>
                    </widget>
+                  </item>
+                  <item row="0" column="3">
+                   <spacer name="horizontalSpacer_8">
+                    <property name="orientation">
+                     <enum>Qt::Orientation::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
                   </item>
                  </layout>
                 </widget>
@@ -3561,7 +3561,7 @@ QPushButton:checked {
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>81</width>
+               <width>910</width>
                <height>1000</height>
               </rect>
              </property>
@@ -3674,7 +3674,7 @@ QPushButton:checked {
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>81</width>
+                <width>910</width>
                 <height>1000</height>
                </rect>
               </property>

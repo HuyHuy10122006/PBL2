@@ -6,8 +6,6 @@
 #include <functional>
 #include <QFileInfo>
 #include <QDateTime>
-
-// Hàm bổ trợ sắp xếp - ĐÃ SỬA LỖI GÂY CRASH
 DoubleLinkedList<Song*> sortDLL(const DoubleLinkedList<Song*>& original, std::function<bool(const Song*, const Song*)> comparator) {
     int n = original.getSize();
     DoubleLinkedList<Song*> sorted; 
@@ -22,7 +20,7 @@ DoubleLinkedList<Song*> sortDLL(const DoubleLinkedList<Song*>& original, std::fu
     for (int i = 0; i < n - 1; ++i) {
         for (int j = 0; j < n - i - 1; ++j) {
             // So sánh tiêu chí dựa trên comparator truyền vào
-            if (comparator(sorted(j), sorted(j + 1))) {
+            if (comparator(sorted(j), sorted(j + 1))){
                 // Hoán đổi con trỏ bài hát giữa các Node
                 Song* temp = sorted(j);
                 sorted(j) = sorted(j + 1);
@@ -33,7 +31,7 @@ DoubleLinkedList<Song*> sortDLL(const DoubleLinkedList<Song*>& original, std::fu
     return sorted; // Trả về bản sao đã sắp xếp an toàn
 }
  
-void MusicManager::saveData() const {
+void MusicManager::saveData() const{
     QFile file("catalog.csv");
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) return;
     QTextStream out(&file);
@@ -51,7 +49,7 @@ void MusicManager::saveData() const {
     file.close();
 }
 
-void MusicManager::loadData() {
+void MusicManager::loadData(){
     QFile file("catalog.csv");
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) return;
     QTextStream in(&file);
@@ -77,12 +75,13 @@ void MusicManager::loadData() {
     file.close();
 } 
 
-MusicManager::MusicManager() : player(nullptr) { 
+MusicManager::MusicManager(){ 
+    player = new MusicPlayer(); 
     loadData();
     loadPlaylists(); 
 }
 
-MusicManager::~MusicManager() {
+MusicManager::~MusicManager(){
     saveData();       
     savePlaylists();  
     if(player) {
@@ -90,21 +89,22 @@ MusicManager::~MusicManager() {
         delete player; 
         player = nullptr;
     }
-    for(int i = 0; i < playlists.getSize(); ++i) {
+    for(int i = 0; i < playlists.getSize(); ++i){
         delete playlists(i); 
     }
-    for(int i = 0; i < allSongs.getSize(); ++i) {
+    for(int i = 0; i < allSongs.getSize(); ++i){
         delete allSongs(i);
     }
 }
 
-void MusicManager::playSongByObject(Song* s) {
+void MusicManager::playSongByObject(Song* s){
     if (!s) return;
     if (!player) {
         player = new MusicPlayer();
     }
     player->stop();
     player->setSource(QUrl()); 
+    
     QString uniqueName = "Single_" + QString::number(QDateTime::currentMSecsSinceEpoch());
     Playlist* newTmp = new Playlist(uniqueName, true);
     newTmp->addSong(s);
@@ -112,8 +112,10 @@ void MusicManager::playSongByObject(Song* s) {
     player->setAPlist(uniqueName);
     player->play(0);
     playlists.append(newTmp);
+    // Tăng lượt phát
     s->setPlayCount(s->getPlayCount() + 1);
-    qDebug() << "Success: Dang phat" << s->getTitle();
+    saveData(); 
+    qDebug() << "Success: Dang phat" << s->getTitle() << "| Lượt nghe hien tai:" << s->getPlayCount();
 }
 
 void MusicManager::addSongToCatalog(Song* song) { if(song) allSongs.append(song); }
@@ -261,6 +263,16 @@ DoubleLinkedList<Song*> MusicManager::getRecommendedSongs(int count) const {
         int idx = QRandomGenerator::global()->bounded(temp.getSize());
         res.append(temp(idx));
         temp.removeAt(idx);
+    }
+    return res;
+}
+DoubleLinkedList<Song*> MusicManager::getSongsByMood(const QString& moodName) const {
+    DoubleLinkedList<Song*> res;
+    for(int i = 0; i < allSongs.getSize(); ++i) {
+        // Kiểm tra nếu đường dẫn file chứa tên thư mục tâm trạng (vd: "CHILL")
+        if(allSongs(i)->getFilePath().contains(moodName, Qt::CaseInsensitive)) {
+            res.append(allSongs(i));
+        }
     }
     return res;
 }

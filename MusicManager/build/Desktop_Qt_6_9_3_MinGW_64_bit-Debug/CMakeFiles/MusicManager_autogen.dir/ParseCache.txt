@@ -1204,8 +1204,9 @@ D:/Projects/PBL2/MusicManager/login.h
  mdp:D:/download/Tools/mingw1310_64/x86_64-w64-mingw32/include/time.h
  mdp:D:/download/Tools/mingw1310_64/x86_64-w64-mingw32/include/vadefs.h
  mdp:D:/download/Tools/mingw1310_64/x86_64-w64-mingw32/include/wchar.h
-D:/Projects/PBL2/MusicManager/logic/musicplayer.h
 D:/Projects/PBL2/MusicManager/logic/musicManager.h
+D:/Projects/PBL2/MusicManager/logic/musicplayer.h
+D:/Projects/PBL2/MusicManager/logic/playlist.h
 D:/Projects/PBL2/MusicManager/mainwindow.h
  mmc:Q_OBJECT
  mdp:D:/Projects/PBL2/MusicManager/build/Desktop_Qt_6_9_3_MinGW_64_bit-Debug/MusicManager_autogen/moc_predefs.h
@@ -1582,12 +1583,11 @@ D:/Projects/PBL2/MusicManager/mainwindow.h
  mdp:D:/download/Tools/mingw1310_64/x86_64-w64-mingw32/include/time.h
  mdp:D:/download/Tools/mingw1310_64/x86_64-w64-mingw32/include/vadefs.h
  mdp:D:/download/Tools/mingw1310_64/x86_64-w64-mingw32/include/wchar.h
-D:/Projects/PBL2/MusicManager/logic/playlist.h
 D:/Projects/PBL2/MusicManager/logic/song.h
-D:/Projects/PBL2/MusicManager/login.cpp
- uic:ui_login.h
 D:/Projects/PBL2/MusicManager/home.cpp
  uic:ui_home.h
+D:/Projects/PBL2/MusicManager/login.cpp
+ uic:ui_login.h
 D:/Projects/PBL2/MusicManager/logic/musicManager.cpp
 D:/Projects/PBL2/MusicManager/logic/musicplayer.cpp
 D:/Projects/PBL2/MusicManager/logic/playlist.cpp

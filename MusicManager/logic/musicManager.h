@@ -48,6 +48,7 @@ public:
     DoubleLinkedList<Song*> getNewReleases(int count) const;
     DoubleLinkedList<Song*> getSongsByArtist(const QString& artistName) const;
     DoubleLinkedList<Song*> getRecommendedSongs(int count) const;
+    DoubleLinkedList<Song*> getSongsByMood(const QString& moodName) const;
 
     void saveData() const;
     void loadData(); 
