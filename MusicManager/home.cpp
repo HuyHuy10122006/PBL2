@@ -92,10 +92,10 @@ Home::Home(MusicManager *manager, QWidget *parent) :
     connect(ui->pushButton_22, &QPushButton::clicked, this, [=]() { m_manager->next(); });
 
 
-    connect(ui->label_2, &ClickableLabel::clicked, this, [=](){ showArtistDetail("Hai Thu Hiếu"); });
-    connect(ui->label_27, &ClickableLabel::clicked, this, [=](){ showArtistDetail("B-Ray"); });
-    connect(ui->label_26, &ClickableLabel::clicked, this, [=](){ showArtistDetail("LowG"); });
-    connect(ui->anh14_2, &ClickableLabel::clicked, this, [=](){ showMoodDetail("Happy"); });
+    connect(ui->label_2, &ClickableLabel::clicked, this, [=](){ showArtistDetail("HIEUTHUHAI"); });
+    connect(ui->label_27, &ClickableLabel::clicked, this, [=](){ showArtistDetail("B Ray"); });
+    connect(ui->label_26, &ClickableLabel::clicked, this, [=](){ showArtistDetail("Low G"); });
+    connect(ui->anh14_2, &ClickableLabel::clicked, this, [=](){ showMoodDetail("Chill"); });
     connect(ui->anh24_2, &ClickableLabel::clicked, this, [=](){ showMoodDetail("Sad"); });
 
 }
@@ -260,13 +260,165 @@ void Home::loadHomePageData() {
     if (topSongs.getSize() >= 6 && ui->bai11_9)  setupSongUI(topSongs(5), ui->label_98,  ui->label_99,  ui->label_97,  ui->bai11_9);
 }
 void Home::showArtistDetail(const QString &artistName) {
+    // 1. Cập nhật tiêu đề và chuyển sang trang chi tiết nghệ sĩ
     ui->tencasy->setText(artistName);
     ui->stackedWidgetMain->setCurrentWidget(ui->artistDetailPage);
+
+    // 2. Xác định đường dẫn ảnh chân dung dựa trên tên ca sĩ (Khớp với file .qrc)
+    QString artistImgPath = ":/images/default_cover.jpg";
+    if (artistName.contains("HIEUTHUHAI", Qt::CaseInsensitive)) {
+        artistImgPath = ":/images/ANH2.jpg";
+    } else if (artistName.contains("B Ray", Qt::CaseInsensitive)) {
+        artistImgPath = ":/images/ANHBRAY.jpg";
+    } else if (artistName.contains("Low G", Qt::CaseInsensitive)) {
+        artistImgPath = ":/images/ANHLOWG.jpg";
+    }
+
+    // 3. Hiển thị ảnh chân dung lớn bên trái
+    QPixmap artistPix(artistImgPath);
+    if (!artistPix.isNull()) {
+        ui->anhcasy->setPixmap(artistPix.scaled(ui->anhcasy->size(),
+                                                Qt::KeepAspectRatioByExpanding,
+                                                Qt::SmoothTransformation));
+    }
+
+    // 4. Lọc danh sách bài hát từ MusicManager dựa trên tên nghệ sĩ
+    DoubleLinkedList<Song*> artistSongs = m_manager->getSongsByArtist(artistName);
+
+    // Dòng này để bạn kiểm tra số lượng bài tìm thấy trong ô Application Output
+    qDebug() << "DEBUG - Tim thay " << artistSongs.getSize() << " bai hat cho: " << artistName;
+
+    // 5. Thiết lập Layout cho widget_6 nếu chưa có
+    if (!ui->widget_6->layout()) {
+        QVBoxLayout* layout = new QVBoxLayout(ui->widget_6);
+        layout->setAlignment(Qt::AlignTop);
+        layout->setContentsMargins(10, 10, 10, 10);
+        layout->setSpacing(10);
+    }
+
+    // 6. Xóa sạch danh sách bài hát cũ của ca sĩ trước đó
+    QLayoutItem *child;
+    while ((child = ui->widget_6->layout()->takeAt(0)) != nullptr) {
+        if (child->widget()) {
+            child->widget()->setParent(nullptr);
+            delete child->widget();
+        }
+        delete child;
+    }
+
+    // 7. Tạo khung hiển thị cho từng bài hát tìm thấy
+    for (int i = 0; i < artistSongs.getSize(); ++i) {
+        Song* s = artistSongs(i);
+
+        // Tạo Frame bao quanh mỗi bài hát
+        QFrame* sFrame = new QFrame(ui->widget_6);
+        sFrame->setMinimumHeight(70);
+        sFrame->setStyleSheet("QFrame { background-color: #2A2A2A; border-radius: 10px; color: white; }"
+                              "QFrame:hover { background-color: #3A3A3A; }");
+
+        QHBoxLayout* sLayout = new QHBoxLayout(sFrame);
+
+        // Hiển thị ảnh bìa nhỏ (Dùng chung ảnh chân dung ca sĩ cho đồng bộ)
+        QLabel* imgLbl = new QLabel(sFrame);
+        imgLbl->setFixedSize(50, 50);
+        imgLbl->setPixmap(artistPix.scaled(50, 50, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation));
+
+        // Thông tin tiêu đề và nghệ sĩ
+        QVBoxLayout* infoLayout = new QVBoxLayout();
+        QLabel* titleLbl = new QLabel(s->getTitle(), sFrame);
+        QLabel* artistLbl = new QLabel(s->getArtist(), sFrame);
+
+        titleLbl->setStyleSheet("font-weight: bold; font-size: 11pt; color: white;");
+        artistLbl->setStyleSheet("color: #AAAAAA; font-size: 9pt;");
+
+        infoLayout->addWidget(titleLbl);
+        infoLayout->addWidget(artistLbl);
+        infoLayout->setContentsMargins(10, 0, 0, 0);
+
+        // Đưa các thành phần vào Layout của Frame
+        sLayout->addWidget(imgLbl);
+        sLayout->addLayout(infoLayout);
+        sLayout->addStretch();
+
+        // Cấu hình để nhấn vào Frame là phát nhạc (Sử dụng songPtr đã có trong eventFilter)
+        sFrame->setProperty("songPtr", QVariant::fromValue((void*)s));
+        sFrame->installEventFilter(this);
+        sFrame->setCursor(Qt::PointingHandCursor);
+
+        // Thêm Frame vào vùng chứa chính widget_6
+        ui->widget_6->layout()->addWidget(sFrame);
+    }
+
+    // Thêm khoảng trống ở cuối để danh sách trông gọn gàng
+    if (ui->widget_6->layout()->count() > 0) {
+        static_cast<QVBoxLayout*>(ui->widget_6->layout())->addStretch();
+    }
 }
 
 void Home::showMoodDetail(const QString &moodName) {
-    ui->tamtrang->setText(moodName);
+    // 1. Chuyển trang và gán tiêu đề
+    ui->tencasy_2->setText( moodName);
     ui->stackedWidgetMain->setCurrentWidget(ui->moodDetailPage);
+
+    // 2. Gán ảnh đại diện lớn cho Mood
+    QString moodImgPath = moodName.contains("Chill", Qt::CaseInsensitive) ? ":/images/ANHCHILL.jpg" : ":/images/ANHBUON.jpg";
+    ui->anhcasy_2->setPixmap(QPixmap(moodImgPath).scaled(ui->anhcasy_2->size(), Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation));
+
+    DoubleLinkedList<Song*> allSongs = m_manager->getAllSongs();
+    DoubleLinkedList<Song*> moodSongs;
+
+    QString folderKey = moodName.contains("Chill", Qt::CaseInsensitive) ? "CHILL" : "BUON";
+
+    for (int i = 0; i < allSongs.getSize(); ++i) {
+        Song* s = allSongs(i);
+        // Nếu đường dẫn file chứa chữ BUON hoặc CHILL thì thêm vào danh sách
+        if (s->getFilePath().contains(folderKey, Qt::CaseInsensitive)) {
+            moodSongs.append(s);
+        }
+    }
+
+    // 4. Thiết lập Layout và xóa bài cũ cho widget_29
+    if (!ui->widget_29->layout()) {
+        QVBoxLayout* layout = new QVBoxLayout(ui->widget_29);
+        layout->setAlignment(Qt::AlignTop);
+        layout->setSpacing(10);
+    }
+    QLayoutItem *child;
+    while ((child = ui->widget_29->layout()->takeAt(0)) != nullptr) {
+        if (child->widget()) delete child->widget();
+        delete child;
+    }
+
+    // 5. Hiển thị danh sách bài hát đã lọc lên widget_29
+    for (int i = 0; i < moodSongs.getSize(); ++i) {
+        Song* s = moodSongs(i);
+        QFrame* sFrame = new QFrame(ui->widget_29);
+        sFrame->setMinimumHeight(70);
+        sFrame->setStyleSheet("QFrame { background-color: #2A2A2A; border-radius: 10px; } QFrame:hover { background-color: #3A3A3A; }");
+
+        QHBoxLayout* sLayout = new QHBoxLayout(sFrame);
+
+        // Ảnh bìa bài hát nhỏ
+        QLabel* imgLbl = new QLabel(sFrame);
+        imgLbl->setFixedSize(50, 50);
+        QString sCover = s->getCoverPath().isEmpty() ? ":/images/default_cover.jpg" : s->getCoverPath();
+        imgLbl->setPixmap(QPixmap(sCover).scaled(50, 50, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation));
+
+        QVBoxLayout* info = new QVBoxLayout();
+        QLabel* t = new QLabel(s->getTitle(), sFrame);
+        QLabel* a = new QLabel(s->getArtist(), sFrame);
+        t->setStyleSheet("color: white; font-weight: bold;");
+        a->setStyleSheet("color: #AAAAAA;");
+        info->addWidget(t); info->addWidget(a);
+
+        sLayout->addWidget(imgLbl);
+        sLayout->addLayout(info);
+        sLayout->addStretch();
+
+        sFrame->setProperty("songPtr", QVariant::fromValue((void*)s));
+        sFrame->installEventFilter(this);
+        ui->widget_29->layout()->addWidget(sFrame);
+    }
 }
 void Home::setupPlayerControls() {
     if (!m_manager || !m_manager->getPlayer()) return;
@@ -307,16 +459,15 @@ void Home::setupPlayerControls() {
     });
 
     // --- 3. ĐIỀU KHIỂN TIẾN/LÙI BÀI ---
-    connect(ui->pushButton_4, &QPushButton::clicked, this, [=]() {
-        if (m_manager && m_manager->getPlayer()) {
-            m_manager->previous();
-        }
-    });
+        connect(ui->pushButton_4, &QPushButton::clicked, this, [=]() {
+            m_manager->getPlayer()->previous(); // Gọi hàm previous() đã sửa ở trên
+            ui->pushButton_21->setText("⏸");
+        });
 
+    // Nút Tiếp theo (pushButton_22)
     connect(ui->pushButton_22, &QPushButton::clicked, this, [=]() {
-        if (m_manager && m_manager->getPlayer()) {
-            m_manager->next();
-        }
+        m_manager->getPlayer()->next(); // Gọi hàm next() đã sửa ở trên
+        ui->pushButton_21->setText("⏸");
     });
     // --- 4. THANH TIẾN TRÌNH (sliderProgress) VÀ THỜI GIAN (label_10) ---
     connect(mediaPlayer, &QMediaPlayer::durationChanged, this, [=](qint64 duration) {
@@ -335,12 +486,42 @@ void Home::setupPlayerControls() {
 
     // Cho phép kéo thanh sliderProgress để tua nhạc
     connect(ui->sliderProgress, &QSlider::sliderMoved, mediaPlayer, &QMediaPlayer::setPosition);
-
-    // --- 5. THANH ÂM LƯỢNG (horizontalSlider) ---
+    // --- 5. THANH ÂM LƯỢNG VÀ NÚT LOA (Dùng biểu tượng văn bản) ---
     ui->horizontalSlider->setRange(0, 100);
     ui->horizontalSlider->setValue(70);
+    if (audioOutput) audioOutput->setVolume(0.7);
+
+    // Thiết lập chữ mặc định cho nút loa thay vì dùng Icon
+    ui->loa->setText("🔊");
+    ui->loa->setStyleSheet("QPushButton { font-size: 14pt; border: none; background: transparent; color: white; }");
+
+    connect(ui->loa, &QPushButton::clicked, this, [=]() {
+        if (!m_isMuted) {
+            // Tắt âm
+            m_lastVolume = ui->horizontalSlider->value();
+            ui->horizontalSlider->setValue(0);
+            if (audioOutput) audioOutput->setVolume(0);
+            ui->loa->setText("🔇");
+            m_isMuted = true;
+        } else {
+            // Mở lại
+            ui->horizontalSlider->setValue(m_lastVolume);
+            if (audioOutput) audioOutput->setVolume(m_lastVolume / 100.0);
+            ui->loa->setText("🔊");
+            m_isMuted = false;
+        }
+    });
+
+    // Đồng bộ khi kéo Slider
     connect(ui->horizontalSlider, &QSlider::valueChanged, this, [=](int value) {
         if (audioOutput) audioOutput->setVolume(value / 100.0);
+        if (value == 0) {
+            ui->loa->setText("🔇");
+            m_isMuted = true;
+        } else {
+            ui->loa->setText("🔊");
+            m_isMuted = false;
+        }
     });
 
     // --- 6. TỰ ĐỘNG CHUYỂN BÀI KHI HẾT NHẠC ---
@@ -450,30 +631,26 @@ void Home::loadPlaylistPage() {
 void Home::hienThiChiTietPlaylist(Playlist* pl) {
     if (!pl) return;
 
-    // 1. Chuyển sang trang chi tiết (widget_17 chứa trang detail của bạn)
+    // 1. Chuyển sang trang chi tiết Playlist
     ui->stackedWidgetMain->setCurrentWidget(ui->playlistDetailPage);
-
-    // 2. Cập nhật tên playlist lên Label (ID từ XML của bạn là "tenp")
     ui->tenp->setText(pl->getName());
 
-    // 3. Thiết lập Layout cho vùng hiển thị bài hát (widget_31 trong XML)
+    // 2. Thiết lập Layout cho vùng hiển thị bài hát (widget_31)
     if (!ui->widget_31->layout()) {
         QVBoxLayout* layout = new QVBoxLayout(ui->widget_31);
         layout->setContentsMargins(10, 10, 10, 10);
-        layout->setSpacing(5);
+        layout->setSpacing(10);
+        layout->setAlignment(Qt::AlignTop);
     }
 
-    // 4. Dọn dẹp danh sách bài hát cũ (tránh bị hiện trùng bài của playlist trước)
+    // 3. Dọn dẹp danh sách bài hát cũ
     QLayoutItem *child;
     while ((child = ui->widget_31->layout()->takeAt(0)) != nullptr) {
-        if (child->widget()) {
-            child->widget()->setParent(nullptr);
-            delete child->widget();
-        }
+        if (child->widget()) delete child->widget();
         delete child;
     }
 
-    // 5. Lấy danh sách bài hát thực tế từ đối tượng Playlist
+    // 4. Lấy danh sách bài hát từ Playlist
     const DoubleLinkedList<Song*>& songs = pl->getSongs();
 
     if (songs.isEmpty()) {
@@ -484,61 +661,67 @@ void Home::hienThiChiTietPlaylist(Playlist* pl) {
         for (int i = 0; i < songs.getSize(); ++i) {
             Song* s = songs(i);
 
-            // Tạo một khung nhỏ cho mỗi bài hát
+            // Tạo khung hàng bài hát
             QFrame* sFrame = new QFrame(ui->widget_31);
-            sFrame->setMinimumHeight(50);
-            sFrame->setStyleSheet("QFrame { background-color: #1E1E1E; border-radius: 5px; }"
+            sFrame->setMinimumHeight(70);
+            sFrame->setStyleSheet("QFrame { background-color: #1E1E1E; border-radius: 10px; }"
                                   "QFrame:hover { background-color: #2A2A2A; }");
 
             QHBoxLayout* sLayout = new QHBoxLayout(sFrame);
 
+            // --- 5. HIỂN THỊ ẢNH BÌA TƯƠNG ỨNG CỦA BÀI HÁT ---
+            QLabel* imgLbl = new QLabel(sFrame);
+            imgLbl->setFixedSize(50, 50);
+
+            // Lấy đường dẫn từ cột CoverPath trong catalog.csv
+            QString sCover = s->getCoverPath().isEmpty() ? ":/images/default_cover.jpg" : s->getCoverPath();
+            QPixmap pix(sCover);
+
+            if (!pix.isNull()) {
+                imgLbl->setPixmap(pix.scaled(50, 50, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation));
+            } else {
+                // Nếu không nạp được ảnh, dùng ảnh mặc định
+                imgLbl->setPixmap(QPixmap(":/images/default_cover.jpg").scaled(50, 50, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation));
+            }
+
+            // --- 6. THÔNG TIN TIÊU ĐỀ VÀ NGHỆ SĨ ---
+            QVBoxLayout* infoLayout = new QVBoxLayout();
             QLabel* title = new QLabel(s->getTitle(), sFrame);
-            title->setStyleSheet("color: white; font-weight: bold;");
+            title->setStyleSheet("color: white; font-weight: bold; font-size: 11pt;");
 
             QLabel* artist = new QLabel(s->getArtist(), sFrame);
-            artist->setStyleSheet("color: #AAAAAA;");
+            artist->setStyleSheet("color: #AAAAAA; font-size: 9pt;");
 
-            sLayout->addWidget(title);
-            sLayout->addSpacing(20);
-            sLayout->addWidget(artist);
+            infoLayout->addWidget(title);
+            infoLayout->addWidget(artist);
+            infoLayout->setContentsMargins(10, 0, 0, 0);
+
+            // Sắp xếp các thành phần vào hàng
+            sLayout->addWidget(imgLbl);
+            sLayout->addLayout(infoLayout);
             sLayout->addStretch();
 
-            // QUAN TRỌNG: Gán songPtr để nhấn vào là phát nhạc ngay
+            // Cài đặt phát nhạc và Menu chuột phải
             sFrame->setProperty("songPtr", QVariant::fromValue((void*)s));
             sFrame->installEventFilter(this);
             sFrame->setCursor(Qt::PointingHandCursor);
 
-
             sFrame->setContextMenuPolicy(Qt::CustomContextMenu);
             connect(sFrame, &QFrame::customContextMenuRequested, this, [=](const QPoint &pos) {
                 QMenu contextMenu(this);
-                // Bạn có thể chỉnh style cho Menu giống các phần trước
-                contextMenu.setStyleSheet("QMenu { background-color: #2A2A2A; color: white; border: 1px solid #444; }"
-                                          "QMenu::item:selected { background-color: #3A3A3A; }");
-
+                contextMenu.setStyleSheet("QMenu { background-color: #2A2A2A; color: white; }");
                 QAction *removeAction = contextMenu.addAction("Xóa khỏi Playlist này");
-
                 connect(removeAction, &QAction::triggered, this, [=]() {
-                    QMessageBox::StandardButton reply = QMessageBox::question(this, "Xác nhận xóa",
-                                                                              QString("Bạn có muốn xóa bài hát '%1' khỏi playlist này không?").arg(s->getTitle()),
-                                                                              QMessageBox::Yes | QMessageBox::No);
-
-                    if (reply == QMessageBox::Yes) {
-                        // Gọi hàm xóa đã viết trong MusicManager
-                        m_manager->removeSongFromPlaylist(pl->getName(), s->getTitle(), s->getArtist());
-
-                        // QUAN TRỌNG: Gọi lại chính hàm này để làm mới (refresh) giao diện ngay lập tức
-                        hienThiChiTietPlaylist(pl);
-                    }
+                    m_manager->removeSongFromPlaylist(pl->getName(), s->getTitle(), s->getArtist());
+                    hienThiChiTietPlaylist(pl); // Refresh lại giao diện
                 });
-
                 contextMenu.exec(sFrame->mapToGlobal(pos));
             });
+
             ui->widget_31->layout()->addWidget(sFrame);
         }
     }
-    // Thêm khoảng trống ở cuối để đẩy các bài hát lên trên
+    // Thêm khoảng trống đẩy bài hát lên trên
     static_cast<QVBoxLayout*>(ui->widget_31->layout())->addStretch();
 }
-
 Home::~Home() { delete ui; }

@@ -52,9 +52,12 @@ public:
     QPushButton *pushButton_4;
     QPushButton *pushButton_21;
     QPushButton *pushButton_22;
-    QWidget *widget_8;
-    QSlider *horizontalSlider;
     QLabel *label_10;
+    QWidget *widget_8;
+    QWidget *widget1;
+    QHBoxLayout *horizontalLayout_10;
+    QPushButton *loa;
+    QSlider *horizontalSlider;
     QWidget *widget_2;
     QHBoxLayout *horizontalLayout_2;
     QFrame *Sidebar;
@@ -463,11 +466,19 @@ public:
         verticalLayout_6->setObjectName("verticalLayout_6");
         SongTitle = new QLabel(layoutWidget1);
         SongTitle->setObjectName("SongTitle");
+        QFont font1;
+        font1.setFamilies({QString::fromUtf8("Segoe UI")});
+        font1.setPointSize(14);
+        SongTitle->setFont(font1);
 
         verticalLayout_6->addWidget(SongTitle);
 
         SongArtist = new QLabel(layoutWidget1);
         SongArtist->setObjectName("SongArtist");
+        QFont font2;
+        font2.setFamilies({QString::fromUtf8("Segoe UI")});
+        font2.setPointSize(10);
+        SongArtist->setFont(font2);
 
         verticalLayout_6->addWidget(SongArtist);
 
@@ -481,7 +492,7 @@ public:
         widget_7->setObjectName("widget_7");
         sliderProgress = new QSlider(widget_7);
         sliderProgress->setObjectName("sliderProgress");
-        sliderProgress->setGeometry(QRect(20, 30, 431, 20));
+        sliderProgress->setGeometry(QRect(40, 30, 411, 20));
         sliderProgress->setMaximumSize(QSize(16777215, 16777215));
         sliderProgress->setStyleSheet(QString::fromUtf8("QSlider::groove:horizontal {\n"
 "    height: 3px;\n"
@@ -559,14 +570,30 @@ public:
 
         horizontalLayout_25->addWidget(pushButton_22);
 
+        label_10 = new QLabel(widget_7);
+        label_10->setObjectName("label_10");
+        label_10->setGeometry(QRect(10, 20, 30, 30));
+        label_10->setMinimumSize(QSize(30, 30));
 
         horizontalLayout_6->addWidget(widget_7);
 
         widget_8 = new QWidget(controlFrame);
         widget_8->setObjectName("widget_8");
-        horizontalSlider = new QSlider(widget_8);
+        widget1 = new QWidget(widget_8);
+        widget1->setObjectName("widget1");
+        widget1->setGeometry(QRect(260, 30, 172, 26));
+        horizontalLayout_10 = new QHBoxLayout(widget1);
+        horizontalLayout_10->setObjectName("horizontalLayout_10");
+        horizontalLayout_10->setContentsMargins(0, 0, 0, 0);
+        loa = new QPushButton(widget1);
+        loa->setObjectName("loa");
+        loa->setMinimumSize(QSize(10, 10));
+        loa->setMaximumSize(QSize(25, 16777215));
+
+        horizontalLayout_10->addWidget(loa);
+
+        horizontalSlider = new QSlider(widget1);
         horizontalSlider->setObjectName("horizontalSlider");
-        horizontalSlider->setGeometry(QRect(300, 30, 141, 16));
         horizontalSlider->setStyleSheet(QString::fromUtf8("QSlider::groove:horizontal {\n"
 "    height: 3px;\n"
 "    background: #3e3e3e;\n"
@@ -586,10 +613,9 @@ public:
 "}\n"
 ""));
         horizontalSlider->setOrientation(Qt::Orientation::Horizontal);
-        label_10 = new QLabel(widget_8);
-        label_10->setObjectName("label_10");
-        label_10->setGeometry(QRect(260, 20, 30, 30));
-        label_10->setMinimumSize(QSize(30, 30));
+
+        horizontalLayout_10->addWidget(horizontalSlider);
+
 
         horizontalLayout_6->addWidget(widget_8);
 
@@ -629,12 +655,12 @@ public:
         label->setGeometry(QRect(10, 10, 150, 121));
         label->setMinimumSize(QSize(150, 0));
         label->setMaximumSize(QSize(150, 16777215));
-        QFont font1;
-        font1.setFamilies({QString::fromUtf8("Segoe UI")});
-        font1.setPointSize(14);
-        font1.setBold(true);
-        font1.setItalic(false);
-        label->setFont(font1);
+        QFont font3;
+        font3.setFamilies({QString::fromUtf8("Segoe UI")});
+        font3.setPointSize(14);
+        font3.setBold(true);
+        font3.setItalic(false);
+        label->setFont(font3);
         label->setStyleSheet(QString::fromUtf8("QLabel#labelLogo {\n"
 "    color: #00BFA5;      \n"
 "    font-weight: bold;     \n"
@@ -645,7 +671,7 @@ public:
         label->setAlignment(Qt::AlignmentFlag::AlignCenter);
         layoutWidget3 = new QWidget(Sidebar);
         layoutWidget3->setObjectName("layoutWidget3");
-        layoutWidget3->setGeometry(QRect(10, 290, 172, 121));
+        layoutWidget3->setGeometry(QRect(10, 290, 151, 121));
         verticalLayout = new QVBoxLayout(layoutWidget3);
         verticalLayout->setSpacing(20);
         verticalLayout->setObjectName("verticalLayout");
@@ -687,7 +713,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName("scrollAreaWidgetContents");
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 1232, 1600));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 1235, 1600));
         scrollAreaWidgetContents->setMinimumSize(QSize(0, 1600));
         widget_3 = new QWidget(scrollAreaWidgetContents);
         widget_3->setObjectName("widget_3");
@@ -709,10 +735,10 @@ public:
         goiybaihat->setObjectName("goiybaihat");
         goiybaihat->setMinimumSize(QSize(0, 50));
         goiybaihat->setMaximumSize(QSize(250, 70));
-        QFont font2;
-        font2.setFamilies({QString::fromUtf8("Segoe UI")});
-        font2.setPointSize(18);
-        goiybaihat->setFont(font2);
+        QFont font4;
+        font4.setFamilies({QString::fromUtf8("Segoe UI")});
+        font4.setPointSize(18);
+        goiybaihat->setFont(font4);
 
         verticalLayout_3->addWidget(goiybaihat);
 
@@ -744,19 +770,13 @@ public:
 
         label_8 = new QLabel(widget_12);
         label_8->setObjectName("label_8");
-        QFont font3;
-        font3.setFamilies({QString::fromUtf8("Segoe UI")});
-        font3.setPointSize(14);
-        label_8->setFont(font3);
+        label_8->setFont(font1);
 
         verticalLayout_5->addWidget(label_8);
 
         label_9 = new QLabel(widget_12);
         label_9->setObjectName("label_9");
-        QFont font4;
-        font4.setFamilies({QString::fromUtf8("Segoe UI")});
-        font4.setPointSize(10);
-        label_9->setFont(font4);
+        label_9->setFont(font2);
 
         verticalLayout_5->addWidget(label_9);
 
@@ -805,13 +825,13 @@ public:
 
         label_14 = new QLabel(widget_14);
         label_14->setObjectName("label_14");
-        label_14->setFont(font3);
+        label_14->setFont(font1);
 
         verticalLayout_7->addWidget(label_14);
 
         label_15 = new QLabel(widget_14);
         label_15->setObjectName("label_15");
-        label_15->setFont(font4);
+        label_15->setFont(font2);
 
         verticalLayout_7->addWidget(label_15);
 
@@ -860,13 +880,13 @@ public:
 
         label_5 = new QLabel(widget_10);
         label_5->setObjectName("label_5");
-        label_5->setFont(font3);
+        label_5->setFont(font1);
 
         verticalLayout_4->addWidget(label_5);
 
         label_6 = new QLabel(widget_10);
         label_6->setObjectName("label_6");
-        label_6->setFont(font4);
+        label_6->setFont(font2);
 
         verticalLayout_4->addWidget(label_6);
 
@@ -915,13 +935,13 @@ public:
 
         label_20 = new QLabel(widget_16);
         label_20->setObjectName("label_20");
-        label_20->setFont(font3);
+        label_20->setFont(font1);
 
         verticalLayout_9->addWidget(label_20);
 
         label_21 = new QLabel(widget_16);
         label_21->setObjectName("label_21");
-        label_21->setFont(font4);
+        label_21->setFont(font2);
 
         verticalLayout_9->addWidget(label_21);
 
@@ -970,13 +990,13 @@ public:
 
         label_16 = new QLabel(widget_11);
         label_16->setObjectName("label_16");
-        label_16->setFont(font3);
+        label_16->setFont(font1);
 
         verticalLayout_8->addWidget(label_16);
 
         label_17 = new QLabel(widget_11);
         label_17->setObjectName("label_17");
-        label_17->setFont(font4);
+        label_17->setFont(font2);
 
         verticalLayout_8->addWidget(label_17);
 
@@ -1025,13 +1045,13 @@ public:
 
         label_22 = new QLabel(widget_15);
         label_22->setObjectName("label_22");
-        label_22->setFont(font3);
+        label_22->setFont(font1);
 
         verticalLayout_10->addWidget(label_22);
 
         label_23 = new QLabel(widget_15);
         label_23->setObjectName("label_23");
-        label_23->setFont(font4);
+        label_23->setFont(font2);
 
         verticalLayout_10->addWidget(label_23);
 
@@ -1069,7 +1089,7 @@ public:
         casy = new QLabel(section2);
         casy->setObjectName("casy");
         casy->setMaximumSize(QSize(400, 50));
-        casy->setFont(font2);
+        casy->setFont(font4);
 
         verticalLayout_11->addWidget(casy);
 
@@ -1159,7 +1179,7 @@ public:
         moiphathanh->setObjectName("moiphathanh");
         moiphathanh->setMinimumSize(QSize(0, 50));
         moiphathanh->setMaximumSize(QSize(250, 50));
-        moiphathanh->setFont(font2);
+        moiphathanh->setFont(font4);
 
         verticalLayout_22->addWidget(moiphathanh);
 
@@ -1191,13 +1211,13 @@ public:
 
         label_25 = new QLabel(widget_30);
         label_25->setObjectName("label_25");
-        label_25->setFont(font3);
+        label_25->setFont(font1);
 
         verticalLayout_36->addWidget(label_25);
 
         label_28 = new QLabel(widget_30);
         label_28->setObjectName("label_28");
-        label_28->setFont(font4);
+        label_28->setFont(font2);
 
         verticalLayout_36->addWidget(label_28);
 
@@ -1246,13 +1266,13 @@ public:
 
         label_72 = new QLabel(widget_33);
         label_72->setObjectName("label_72");
-        label_72->setFont(font3);
+        label_72->setFont(font1);
 
         verticalLayout_39->addWidget(label_72);
 
         label_73 = new QLabel(widget_33);
         label_73->setObjectName("label_73");
-        label_73->setFont(font4);
+        label_73->setFont(font2);
 
         verticalLayout_39->addWidget(label_73);
 
@@ -1301,13 +1321,13 @@ public:
 
         label_78 = new QLabel(widget_35);
         label_78->setObjectName("label_78");
-        label_78->setFont(font3);
+        label_78->setFont(font1);
 
         verticalLayout_41->addWidget(label_78);
 
         label_79 = new QLabel(widget_35);
         label_79->setObjectName("label_79");
-        label_79->setFont(font4);
+        label_79->setFont(font2);
 
         verticalLayout_41->addWidget(label_79);
 
@@ -1356,13 +1376,13 @@ public:
 
         label_81 = new QLabel(widget_36);
         label_81->setObjectName("label_81");
-        label_81->setFont(font3);
+        label_81->setFont(font1);
 
         verticalLayout_42->addWidget(label_81);
 
         label_82 = new QLabel(widget_36);
         label_82->setObjectName("label_82");
-        label_82->setFont(font4);
+        label_82->setFont(font2);
 
         verticalLayout_42->addWidget(label_82);
 
@@ -1411,13 +1431,13 @@ public:
 
         label_84 = new QLabel(widget_37);
         label_84->setObjectName("label_84");
-        label_84->setFont(font3);
+        label_84->setFont(font1);
 
         verticalLayout_43->addWidget(label_84);
 
         label_85 = new QLabel(widget_37);
         label_85->setObjectName("label_85");
-        label_85->setFont(font4);
+        label_85->setFont(font2);
 
         verticalLayout_43->addWidget(label_85);
 
@@ -1466,13 +1486,13 @@ public:
 
         label_89 = new QLabel(widget_38);
         label_89->setObjectName("label_89");
-        label_89->setFont(font3);
+        label_89->setFont(font1);
 
         verticalLayout_45->addWidget(label_89);
 
         label_90 = new QLabel(widget_38);
         label_90->setObjectName("label_90");
-        label_90->setFont(font4);
+        label_90->setFont(font2);
 
         verticalLayout_45->addWidget(label_90);
 
@@ -1510,7 +1530,7 @@ public:
         tamtrang = new QLabel(section4);
         tamtrang->setObjectName("tamtrang");
         tamtrang->setMaximumSize(QSize(400, 50));
-        tamtrang->setFont(font2);
+        tamtrang->setFont(font4);
 
         verticalLayout_13->addWidget(tamtrang);
 
@@ -1580,7 +1600,7 @@ public:
         bxh->setObjectName("bxh");
         bxh->setMinimumSize(QSize(0, 50));
         bxh->setMaximumSize(QSize(250, 70));
-        bxh->setFont(font2);
+        bxh->setFont(font4);
 
         verticalLayout_19->addWidget(bxh);
 
@@ -1612,13 +1632,13 @@ public:
 
         label_92 = new QLabel(widget_39);
         label_92->setObjectName("label_92");
-        label_92->setFont(font3);
+        label_92->setFont(font1);
 
         verticalLayout_46->addWidget(label_92);
 
         label_93 = new QLabel(widget_39);
         label_93->setObjectName("label_93");
-        label_93->setFont(font4);
+        label_93->setFont(font2);
 
         verticalLayout_46->addWidget(label_93);
 
@@ -1667,13 +1687,13 @@ public:
 
         label_95 = new QLabel(widget_40);
         label_95->setObjectName("label_95");
-        label_95->setFont(font3);
+        label_95->setFont(font1);
 
         verticalLayout_47->addWidget(label_95);
 
         label_96 = new QLabel(widget_40);
         label_96->setObjectName("label_96");
-        label_96->setFont(font4);
+        label_96->setFont(font2);
 
         verticalLayout_47->addWidget(label_96);
 
@@ -1722,13 +1742,13 @@ public:
 
         label_98 = new QLabel(widget_41);
         label_98->setObjectName("label_98");
-        label_98->setFont(font3);
+        label_98->setFont(font1);
 
         verticalLayout_48->addWidget(label_98);
 
         label_99 = new QLabel(widget_41);
         label_99->setObjectName("label_99");
-        label_99->setFont(font4);
+        label_99->setFont(font2);
 
         verticalLayout_48->addWidget(label_99);
 
@@ -1777,13 +1797,13 @@ public:
 
         label_101 = new QLabel(widget_42);
         label_101->setObjectName("label_101");
-        label_101->setFont(font3);
+        label_101->setFont(font1);
 
         verticalLayout_49->addWidget(label_101);
 
         label_102 = new QLabel(widget_42);
         label_102->setObjectName("label_102");
-        label_102->setFont(font4);
+        label_102->setFont(font2);
 
         verticalLayout_49->addWidget(label_102);
 
@@ -1832,13 +1852,13 @@ public:
 
         label_104 = new QLabel(widget_43);
         label_104->setObjectName("label_104");
-        label_104->setFont(font3);
+        label_104->setFont(font1);
 
         verticalLayout_50->addWidget(label_104);
 
         label_105 = new QLabel(widget_43);
         label_105->setObjectName("label_105");
-        label_105->setFont(font4);
+        label_105->setFont(font2);
 
         verticalLayout_50->addWidget(label_105);
 
@@ -1887,13 +1907,13 @@ public:
 
         label_107 = new QLabel(widget_44);
         label_107->setObjectName("label_107");
-        label_107->setFont(font3);
+        label_107->setFont(font1);
 
         verticalLayout_51->addWidget(label_107);
 
         label_108 = new QLabel(widget_44);
         label_108->setObjectName("label_108");
-        label_108->setFont(font4);
+        label_108->setFont(font2);
 
         verticalLayout_51->addWidget(label_108);
 
@@ -1953,6 +1973,12 @@ public:
 
         tencasy = new QLabel(layoutWidget5);
         tencasy->setObjectName("tencasy");
+        QFont font5;
+        font5.setFamilies({QString::fromUtf8("Segoe UI")});
+        font5.setPointSize(16);
+        font5.setBold(true);
+        font5.setItalic(true);
+        tencasy->setFont(font5);
 
         verticalLayout_34->addWidget(tencasy);
 
@@ -1965,7 +1991,7 @@ public:
         scrollArea_2->setWidgetResizable(true);
         scrollAreaWidgetContents_2 = new QWidget();
         scrollAreaWidgetContents_2->setObjectName("scrollAreaWidgetContents_2");
-        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 910, 1000));
+        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 913, 1000));
         scrollAreaWidgetContents_2->setMinimumSize(QSize(0, 1000));
         widget_6 = new QWidget(scrollAreaWidgetContents_2);
         widget_6->setObjectName("widget_6");
@@ -2005,6 +2031,7 @@ public:
 
         tencasy_2 = new QLabel(layoutWidget_3);
         tencasy_2->setObjectName("tencasy_2");
+        tencasy_2->setFont(font5);
 
         verticalLayout_35->addWidget(tencasy_2);
 
@@ -2017,7 +2044,7 @@ public:
         scrollArea_3->setWidgetResizable(true);
         scrollAreaWidgetContents_3 = new QWidget();
         scrollAreaWidgetContents_3->setObjectName("scrollAreaWidgetContents_3");
-        scrollAreaWidgetContents_3->setGeometry(QRect(0, 0, 910, 1000));
+        scrollAreaWidgetContents_3->setGeometry(QRect(0, 0, 913, 1000));
         scrollAreaWidgetContents_3->setMinimumSize(QSize(0, 1000));
         widget_29 = new QWidget(scrollAreaWidgetContents_3);
         widget_29->setObjectName("widget_29");
@@ -2047,11 +2074,11 @@ public:
         horizontalLayout_22->setContentsMargins(0, 0, 0, 0);
         tvplaylist = new QLabel(layoutWidget6);
         tvplaylist->setObjectName("tvplaylist");
-        QFont font5;
-        font5.setFamilies({QString::fromUtf8("Segoe UI")});
-        font5.setPointSize(20);
-        font5.setBold(true);
-        tvplaylist->setFont(font5);
+        QFont font6;
+        font6.setFamilies({QString::fromUtf8("Segoe UI")});
+        font6.setPointSize(20);
+        font6.setBold(true);
+        tvplaylist->setFont(font6);
         tvplaylist->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "    color: white; /* \304\220\341\272\243m b\341\272\243o ch\341\273\257 m\303\240u tr\341\272\257ng */\n"
 "    font-size: 20pt; /* K\303\255ch th\306\260\341\273\233c ch\341\273\257 l\341\273\233n */\n"
@@ -2092,11 +2119,11 @@ public:
         themplaylist->setObjectName("themplaylist");
         themplaylist->setMinimumSize(QSize(50, 0));
         themplaylist->setMaximumSize(QSize(400, 16777215));
-        QFont font6;
-        font6.setFamilies({QString::fromUtf8("Segoe UI")});
-        font6.setPointSize(14);
-        font6.setBold(true);
-        themplaylist->setFont(font6);
+        QFont font7;
+        font7.setFamilies({QString::fromUtf8("Segoe UI")});
+        font7.setPointSize(14);
+        font7.setBold(true);
+        themplaylist->setFont(font7);
         themplaylist->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: #3A007B; /* N\341\273\201n T\303\255m \304\221\341\272\255m */\n"
 "    color: white; /* Ch\341\273\257 tr\341\272\257ng */\n"
@@ -2135,10 +2162,10 @@ public:
         tenp = new QLabel(widget_17);
         tenp->setObjectName("tenp");
         tenp->setGeometry(QRect(0, 0, 351, 91));
-        QFont font7;
-        font7.setFamilies({QString::fromUtf8("Segoe UI")});
-        font7.setPointSize(16);
-        tenp->setFont(font7);
+        QFont font8;
+        font8.setFamilies({QString::fromUtf8("Segoe UI")});
+        font8.setPointSize(16);
+        tenp->setFont(font8);
         scrollArea_4 = new QScrollArea(widget_17);
         scrollArea_4->setObjectName("scrollArea_4");
         scrollArea_4->setGeometry(QRect(-10, 90, 1251, 631));
@@ -2146,7 +2173,7 @@ public:
         scrollArea_4->setWidgetResizable(true);
         scrollAreaWidgetContents_4 = new QWidget();
         scrollAreaWidgetContents_4->setObjectName("scrollAreaWidgetContents_4");
-        scrollAreaWidgetContents_4->setGeometry(QRect(0, 0, 1232, 1000));
+        scrollAreaWidgetContents_4->setGeometry(QRect(0, 0, 1235, 1000));
         scrollAreaWidgetContents_4->setMinimumSize(QSize(0, 1000));
         widget_31 = new QWidget(scrollAreaWidgetContents_4);
         widget_31->setObjectName("widget_31");
@@ -2160,7 +2187,7 @@ public:
         retranslateUi(Home);
 
         avatar->setDefault(false);
-        stackedWidgetMain->setCurrentIndex(2);
+        stackedWidgetMain->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(Home);
@@ -2178,6 +2205,7 @@ public:
         pushButton_21->setText(QCoreApplication::translate("Home", "\342\226\266", nullptr));
         pushButton_22->setText(QCoreApplication::translate("Home", "\342\217\255", nullptr));
         label_10->setText(QCoreApplication::translate("Home", "TextLabel", nullptr));
+        loa->setText(QCoreApplication::translate("Home", "PushButton", nullptr));
         logout->setText(QCoreApplication::translate("Home", "\360\237\224\222 \304\220\304\203ng xu\341\272\245t", nullptr));
         label->setText(QCoreApplication::translate("Home", "\360\237\216\265 MUSIC \360\237\216\265", nullptr));
         home->setText(QCoreApplication::translate("Home", "\360\237\217\240 Home", nullptr));

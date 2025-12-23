@@ -244,6 +244,12 @@ QLineEdit:focus {
           </property>
           <item>
            <widget class="QLabel" name="SongTitle">
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+              <pointsize>14</pointsize>
+             </font>
+            </property>
             <property name="text">
              <string>tencasy</string>
             </property>
@@ -251,6 +257,12 @@ QLineEdit:focus {
           </item>
           <item>
            <widget class="QLabel" name="SongArtist">
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
             <property name="text">
              <string>TextLabel</string>
             </property>
@@ -267,9 +279,9 @@ QLineEdit:focus {
       <widget class="QSlider" name="sliderProgress">
        <property name="geometry">
         <rect>
-         <x>20</x>
+         <x>40</x>
          <y>30</y>
-         <width>431</width>
+         <width>411</width>
          <height>20</height>
         </rect>
        </property>
@@ -378,21 +390,62 @@ QPushButton:hover {
         </item>
        </layout>
       </widget>
+      <widget class="QLabel" name="label_10">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>30</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>30</width>
+         <height>30</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+      </widget>
      </widget>
     </item>
     <item>
      <widget class="QWidget" name="widget_8" native="true">
-      <widget class="QSlider" name="horizontalSlider">
+      <widget class="QWidget" name="">
        <property name="geometry">
         <rect>
-         <x>300</x>
+         <x>260</x>
          <y>30</y>
-         <width>141</width>
-         <height>16</height>
+         <width>172</width>
+         <height>26</height>
         </rect>
        </property>
-       <property name="styleSheet">
-        <string notr="true">QSlider::groove:horizontal {
+       <layout class="QHBoxLayout" name="horizontalLayout_10">
+        <item>
+         <widget class="QPushButton" name="loa">
+          <property name="minimumSize">
+           <size>
+            <width>10</width>
+            <height>10</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>25</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>PushButton</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSlider" name="horizontalSlider">
+          <property name="styleSheet">
+           <string notr="true">QSlider::groove:horizontal {
     height: 3px;
     background: #3e3e3e;
     border-radius: 2px;
@@ -410,29 +463,13 @@ QSlider::sub-page:horizontal {
     background: #00BFA5; /* màu xanh Spotify */
 }
 </string>
-       </property>
-       <property name="orientation">
-        <enum>Qt::Orientation::Horizontal</enum>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_10">
-       <property name="geometry">
-        <rect>
-         <x>260</x>
-         <y>20</y>
-         <width>30</width>
-         <height>30</height>
-        </rect>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>30</width>
-         <height>30</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>TextLabel</string>
-       </property>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Orientation::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </widget>
      </widget>
     </item>
@@ -565,7 +602,7 @@ QPushButton:checked {
         <rect>
          <x>10</x>
          <y>290</y>
-         <width>172</width>
+         <width>151</width>
          <height>121</height>
         </rect>
        </property>
@@ -648,7 +685,7 @@ QPushButton:checked {
         </size>
        </property>
        <property name="currentIndex">
-        <number>2</number>
+        <number>1</number>
        </property>
        <widget class="QWidget" name="homePage">
         <widget class="QScrollArea" name="scrollArea">
@@ -674,7 +711,7 @@ QPushButton:checked {
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>1232</width>
+            <width>1235</width>
             <height>1600</height>
            </rect>
           </property>
@@ -3536,6 +3573,14 @@ QPushButton:checked {
               </item>
               <item>
                <widget class="QLabel" name="tencasy">
+                <property name="font">
+                 <font>
+                  <family>Segoe UI</family>
+                  <pointsize>16</pointsize>
+                  <italic>true</italic>
+                  <bold>true</bold>
+                 </font>
+                </property>
                 <property name="text">
                  <string>TextLabel</string>
                 </property>
@@ -3561,7 +3606,7 @@ QPushButton:checked {
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>910</width>
+               <width>913</width>
                <height>1000</height>
               </rect>
              </property>
@@ -3649,6 +3694,14 @@ QPushButton:checked {
                </item>
                <item>
                 <widget class="QLabel" name="tencasy_2">
+                 <property name="font">
+                  <font>
+                   <family>Segoe UI</family>
+                   <pointsize>16</pointsize>
+                   <italic>true</italic>
+                   <bold>true</bold>
+                  </font>
+                 </property>
                  <property name="text">
                   <string>TextLabel</string>
                  </property>
@@ -3674,7 +3727,7 @@ QPushButton:checked {
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>910</width>
+                <width>913</width>
                 <height>1000</height>
                </rect>
               </property>
@@ -3921,7 +3974,7 @@ QPushButton:hover {
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>1232</width>
+             <width>1235</width>
              <height>1000</height>
             </rect>
            </property>

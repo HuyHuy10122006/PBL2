@@ -30,6 +30,8 @@ private slots:
     void loadHomePageData(); //
 
 private:
+    int m_lastVolume = 70;
+    bool m_isMuted = false;
     void setupSongUI(Song* s, QLabel* titleLbl, QLabel* artistLbl, QLabel* coverLbl, QFrame* songFrame); //
 
     Ui::Home *ui;
