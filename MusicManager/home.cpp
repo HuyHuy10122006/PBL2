@@ -155,7 +155,7 @@ void Home::setupSongUI(Song* s, QLabel* titleLbl, QLabel* artistLbl, QLabel* cov
             connect(action, &QAction::triggered, this, [=]() {
                 m_manager->addSongToPlaylist(pl->getName(), s);
                 QMessageBox::information(this, "Thành công",
-                                          QString("Đã thêm '%1' vào playlist '%2'").arg(s->getTitle(), pl->getName()));
+                                         QString("Đã thêm '%1' vào playlist '%2'").arg(s->getTitle(), pl->getName()));
             });
         }
 
@@ -231,6 +231,8 @@ bool Home::eventFilter(QObject *obj, QEvent *event) {
 
 void Home::loadHomePageData() {
     if (!m_manager) return;
+
+    // --- SECTION 1: GỢI Ý BÀI HÁT (GIỮ NGUYÊN) ---
     DoubleLinkedList<Song*> sugSongs = m_manager->getRecommendedSongs(6);
     if (sugSongs.getSize() >= 1) setupSongUI(sugSongs(0), ui->label_14, ui->label_15, ui->label_13, ui->bai11);
     if (sugSongs.getSize() >= 2) setupSongUI(sugSongs(1), ui->label_8, ui->label_9, ui->label_7, ui->bai21);
@@ -238,8 +240,25 @@ void Home::loadHomePageData() {
     if (sugSongs.getSize() >= 4) setupSongUI(sugSongs(3), ui->label_20, ui->label_21, ui->label_19, ui->bai41);
     if (sugSongs.getSize() >= 5) setupSongUI(sugSongs(4), ui->label_16, ui->label_17, ui->label_4, ui->bai51);
     if (sugSongs.getSize() >= 6) setupSongUI(sugSongs(5), ui->label_22, ui->label_23, ui->label_18, ui->bai61);
-}
 
+    // --- SECTION 3: MỚI PHÁT HÀNH (Sắp xếp theo ngày: image_65b0f3.png và image_65b12d.png) ---
+    DoubleLinkedList<Song*> newSongs = m_manager->getNewReleases(6);
+    if (newSongs.getSize() >= 1 && ui->bai41_2) setupSongUI(newSongs(0), ui->label_25, ui->label_28, ui->label_24, ui->bai41_2);
+    if (newSongs.getSize() >= 2 && ui->bai11_2) setupSongUI(newSongs(1), ui->label_72, ui->label_73, ui->label_71, ui->bai11_2);
+    if (newSongs.getSize() >= 3 && ui->bai11_3) setupSongUI(newSongs(2), ui->label_78, ui->label_79, ui->label_77, ui->bai11_3);
+    if (newSongs.getSize() >= 4 && ui->bai11_4) setupSongUI(newSongs(3), ui->label_81, ui->label_82, ui->label_80, ui->bai11_4);
+    if (newSongs.getSize() >= 5 && ui->bai11_5) setupSongUI(newSongs(4), ui->label_84, ui->label_85, ui->label_83, ui->bai11_5);
+    if (newSongs.getSize() >= 6 && ui->bai11_6) setupSongUI(newSongs(5), ui->label_89, ui->label_90, ui->label_88, ui->bai11_6);
+
+    // --- SECTION 5: BXH / NGHE NHIỀU NHẤT (Sắp xếp theo lượt nghe: image_65b16c.png và image_65b18d.png) ---
+    DoubleLinkedList<Song*> topSongs = m_manager->getTopSongs(6);
+    if (topSongs.getSize() >= 1 && ui->bai11_10) setupSongUI(topSongs(0), ui->label_101, ui->label_102, ui->label_100, ui->bai11_10);
+    if (topSongs.getSize() >= 2 && ui->bai11_11) setupSongUI(topSongs(1), ui->label_104, ui->label_105, ui->label_103, ui->bai11_11);
+    if (topSongs.getSize() >= 3 && ui->bai11_12) setupSongUI(topSongs(2), ui->label_107, ui->label_108, ui->label_106, ui->bai11_12);
+    if (topSongs.getSize() >= 4 && ui->bai11_7)  setupSongUI(topSongs(3), ui->label_92,  ui->label_93,  ui->label_91,  ui->bai11_7);
+    if (topSongs.getSize() >= 5 && ui->bai11_8)  setupSongUI(topSongs(4), ui->label_95,  ui->label_96,  ui->label_94,  ui->bai11_8);
+    if (topSongs.getSize() >= 6 && ui->bai11_9)  setupSongUI(topSongs(5), ui->label_98,  ui->label_99,  ui->label_97,  ui->bai11_9);
+}
 void Home::showArtistDetail(const QString &artistName) {
     ui->tencasy->setText(artistName);
     ui->stackedWidgetMain->setCurrentWidget(ui->artistDetailPage);

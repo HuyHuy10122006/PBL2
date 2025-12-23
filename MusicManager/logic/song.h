@@ -10,7 +10,7 @@ private:
     QString artist; 
     int duration; 
     QString filePath;
-    QString coverPath; // [MỚI] Đường dẫn ảnh bìa
+    QString coverPath; 
     int playCount;   
     QDate dateAdded; 
 public:
@@ -24,7 +24,7 @@ public:
     QString getArtist() const; 
     int getDuration() const; 
     QString getFilePath() const;
-    QString getCoverPath() const; // [MỚI]
+    QString getCoverPath() const; 
     int getPlayCount() const;
     QDate getDateAdded() const;
 
@@ -33,7 +33,7 @@ public:
     void setArtist(const QString &a);
     void setDuration(int d);
     void setFilePath(const QString &path);
-    void setCoverPath(const QString &path); // [MỚI]
+    void setCoverPath(const QString &path); 
     QString toString() const; 
 };
 #endif

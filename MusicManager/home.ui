@@ -565,7 +565,7 @@ QPushButton:checked {
         <rect>
          <x>10</x>
          <y>290</y>
-         <width>151</width>
+         <width>172</width>
          <height>121</height>
         </rect>
        </property>
@@ -673,8 +673,8 @@ QPushButton:checked {
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>0</y>
-            <width>1235</width>
+            <y>-420</y>
+            <width>1232</width>
             <height>1600</height>
            </rect>
           </property>
@@ -3561,7 +3561,7 @@ QPushButton:checked {
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>913</width>
+               <width>81</width>
                <height>1000</height>
               </rect>
              </property>
@@ -3674,7 +3674,7 @@ QPushButton:checked {
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>913</width>
+                <width>81</width>
                 <height>1000</height>
                </rect>
               </property>
@@ -3921,7 +3921,7 @@ QPushButton:hover {
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>1235</width>
+             <width>1232</width>
              <height>1000</height>
             </rect>
            </property>

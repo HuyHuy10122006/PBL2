@@ -645,7 +645,7 @@ public:
         label->setAlignment(Qt::AlignmentFlag::AlignCenter);
         layoutWidget3 = new QWidget(Sidebar);
         layoutWidget3->setObjectName("layoutWidget3");
-        layoutWidget3->setGeometry(QRect(10, 290, 151, 121));
+        layoutWidget3->setGeometry(QRect(10, 290, 172, 121));
         verticalLayout = new QVBoxLayout(layoutWidget3);
         verticalLayout->setSpacing(20);
         verticalLayout->setObjectName("verticalLayout");
@@ -687,7 +687,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName("scrollAreaWidgetContents");
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 1235, 1600));
+        scrollAreaWidgetContents->setGeometry(QRect(0, -420, 1232, 1600));
         scrollAreaWidgetContents->setMinimumSize(QSize(0, 1600));
         widget_3 = new QWidget(scrollAreaWidgetContents);
         widget_3->setObjectName("widget_3");
@@ -1965,7 +1965,7 @@ public:
         scrollArea_2->setWidgetResizable(true);
         scrollAreaWidgetContents_2 = new QWidget();
         scrollAreaWidgetContents_2->setObjectName("scrollAreaWidgetContents_2");
-        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 913, 1000));
+        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 81, 1000));
         scrollAreaWidgetContents_2->setMinimumSize(QSize(0, 1000));
         widget_6 = new QWidget(scrollAreaWidgetContents_2);
         widget_6->setObjectName("widget_6");
@@ -2017,7 +2017,7 @@ public:
         scrollArea_3->setWidgetResizable(true);
         scrollAreaWidgetContents_3 = new QWidget();
         scrollAreaWidgetContents_3->setObjectName("scrollAreaWidgetContents_3");
-        scrollAreaWidgetContents_3->setGeometry(QRect(0, 0, 913, 1000));
+        scrollAreaWidgetContents_3->setGeometry(QRect(0, 0, 81, 1000));
         scrollAreaWidgetContents_3->setMinimumSize(QSize(0, 1000));
         widget_29 = new QWidget(scrollAreaWidgetContents_3);
         widget_29->setObjectName("widget_29");
@@ -2146,7 +2146,7 @@ public:
         scrollArea_4->setWidgetResizable(true);
         scrollAreaWidgetContents_4 = new QWidget();
         scrollAreaWidgetContents_4->setObjectName("scrollAreaWidgetContents_4");
-        scrollAreaWidgetContents_4->setGeometry(QRect(0, 0, 1235, 1000));
+        scrollAreaWidgetContents_4->setGeometry(QRect(0, 0, 1232, 1000));
         scrollAreaWidgetContents_4->setMinimumSize(QSize(0, 1000));
         widget_31 = new QWidget(scrollAreaWidgetContents_4);
         widget_31->setObjectName("widget_31");
